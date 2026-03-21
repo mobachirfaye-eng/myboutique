@@ -932,6 +932,34 @@ function dlcRender(){
 
 dlcRender();
 </script>
+dlcRender();
+</script>
 
+<!-- 🔥 COLLE ICI -->
+<script>
+function autoSave(){
+  try {
+    var stocks = {};
+
+    if (typeof flatAll !== "undefined" && Array.isArray(flatAll)) {
+      flatAll.forEach(function(f){
+        if (f.m && f.c !== undefined) {
+          stocks[f.m] = f.c;
+        }
+      });
+
+      localStorage.setItem('mb_stocks', JSON.stringify(stocks));
+      console.log("Auto-save OK");
+    }
+  } catch(e) {
+    console.error("Erreur auto-save", e);
+  }
+}
+
+setInterval(autoSave, 2000);
+</script>
+
+</body>
+</html>
 </body>
 </html>
