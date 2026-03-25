@@ -5,217 +5,303 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>MyBoutique — Relay Montparnasse</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-body{background:#f2f2f7;font-family:'DM Sans',sans-serif;font-size:13px;padding-bottom:80px;}
+:root{
+  --red:#E8192C;
+  --red2:#fee2e2;
+  --orange:#f97316;
+  --orange2:#fef3c7;
+  --green:#16A34A;
+  --green2:#dcfce7;
+  --blue:#2563eb;
+  --bg:#f2f2f7;
+  --line:#e5e7eb;
+  --text:#111827;
+  --muted:#6b7280;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text)}
+button,input{font:inherit}
+button{cursor:pointer}
+body{padding-bottom:84px}
 
 /* HEADER */
-.header{background:#E8192C;color:white;padding:14px 16px;position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;}
-.header-left h1{font-size:18px;font-weight:700;letter-spacing:.5px;}
-.header-left h1 span{opacity:.75;font-weight:400;}
-.header-left .sub{font-size:11px;opacity:.75;margin-top:1px;}
-.header-right{text-align:right;font-size:11px;opacity:.85;line-height:1.5;}
+.header{
+  position:sticky;top:0;z-index:50;
+  background:var(--red);color:#fff;
+  padding:14px 16px;
+  display:flex;justify-content:space-between;align-items:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+.header h1{margin:0;font-size:18px;line-height:1.1}
+.header h1 span{opacity:.8;font-weight:400}
+.header .sub{font-size:11px;opacity:.85;margin-top:2px}
+.header-right{text-align:right;font-size:11px;opacity:.9;line-height:1.4}
 
 /* PAGES */
-.page{display:none;padding:14px;}
-.page.active{display:block;}
+.page{display:none;padding:14px}
+.page.active{display:block}
 
-/* NAV BAS */
-.nav{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #ddd;display:grid;grid-template-columns:repeat(5,1fr);z-index:100;padding-bottom:env(safe-area-inset-bottom,0);}
-.nb{display:flex;flex-direction:column;align-items:center;padding:8px 4px 6px;cursor:pointer;border:none;background:none;color:#999;font-size:10px;font-family:'DM Sans',sans-serif;transition:color .15s;}
-.nb .ic{font-size:22px;margin-bottom:1px;}
-.nb.active{color:#E8192C;}
+/* NAV */
+.nav{
+  position:fixed;left:0;right:0;bottom:0;z-index:100;
+  display:grid;grid-template-columns:repeat(7,1fr);
+  background:#fff;border-top:1px solid var(--line);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+.nav button{
+  border:none;background:none;color:#9ca3af;
+  padding:8px 4px 6px;font-size:10px;
+  display:flex;flex-direction:column;align-items:center;gap:2px
+}
+.nav button.active{color:var(--red);font-weight:700}
+.nav .ic{font-size:20px;line-height:1}
+
+/* COMMON */
+.section{margin-bottom:16px}
+.section-head{
+  background:var(--red);color:#fff;
+  padding:9px 12px;border-radius:10px 10px 0 0;
+  font-size:12px;font-weight:700;letter-spacing:.3px;
+  display:flex;justify-content:space-between;align-items:center;gap:10px
+}
+.section-body{
+  background:#fff;border:1px solid var(--line);border-top:none;
+  border-radius:0 0 10px 10px;overflow:hidden
+}
+.btn-reset{
+  border:none;background:rgba(255,255,255,.2);color:#fff;
+  border-radius:7px;padding:4px 9px;font-size:10px;font-weight:700
+}
+.empty-msg{padding:18px;text-align:center;color:#9ca3af;font-size:12px}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px
+}
+.list-head{
+  background:var(--red);color:#fff;padding:9px 14px;
+  border-radius:10px 10px 0 0;font-size:12px;font-weight:700;
+  display:flex;justify-content:space-between;align-items:center;gap:10px
+}
+.list-badge{
+  background:rgba(255,255,255,.22);border-radius:999px;padding:2px 8px;font-size:11px
+}
+.list-body{
+  background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 10px 10px;overflow:hidden
+}
+.list-row{
+  display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid #f3f4f6
+}
+.list-row:last-child{border-bottom:none}
+.list-row.done{opacity:.45}
+.list-row.done .list-txt{text-decoration:line-through}
+.list-chk{
+  width:22px;height:22px;border-radius:6px;border:2px solid #d1d5db;
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex:none
+}
+.list-row.done .list-chk{background:var(--green);border-color:var(--green);color:#fff}
+.list-txt{flex:1;font-size:13px;font-weight:500}
+.add-form{
+  display:flex;gap:8px;padding:10px 14px;background:#fafafa;border-top:1px solid #f3f4f6
+}
+.add-form input{
+  border:1px solid #d1d5db;border-radius:8px;padding:10px 12px;outline:none;background:#fff
+}
+.add-form input:focus{border-color:var(--red)}
+.add-btn{
+  background:var(--red);color:#fff;border:none;border-radius:8px;padding:10px 14px;font-size:18px;font-weight:700
+}
 
 /* DASH */
-.dash-title{font-size:17px;font-weight:700;color:#111;margin-bottom:2px;}
-.dash-sub{font-size:12px;color:#888;margin-bottom:14px;}
-.cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
-.card{background:white;border-radius:14px;padding:14px;border:1.5px solid #e5e5e5;}
-.card.red{border-color:#E8192C;background:#fff5f5;}
-.card.orange{border-color:#f97316;background:#fff7ed;}
-.card.green{border-color:#16A34A;background:#f0fdf4;}
-.card-icon{font-size:26px;margin-bottom:6px;}
-.card-label{font-size:11px;font-weight:600;color:#666;text-transform:uppercase;letter-spacing:.5px;}
-.card-val{font-size:30px;font-weight:700;margin-top:2px;}
-.card.red .card-val{color:#E8192C;}
-.card.orange .card-val{color:#f97316;}
-.card.green .card-val{color:#16A34A;}
-.card-sub{font-size:10px;color:#888;margin-top:2px;}
+.dash-title{font-size:17px;font-weight:700;margin-bottom:2px}
+.dash-sub{font-size:12px;color:var(--muted);margin-bottom:14px}
+.cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.stat-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}
+.stat-card.red{border-color:var(--red);background:#fff5f5}
+.stat-card.orange{border-color:var(--orange);background:#fff7ed}
+.stat-card.green{border-color:var(--green);background:#f0fdf4}
+.stat-card.blue{border-color:var(--blue);background:#eff6ff}
+.stat-icon{font-size:24px;margin-bottom:6px}
+.stat-label{font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.4px}
+.stat-val{font-size:28px;font-weight:800;line-height:1.05;margin-top:2px}
+.stat-card.red .stat-val{color:var(--red)}
+.stat-card.orange .stat-val{color:var(--orange)}
+.stat-card.green .stat-val{color:var(--green)}
+.stat-card.blue .stat-val{color:var(--blue)}
+.stat-sub{font-size:10px;color:#6b7280;margin-top:2px}
 
-.bloc{background:white;border-radius:14px;overflow:hidden;margin-bottom:14px;border:1px solid #e5e5e5;}
-.bloc-title{padding:10px 14px;font-size:11px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:.8px;border-bottom:1px solid #f0f0f0;}
-.action-row{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid #f5f5f5;}
-.action-row:last-child{border-bottom:none;}
-.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-.dot.red{background:#E8192C;}
-.dot.orange{background:#f97316;}
-.dot.green{background:#16A34A;}
-.action-text{flex:1;font-size:13px;font-weight:500;color:#111;}
-.badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px;}
-.badge.red{background:#fee2e2;color:#E8192C;}
-.badge.orange{background:#fef3cd;color:#f97316;}
-.empty-action{padding:16px;text-align:center;color:#bbb;font-size:13px;}
+.block{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:14px}
+.block-title{
+  padding:10px 14px;border-bottom:1px solid #f3f4f6;
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#9ca3af
+}
+.action-row{
+  display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid #f3f4f6
+}
+.action-row:last-child{border-bottom:none}
+.dot{width:8px;height:8px;border-radius:50%;flex:none}
+.dot.red{background:var(--red)} .dot.orange{background:var(--orange)} .dot.green{background:var(--green)}
+.action-text{flex:1;font-size:13px;font-weight:500}
+.badge{
+  font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px
+}
+.badge.red{background:var(--red2);color:var(--red)}
+.badge.orange{background:var(--orange2);color:var(--orange)}
 
-/* TABAC */
-.search-wrap{display:flex;gap:8px;margin-bottom:12px;}
-.search-wrap input{flex:1;border:1.5px solid #ddd;border-radius:10px;padding:10px 14px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;background:white;}
-.search-wrap input:focus{border-color:#E8192C;}
-.btn-recap{background:#E8192C;color:white;border:none;border-radius:10px;padding:10px 14px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:'DM Sans',sans-serif;}
-#search-results{display:none;background:white;border:1.5px solid #ddd;border-radius:10px;margin-bottom:12px;overflow:hidden;}
-
-.section{margin-bottom:18px;}
-.section-head{background:#E8192C;color:white;padding:9px 12px;border-radius:10px 10px 0 0;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;display:flex;justify-content:space-between;align-items:center;gap:8px;}
-.btn-reset{background:rgba(255,255,255,.22);border:none;color:white;border-radius:6px;padding:3px 9px;font-size:10px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;}
-.section-body{background:white;border:1.5px solid #ddd;border-top:none;border-radius:0 0 10px 10px;overflow:hidden;}
-.alert-strip{padding:8px 12px;font-size:11px;font-weight:600;display:none;background:#fee2e2;color:#E8192C;border-top:1px solid #fca5a5;}
-
-/* TABLEAU */
-table{width:100%;border-collapse:collapse;}
-thead tr{background:#2d2d2d;color:white;}
-thead th{padding:8px;text-align:left;font-size:11px;font-weight:600;border-right:1px solid #444;}
-thead th:last-child{border-right:none;}
-tbody tr{border-bottom:1px solid #f0f0f0;}
-tbody tr:nth-child(even){background:#fafafa;}
-td{padding:9px 8px;border-right:1px solid #f0f0f0;vertical-align:middle;}
-td:last-child{border-right:none;}
-td.nom{font-weight:600;color:#111;font-size:12px;}
-td.ctrl{text-align:center;white-space:nowrap;}
-td.stat{text-align:center;font-size:11px;font-weight:600;}
-td.stat.ok{color:#16A34A;}td.stat.warn{color:#f97316;}td.stat.bad{color:#E8192C;}td.stat.over{color:#2563eb;}
-tr.sep-row td{background:#f5f5f5;color:#777;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:5px 8px;}
-
-.ctrl-wrap{display:inline-flex;align-items:center;gap:0;border:1.5px solid #ddd;border-radius:8px;overflow:hidden;}
-.ctrl-btn{width:32px;height:32px;border:none;background:white;font-size:18px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#333;transition:background .1s;}
-.ctrl-btn:active{background:#f0f0f0;}
-.ctrl-num{min-width:36px;text-align:center;font-size:15px;font-weight:700;background:white;padding:0 4px;line-height:32px;}
-.ctrl-num.ok{color:#16A34A;}
-.ctrl-num.warn{color:#f97316;}
-.ctrl-num.bad{color:#E8192C;}
-.ctrl-num.over{color:#2563eb;}
-
-/* RECAP */
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;align-items:flex-end;justify-content:center;}
-.overlay.open{display:flex;}
-.sheet{background:white;border-radius:20px 20px 0 0;padding:22px 18px 40px;width:100%;max-width:440px;max-height:85vh;overflow-y:auto;}
-.sheet h3{font-size:17px;font-weight:700;margin-bottom:4px;}
-.sheet p{font-size:12px;color:#888;margin-bottom:16px;}
-.recap-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f0f0f0;}
-.recap-row:last-child{border-bottom:none;}
-.recap-nom{font-weight:600;color:#111;}
-.recap-qty{background:#E8192C;color:white;border-radius:6px;padding:3px 9px;font-size:11px;font-weight:700;}
-.btn-full{width:100%;background:#E8192C;color:white;border:none;border-radius:12px;padding:15px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:16px;}
+/* TABLES */
+.search-wrap{display:flex;gap:8px;margin-bottom:12px}
+.search-wrap input{
+  flex:1;border:1px solid #d1d5db;border-radius:10px;padding:10px 12px;outline:none;background:#fff
+}
+.search-wrap input:focus{border-color:var(--red)}
+.btn-recap{
+  background:var(--red);color:#fff;border:none;border-radius:10px;padding:10px 12px;font-size:12px;font-weight:700
+}
+#search-results{display:none;background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:12px;overflow:hidden}
+table{width:100%;border-collapse:collapse;background:#fff}
+thead tr{background:#2f2f2f;color:#fff}
+thead th{padding:8px;text-align:left;font-size:11px;font-weight:700;border-right:1px solid #444}
+thead th:last-child{border-right:none}
+tbody tr{border-bottom:1px solid #f3f4f6}
+tbody tr:nth-child(even){background:#fafafa}
+td{padding:9px 8px;border-right:1px solid #f3f4f6;vertical-align:middle}
+td:last-child{border-right:none}
+td.nom{font-weight:600}
+td.place{font-size:11px;color:#6b7280}
+td.ctrl{text-align:center;white-space:nowrap}
+td.stat{text-align:center;font-size:11px;font-weight:700}
+td.stat.ok{color:var(--green)} td.stat.warn{color:var(--orange)} td.stat.bad{color:var(--red)} td.stat.over{color:var(--blue)}
+.ctrl-wrap{
+  display:inline-flex;align-items:center;overflow:hidden;border:1px solid #d1d5db;border-radius:8px
+}
+.ctrl-btn{
+  width:32px;height:32px;border:none;background:#fff;font-size:18px;font-weight:700;color:#333
+}
+.ctrl-num{
+  min-width:36px;line-height:32px;text-align:center;background:#fff;font-size:15px;font-weight:800;padding:0 4px
+}
+.ctrl-num.ok{color:var(--green)} .ctrl-num.warn{color:var(--orange)} .ctrl-num.bad{color:var(--red)} .ctrl-num.over{color:var(--blue)}
+.sep-row td{
+  background:#f5f5f5;color:#6b7280;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;padding:5px 8px
+}
+.recap-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;align-items:flex-end;justify-content:center
+}
+.recap-overlay.open{display:flex}
+.sheet{
+  width:100%;max-width:440px;max-height:85vh;overflow-y:auto;
+  background:#fff;border-radius:20px 20px 0 0;padding:20px 16px 36px
+}
+.sheet h3{margin:0 0 4px 0;font-size:17px}
+.sheet p{margin:0 0 16px 0;color:var(--muted);font-size:12px}
+.recap-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #f3f4f6}
+.recap-row:last-child{border-bottom:none}
+.recap-nom{font-weight:600}
+.recap-qty{background:var(--red);color:#fff;border-radius:6px;padding:3px 9px;font-size:11px;font-weight:800}
+.btn-full{
+  width:100%;background:var(--red);color:#fff;border:none;border-radius:12px;padding:15px;font-size:15px;font-weight:700;margin-top:16px
+}
 
 /* PLANNING */
-.week-nav{display:flex;align-items:center;justify-content:space-between;background:white;border-radius:12px;padding:10px 14px;margin-bottom:12px;border:1px solid #e5e5e5;}
-.week-nav .btn-wk{background:#E8192C;color:white;border:none;border-radius:8px;padding:7px 14px;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;}
-.week-label{font-size:13px;font-weight:700;color:#111;}
-.days-scroll{display:flex;gap:6px;overflow-x:auto;margin-bottom:12px;padding-bottom:2px;scrollbar-width:none;}
-.days-scroll::-webkit-scrollbar{display:none;}
-.day-pill{min-width:50px;padding:8px;border-radius:12px;border:1.5px solid #e5e5e5;background:white;color:#888;font-size:11px;font-weight:600;cursor:pointer;text-align:center;flex-shrink:0;font-family:'DM Sans',sans-serif;}
-.day-pill .dp{font-size:9px;text-transform:uppercase;margin-bottom:2px;}
-.day-pill .dd{font-size:17px;font-weight:700;color:#333;}
-.day-pill.active{border-color:#E8192C;border-width:2px;}
-.day-pill.active .dd{color:#E8192C;}
-.day-pill.today-pill{background:#fff5f5;}
-
-.timeline-box{background:white;border-radius:12px;padding:12px;border:1px solid #e5e5e5;overflow-x:auto;margin-bottom:12px;}
-.tl-inner{min-width:300px;}
-.tl-header{display:flex;padding-left:75px;margin-bottom:8px;}
-.tl-tick{flex:1;font-size:9px;color:#ccc;min-width:28px;}
-.tl-row{display:flex;align-items:center;margin-bottom:7px;gap:8px;}
-.tl-name{width:70px;font-size:11px;font-weight:600;color:#333;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.tl-track{flex:1;height:30px;background:#f0f0f0;border-radius:6px;position:relative;overflow:hidden;}
-.tl-bar{position:absolute;height:100%;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:white;white-space:nowrap;padding:0 6px;overflow:hidden;}
-
-.team-list{background:white;border-radius:12px;overflow:hidden;border:1px solid #e5e5e5;margin-bottom:12px;}
-.team-row{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid #f5f5f5;}
-.team-row:last-child{border-bottom:none;}
-.team-av{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:white;flex-shrink:0;}
-.team-info{flex:1;}
-.team-nom{font-size:13px;font-weight:700;color:#111;}
-.toi-tag{background:#E8192C;color:white;font-size:9px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:5px;}
-.team-hrs{font-size:11px;color:#888;margin-top:1px;}
-.team-start{font-size:14px;font-weight:700;color:#16A34A;}
-
-.hours-box{background:white;border-radius:12px;padding:12px 14px;border:1px solid #e5e5e5;margin-top:8px;}
-.hours-title{font-size:11px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;}
-.hours-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f5f5f5;font-size:12px;}
-.hours-row:last-child{border-bottom:none;}
-.hours-nom{font-weight:600;color:#333;}
-.hours-val{font-weight:700;color:#E8192C;}
+.week-nav{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:12px}
+.btn-wk{background:var(--red);color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:14px;font-weight:700}
+.week-label{font-size:13px;font-weight:800}
+.days-scroll{display:flex;gap:6px;overflow-x:auto;margin-bottom:12px;padding-bottom:2px;scrollbar-width:none}
+.days-scroll::-webkit-scrollbar{display:none}
+.day-pill{
+  min-width:50px;padding:8px;border-radius:12px;border:1px solid var(--line);background:#fff;color:#888;font-size:11px;font-weight:700;text-align:center
+}
+.day-pill .dp{font-size:9px;text-transform:uppercase;margin-bottom:2px}
+.day-pill .dd{font-size:17px;font-weight:800;color:#333}
+.day-pill.active{border:2px solid var(--red)}
+.day-pill.active .dd{color:var(--red)}
+.day-pill.today{background:#fff5f5}
+.timeline-box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;overflow-x:auto;margin-bottom:12px}
+.tl-inner{min-width:300px}
+.tl-header{display:flex;padding-left:75px;margin-bottom:8px}
+.tl-tick{flex:1;font-size:9px;color:#c4c4c4;min-width:28px}
+.tl-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.tl-name{width:70px;font-size:11px;font-weight:700;color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tl-track{flex:1;height:30px;background:#f3f4f6;border-radius:6px;position:relative;overflow:hidden}
+.tl-bar{position:absolute;height:100%;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;white-space:nowrap;padding:0 6px;overflow:hidden}
+.team-list{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:12px}
+.team-row{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid #f3f4f6}
+.team-row:last-child{border-bottom:none}
+.team-av{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex:none}
+.team-info{flex:1}
+.team-nom{font-size:13px;font-weight:800}
+.toi-tag{background:var(--red);color:#fff;font-size:9px;font-weight:800;padding:1px 5px;border-radius:4px;margin-left:5px}
+.team-hrs{font-size:11px;color:#6b7280;margin-top:1px}
+.team-start{font-size:14px;font-weight:800;color:var(--green)}
+.hours-box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:8px}
+.hours-title{font-size:11px;font-weight:800;color:#9ca3af;text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px}
+.hours-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f3f4f6;font-size:12px}
+.hours-row:last-child{border-bottom:none}
+.hours-nom{font-weight:600}
+.hours-val{font-weight:800;color:var(--red)}
 
 /* BOULANGERIE */
-.boul-alerte{background:#fee2e2;border:1.5px solid #E8192C;border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:12px;font-weight:700;color:#E8192C;display:none;}
-.boul-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px;}
-.boul-card{background:white;border:1.5px solid #e5e5e5;border-radius:12px;padding:10px 6px;text-align:center;}
-.boul-emoji{font-size:24px;}
-.boul-nom{font-size:10px;font-weight:600;color:#333;margin:4px 0;line-height:1.3;}
-.boul-ctrl{display:flex;align-items:center;justify-content:center;gap:0;border:1.5px solid #ddd;border-radius:8px;overflow:hidden;margin:6px auto 0;width:fit-content;}
-.boul-btn{width:30px;height:30px;border:none;background:white;font-size:17px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#333;}
-.boul-btn:active{background:#f0f0f0;}
-.boul-num{min-width:30px;text-align:center;font-size:15px;font-weight:700;color:#E8192C;line-height:30px;background:white;}
-.boul-dlc{font-size:9px;margin-top:4px;}
-.boul-destroy-btn{display:block;width:100%;margin-top:6px;background:#fee2e2;border:none;border-radius:6px;color:#E8192C;font-size:10px;font-weight:700;padding:4px;cursor:pointer;font-family:'DM Sans',sans-serif;}
-.boul-destroy-btn.done{background:#dcfce7;color:#16A34A;}
-.boul-destroy-btn.wait{background:#dbeafe;color:#2563eb;}
-
-.list-head{background:#E8192C;color:white;padding:9px 14px;border-radius:10px 10px 0 0;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;display:flex;justify-content:space-between;align-items:center;}
-.list-badge{background:rgba(255,255,255,.25);border-radius:10px;padding:2px 8px;font-size:11px;}
-.list-body{background:white;border:1.5px solid #ddd;border-top:none;border-radius:0 0 10px 10px;overflow:hidden;}
-.list-row{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid #f5f5f5;cursor:pointer;}
-.list-row:last-child{border-bottom:none;}
-.list-row.done{opacity:.45;}
-.list-row.done .list-txt{text-decoration:line-through;}
-.list-chk{width:22px;height:22px;border-radius:6px;border:2px solid #ddd;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
-.list-row.done .list-chk{background:#16A34A;border-color:#16A34A;color:white;}
-.list-txt{flex:1;font-weight:500;color:#111;font-size:13px;}
-.add-form{display:flex;gap:8px;padding:10px 14px;border-top:1px solid #f0f0f0;background:#fafafa;}
-.add-form input{flex:1;border:1.5px solid #ddd;border-radius:8px;padding:10px 12px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;}
-.add-form input:focus{border-color:#E8192C;}
-.add-form .btn-add{background:#E8192C;color:white;border:none;border-radius:8px;padding:10px 18px;font-size:20px;font-weight:700;cursor:pointer;}
-.empty-msg{padding:18px;text-align:center;color:#ccc;font-size:12px;}
+.boul-alerte{display:none;background:var(--red2);border:1px solid var(--red);border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:12px;font-weight:700;color:var(--red)}
+.boul-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px}
+.boul-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 6px;text-align:center}
+.boul-card.red{border-color:var(--red);background:#fff5f5}
+.boul-card.orange{border-color:var(--orange);background:#fff7ed}
+.boul-card.green{border-color:var(--green);background:#f0fdf4}
+.boul-emoji{font-size:24px;line-height:1}
+.boul-nom{font-size:10px;font-weight:700;color:#333;margin:4px 0;line-height:1.25}
+.boul-sub{font-size:9px;color:#6b7280;margin-top:4px}
+.boul-ctrl{
+  display:inline-flex;align-items:center;overflow:hidden;border:1px solid #d1d5db;border-radius:8px;margin:6px auto 0
+}
+.boul-btn{width:30px;height:30px;border:none;background:#fff;font-size:17px;font-weight:800;color:#333}
+.boul-num{min-width:30px;line-height:30px;text-align:center;background:#fff;font-size:15px;font-weight:800;color:var(--red);padding:0 4px}
+.boul-destroy-btn{
+  display:block;width:100%;margin-top:6px;border:none;border-radius:6px;padding:5px 6px;font-size:10px;font-weight:800
+}
+.boul-destroy-btn.off{background:var(--red2);color:var(--red)}
+.boul-destroy-btn.on{background:var(--green2);color:var(--green)}
+.boul-list-tag{font-size:10px;color:#6b7280}
+.boul-meta{font-size:9px;color:#6b7280;margin-top:4px}
+.boul-sep{font-size:11px;font-weight:800;color:#9ca3af;text-transform:uppercase;letter-spacing:.7px;margin:14px 0 8px}
 
 /* DLC */
-.dlc-alerte-red{background:#fee2e2;border:1.5px solid #E8192C;border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:12px;font-weight:700;color:#E8192C;display:none;}
-.dlc-alerte-ora{background:#fef3cd;border:1.5px solid #f97316;border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:12px;font-weight:700;color:#f97316;display:none;}
-.dlc-form{padding:10px 12px;background:#fafafa;border:1.5px solid #ddd;border-top:none;border-radius:0 0 10px 10px;}
-.dlc-form input{border:1.5px solid #ddd;border-radius:8px;padding:10px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;}
-.dlc-form input:focus{border-color:#E8192C;}
-.dlc-form input[type=date]{-webkit-appearance:none;appearance:none;}
-.tag-red{background:#fee2e2;color:#E8192C;border-radius:5px;padding:2px 7px;font-size:10px;font-weight:700;}
-.tag-ora{background:#fef3cd;color:#f97316;border-radius:5px;padding:2px 7px;font-size:10px;font-weight:700;}
-.tag-ok{background:#dcfce7;color:#16A34A;border-radius:5px;padding:2px 7px;font-size:10px;font-weight:700;}
+.dlc-red{display:none;background:var(--red2);border:1px solid var(--red);border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:12px;font-weight:700;color:var(--red)}
+.dlc-ora{display:none;background:var(--orange2);border:1px solid var(--orange);border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:12px;font-weight:700;color:var(--orange)}
+.dlc-form{padding:10px 12px;background:#fafafa;border:1px solid var(--line);border-top:none;border-radius:0 0 10px 10px}
+.dlc-form input{border:1px solid #d1d5db;border-radius:8px;padding:10px 12px;outline:none;background:#fff}
+.dlc-form input:focus{border-color:var(--red)}
+.tag-red{background:var(--red2);color:var(--red);border-radius:5px;padding:2px 7px;font-size:10px;font-weight:700}
+.tag-ora{background:var(--orange2);color:var(--orange);border-radius:5px;padding:2px 7px;font-size:10px;font-weight:700}
+.tag-ok{background:var(--green2);color:var(--green);border-radius:5px;padding:2px 7px;font-size:10px;font-weight:700}
 
-/* COULEURS ÉQUIPE */
-.bf{background:#E8192C;}
-.bd{background:#3b82f6;}
-.d{background:#8b5cf6;}
-.k{background:#22c55e;}
-.ba{background:#f97316;}
-.y{background:#06b6d4;}
+/* COMMANDE & TÂCHES */
+.task-delete, .cmd-delete{
+  color:var(--red);font-weight:800;cursor:pointer;flex:none
+}
+.small-muted{font-size:11px;color:var(--muted)}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="header-left">
+  <div>
     <h1>MyBoutique <span>Relay</span></h1>
     <div class="sub">Gare Montparnasse · Bachir Faye</div>
   </div>
   <div class="header-right" id="hdr-date"></div>
 </div>
 
-<!-- ACCUEIL -->
+<!-- HOME -->
 <div class="page active" id="page-home">
   <div class="dash-title">Bonjour Bachir 👋</div>
   <div class="dash-sub" id="home-date"></div>
   <div class="cards-grid" id="home-cards"></div>
-  <div class="bloc">
-    <div class="bloc-title">⚡ Actions urgentes</div>
+
+  <div class="block">
+    <div class="block-title">⚡ Actions urgentes</div>
     <div id="home-actions"></div>
   </div>
-  <div class="bloc">
-    <div class="bloc-title">👥 Équipe aujourd'hui</div>
+
+  <div class="block">
+    <div class="block-title">👥 Équipe aujourd'hui</div>
     <div id="home-team"></div>
   </div>
 </div>
@@ -223,48 +309,24 @@ tr.sep-row td{background:#f5f5f5;color:#777;font-size:10px;font-weight:700;text-
 <!-- TABAC -->
 <div class="page" id="page-tabac">
   <div class="search-wrap">
-    <input type="text" id="srch" placeholder="🔍 Rechercher une marque..." oninput="doSearch()">
+    <input type="text" id="tabac-search" placeholder="🔍 Rechercher une marque ou un emplacement..." oninput="renderTabacSearch()">
     <button class="btn-recap" onclick="openRecap()">📋 Récap</button>
   </div>
   <div id="search-results"></div>
 
-  <div style="margin-bottom:12px;">
-    <button class="btn-recap" onclick="resetAllTabac()" style="width:100%;padding:12px 14px;">♻️ RESET TABAC COMPLET</button>
+  <div style="margin-bottom:12px">
+    <button class="btn-recap" onclick="resetAllTabac()" style="width:100%;padding:12px 14px">♻️ RESET TABAC COMPLET</button>
   </div>
 
-  <div class="section">
-    <div class="section-head">Tiroir 1 — Classiques <button class="btn-reset" onclick="resetT(0)">↺ Reset tiroir</button></div>
-    <div class="section-body"><table id="tb0"></table></div>
-    <div class="alert-strip" id="al0"></div>
-  </div>
-  <div class="section">
-    <div class="section-head">Tiroir 2 — Variétés <button class="btn-reset" onclick="resetT(1)">↺ Reset tiroir</button></div>
-    <div class="section-body"><table id="tb1"></table></div>
-    <div class="alert-strip" id="al1"></div>
-  </div>
-  <div class="section">
-    <div class="section-head">Tiroir 3 — Slims / Vogue <button class="btn-reset" onclick="resetT(2)">↺ Reset tiroir</button></div>
-    <div class="section-body"><table id="tb2"></table></div>
-    <div class="alert-strip" id="al2"></div>
-  </div>
-  <div class="section">
-    <div class="section-head">Hors Tiroir — XL / XXL <button class="btn-reset" onclick="resetT(3)">↺ Reset tiroir</button></div>
-    <div class="section-body"><table id="tb3"></table></div>
-    <div class="alert-strip" id="al3"></div>
-  </div>
-  <div class="section">
-    <div class="section-head">Hors Tiroir — Cigares &amp; Autres <button class="btn-reset" onclick="resetT(4)">↺ Reset tiroir</button></div>
-    <div class="section-body"><table id="tb4"></table></div>
-    <div class="alert-strip" id="al4"></div>
-  </div>
+  <div id="tabac-sections"></div>
 </div>
 
 <!-- PLANNING -->
 <div class="page" id="page-plan">
   <div class="week-nav">
-    <button class="btn-wk" onclick="wkChange(-1)">◀</button>
-    <div class="week-label" id="wk-label"></div>
-    <button class="btn-wk" onclick="wkChange(1)">▶</button>
+    <button class="btn-wk" onclick="changeWeek(-1)">◀</button>
+    <div class="week-label" id="week-label"></div>
+    <button class="btn-wk" onclick="changeWeek(1)">▶</button>
   </div>
   <div class="days-scroll" id="days-scroll"></div>
   <div id="plan-content"></div>
@@ -272,828 +334,1139 @@ tr.sep-row td{background:#f5f5f5;color:#777;font-size:10px;font-weight:700;text-
 
 <!-- BOULANGERIE -->
 <div class="page" id="page-boul">
-  <div class="boul-alerte" id="boul-alerte"></div>
+  <div class="boul-alerte" id="boul-alert"></div>
+
   <div class="section">
-    <div class="section-head">🥐 Stock — Plateau bas <button class="btn-reset" onclick="boulNewDay()">↺ Nouveau jour</button></div>
+    <div class="section-head">🥐 Stock du jour <button class="btn-reset" onclick="newDayBoul()">↺ Nouveau jour</button></div>
     <div class="section-body">
       <div class="boul-grid" id="boul-grid"></div>
     </div>
   </div>
-  <div style="margin-bottom:14px">
-    <div class="list-head">🗑️ À détruire <span class="list-badge" id="boul-badge">0</span></div>
-    <div class="list-body" id="boul-destroy-list"></div>
-  </div>
-  <div id="boul-refill-bloc" style="display:none;margin-bottom:14px">
-    <div class="list-head" style="background:#16A34A">📦 À remettre</div>
+
+  <div class="section" style="margin-top:0">
+    <div class="list-head">🟠 À remettre <span class="list-badge" id="boul-refill-count">0</span></div>
     <div class="list-body" id="boul-refill-list"></div>
+  </div>
+
+  <div class="section" style="margin-top:14px">
+    <div class="list-head" style="background:var(--blue)">🗑️ À détruire <span class="list-badge" id="boul-destroy-count">0</span></div>
+    <div class="list-body" id="boul-destroy-list"></div>
   </div>
 </div>
 
-<!-- DLC + TODO -->
+<!-- DLC -->
 <div class="page" id="page-dlc">
-  <div class="dlc-alerte-red" id="dlc-red"></div>
-  <div class="dlc-alerte-ora" id="dlc-ora"></div>
+  <div class="dlc-red" id="dlc-red"></div>
+  <div class="dlc-ora" id="dlc-ora"></div>
 
   <div class="section" style="margin-top:0">
-    <div class="section-head">⏱️ DLC Snacking <span class="list-badge" id="dlc-badge" style="background:rgba(255,255,255,.25);border-radius:10px;padding:2px 8px;font-size:11px;">0</span></div>
+    <div class="section-head">⏱️ DLC Snacking <span class="list-badge" id="dlc-badge">0</span></div>
     <div class="section-body">
-      <table style="font-size:12px;">
-        <thead><tr>
-          <th style="padding:8px;text-align:left;">Produit</th>
-          <th style="padding:8px;text-align:center;width:45px;">Gr.</th>
-          <th style="padding:8px;text-align:center;width:65px;">Date</th>
-          <th style="padding:8px;text-align:center;width:72px;">Statut</th>
-        </tr></thead>
-        <tbody id="dlc-body"><tr><td colspan="4" class="empty-msg">Ajoutez un produit ↓</td></tr></tbody>
+      <table>
+        <thead>
+          <tr>
+            <th>Produit</th>
+            <th style="width:50px;text-align:center">Gr.</th>
+            <th style="width:70px;text-align:center">Date</th>
+            <th style="width:80px;text-align:center">Statut</th>
+          </tr>
+        </thead>
+        <tbody id="dlc-body">
+          <tr><td colspan="4" class="empty-msg">Ajoutez un produit ↓</td></tr>
+        </tbody>
       </table>
     </div>
     <div class="dlc-form">
       <div style="display:flex;flex-direction:column;gap:8px;">
         <div style="display:flex;gap:8px;">
-          <input type="text" id="dlc-nom" placeholder="Nom du produit..." style="flex:1;">
-          <input type="text" id="dlc-gr" placeholder="Gr." style="width:58px;text-align:center;">
+          <input type="text" id="dlc-name" placeholder="Nom du produit..." style="flex:1">
+          <input type="text" id="dlc-gr" placeholder="Gr." style="width:60px;text-align:center">
         </div>
         <div style="display:flex;gap:8px;align-items:center;">
-          <input type="date" id="dlc-date" style="flex:1;background:white;">
-          <button onclick="dlcAdd()" style="background:#E8192C;color:white;border:none;border-radius:8px;padding:11px 20px;font-size:20px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;">+</button>
+          <input type="date" id="dlc-date" style="flex:1;background:#fff">
+          <button class="add-btn" onclick="addDLC()" style="padding:11px 18px">+</button>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div style="margin-top:4px">
-    <div class="list-head">✅ À faire <span class="list-badge" id="todo-badge">0</span></div>
-    <div class="list-body">
-      <div id="todo-list"></div>
-      <div class="add-form">
-        <input type="text" id="todo-input" placeholder="Ajouter une tâche...">
-        <button class="btn-add" id="todo-add-btn">+</button>
-      </div>
+<!-- COMMANDE -->
+<div class="page" id="page-cmd">
+  <div class="section" style="margin-top:0">
+    <div class="list-head">📦 À commander <span class="list-badge" id="cmd-count">0</span></div>
+    <div class="list-body" id="cmd-list"></div>
+    <div class="add-form">
+      <input type="text" id="cmd-name" placeholder="Produit...">
+      <input type="number" id="cmd-qty" placeholder="Qté" style="width:80px">
+      <button class="add-btn" onclick="addCmd()">+</button>
     </div>
   </div>
 </div>
 
-<div class="nav">
-  <button class="nb active" onclick="goPage('home',this)"><div class="ic">🏠</div>Accueil</button>
-  <button class="nb" onclick="goPage('tabac',this)"><div class="ic">🚬</div>Tabac</button>
-  <button class="nb" onclick="goPage('plan',this)"><div class="ic">📅</div>Planning</button>
-  <button class="nb" onclick="goPage('boul',this)"><div class="ic">🥐</div>Boulang.</button>
-  <button class="nb" onclick="goPage('dlc',this)"><div class="ic">⏱️</div>DLC</button>
+<!-- TÂCHES -->
+<div class="page" id="page-task">
+  <div class="section" style="margin-top:0">
+    <div class="list-head">✅ À faire <span class="list-badge" id="todo-count">0</span></div>
+    <div class="list-body" id="todo-list"></div>
+    <div class="add-form">
+      <input type="text" id="todo-name" placeholder="Ajouter une tâche...">
+      <button class="add-btn" onclick="addTodo()">+</button>
+    </div>
+  </div>
 </div>
 
-<div class="overlay" id="recap-overlay">
+<!-- NAV -->
+<div class="nav">
+  <button class="active" onclick="goPage('home',this)"><div class="ic">🏠</div>Accueil</button>
+  <button onclick="goPage('tabac',this)"><div class="ic">🚬</div>Tabac</button>
+  <button onclick="goPage('plan',this)"><div class="ic">📅</div>Planning</button>
+  <button onclick="goPage('boul',this)"><div class="ic">🥐</div>Boul.</button>
+  <button onclick="goPage('dlc',this)"><div class="ic">⏱️</div>DLC</button>
+  <button onclick="goPage('cmd',this)"><div class="ic">📦</div>Commande</button>
+  <button onclick="goPage('task',this)"><div class="ic">✅</div>Tâches</button>
+</div>
+
+<!-- RECAP -->
+<div class="recap-overlay" id="recap-overlay">
   <div class="sheet">
-    <h3>📋 À aller chercher</h3>
-    <p>Références sous le minimum</p>
+    <h3>📋 À corriger</h3>
+    <p>Ce qui n’est pas exact dans le tabac</p>
     <div id="recap-list"></div>
-    <button class="btn-full" onclick="document.getElementById('recap-overlay').classList.remove('open')">Fermer</button>
+    <button class="btn-full" onclick="$('recap-overlay').classList.remove('open')">Fermer</button>
   </div>
 </div>
 
 <script>
-function $(id){return document.getElementById(id);}
-function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
-function load(k,def){try{var v=localStorage.getItem(k);return v?JSON.parse(v):def;}catch(e){return def;}}
+const LS = {
+  tabac:"mb_tabac_v4",
+  boul:"mb_boul_v4",
+  dlc:"mb_dlc_v4",
+  cmd:"mb_cmd_v4",
+  todo:"mb_todo_v4"
+};
 
-var MONTHS=['jan','fév','mar','avr','mai','jun','jul','aoû','sep','oct','nov','déc'];
-var DAYS_FR=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
-var DAYS_SHORT=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
-function fmtDate(d){return DAYS_FR[d.getDay()]+' '+d.getDate()+' '+MONTHS[d.getMonth()]+' '+d.getFullYear();}
-function sameDay(a,b){return a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate();}
-function today0(){var d=new Date();d.setHours(0,0,0,0);return d;}
-function toHH(h){var hh=Math.floor(h),mm=Math.round((h-hh)*60);return hh+'h'+(mm>0?('0'+mm).slice(-2):'00');}
-
-function goPage(name,btn){
-  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
-  document.querySelectorAll('.nb').forEach(function(b){b.classList.remove('active');});
-  $('page-'+name).classList.add('active');
-  btn.classList.add('active');
-  if(name==='home')renderHome();
+function $(id){ return document.getElementById(id); }
+function readJSON(key, fallback){
+  try{
+    const v = localStorage.getItem(key);
+    return v ? JSON.parse(v) : fallback;
+  }catch(e){ return fallback; }
+}
+function writeJSON(key, value){
+  try{ localStorage.setItem(key, JSON.stringify(value)); }catch(e){}
+}
+function today0(){
+  const d = new Date();
+  d.setHours(0,0,0,0);
+  return d;
+}
+function todayISO(){ return new Date().toISOString(); }
+function fmtHeaderDate(d){
+  const days = ["Dim","Lun","Mar","Mer","Jeu","Ven","Sam"];
+  const months = ["jan","fév","mar","avr","mai","jun","jul","aoû","sep","oct","nov","déc"];
+  return `${days[d.getDay()]} ${d.getDate()} ${months[d.getMonth()]}`;
+}
+function fmtFullDate(d){
+  const days = ["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
+  const months = ["jan","fév","mar","avr","mai","jun","jul","aoû","sep","oct","nov","déc"];
+  return `${days[d.getDay()]} ${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+}
+function toHH(h){
+  const hh = Math.floor(h);
+  const mm = Math.round((h - hh) * 60);
+  return hh + "h" + (mm > 0 ? String(mm).padStart(2,"0") : "00");
+}
+function mondayIndex(d){
+  return (d.getDay() + 6) % 7; // Lun=0 ... Dim=6
 }
 
-function updateHdr(){
-  var now=new Date();
-  $('hdr-date').textContent=DAYS_SHORT[now.getDay()]+' '+now.getDate()+' '+MONTHS[now.getMonth()];
-  $('home-date').textContent=fmtDate(now);
+/* NAV */
+function goPage(name, btn){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.querySelectorAll(".nav button").forEach(b=>b.classList.remove("active"));
+  $("page-"+name).classList.add("active");
+  btn.classList.add("active");
+  if(name === "home") renderHome();
 }
-updateHdr();
-setInterval(updateHdr,60000);
 
-/* ================= TABAC ================= */
-var TIROIRS = [
-  {label:"Tiroir 1 — Classiques", sections:[
-    {label:null, items:[
-      {m:"Camel Filters", cap:4},
-      {m:"Winston Classic", cap:5},
-      {m:"Philip Morris FK", cap:5},
-      {m:"Lucky Strike", cap:3},
-      {m:"Marlboro Red", cap:5},
-      {m:"Marlboro Gold", cap:5},
-    ]}
-  ]},
-  {label:"Tiroir 2 — Variétés", sections:[
-    {label:"100s", items:[
-      {m:"Marlboro Red 100s", cap:1},
-      {m:"Lucky Strike Red Longues 100s", cap:1},
-      {m:"Winston Classic 100s", cap:1},
-      {m:"Camel Filters 100s", cap:1},
-      {m:"Philip Morris Filter Kings 100s", cap:1},
-    ]},
-    {label:"Philip Morris", items:[
-      {m:"Philip Morris Green", cap:1},
-      {m:"Philip Morris White Silver", cap:1},
-      {m:"Philip Morris Bleue", cap:1},
-    ]},
-    {label:"Camel", items:[
-      {m:"Camel Essential Blue", cap:1},
-      {m:"Camel Essential", cap:1},
-      {m:"Camel Blue", cap:1},
-      {m:"Camel Fresh", cap:1},
-    ]},
-    {label:"Winston", items:[
-      {m:"Winston Blue", cap:1},
-      {m:"Winston Fresh", cap:1},
-    ]},
-    {label:"Peter Stuyvesant", items:[
-      {m:"Peter Stuyvesant Rouge", cap:1},
-      {m:"Peter Stuyvesant Bleu", cap:1},
-    ]},
-    {label:"Lucky Strike", items:[
-      {m:"Lucky Strike Bleu", cap:1},
-      {m:"Lucky Strike Ice", cap:1},
-    ]},
-    {label:"Gauloises", items:[
-      {m:"Gauloises Blondes Rouge", cap:1},
-      {m:"Gauloises Blondes Bleu", cap:1},
-    ]},
-    {label:"Marlboro", items:[
-      {m:"Marlboro Crafted Gold", cap:1},
-    ]},
-    {label:"Divers", items:[
-      {m:"News Rouge", cap:1},
-      {m:"Rothmans", cap:1},
-      {m:"L&M International Red", cap:1},
-      {m:"JPS", cap:1},
-    ]},
-  ]},
-  {label:"Tiroir 3 — Slims / Vogue", sections:[
-    {label:"Vogue", items:[
-      {m:"Vogue L'Originale Bleue", cap:2},
-      {m:"Vogue L'Essentielle Bleue", cap:3},
-      {m:"Vogue L'Originale Verte", cap:2},
-      {m:"Vogue L'Originale Pastel", cap:2},
-    ]},
-    {label:"Slims", items:[
-      {m:"Winston Slims", cap:3},
-      {m:"Marlboro Gold Slims", cap:2},
-      {m:"Lucky Strike Bleu Longues", cap:1},
-    ]},
-  ]},
-  {label:"Hors Tiroir — XL / XXL", sections:[
-    {label:"XL", items:[
-      {m:"Camel XL", cap:1},
-      {m:"Marlboro XL Classic Red", cap:2},
-      {m:"Marlboro XL Classic Gold", cap:1},
-      {m:"Philip Morris FK XL", cap:1},
-      {m:"Chesterfield Original", cap:1},
-    ]},
-    {label:"XXL", items:[
-      {m:"Camel XXL", cap:2},
-      {m:"Marlboro XXL Classic Red", cap:2},
-      {m:"Marlboro XXL Classic Gold", cap:2},
-      {m:"Philip Morris XXL", cap:2},
-      {m:"Winston XXL Classic", cap:2},
-    ]},
-  ]},
-  {label:"Hors Tiroir — Cigares & Autres", sections:[
-    {label:"Cigares", items:[
-      {m:"Camel Cigarillos Capsule", cap:1},
-      {m:"Clubmaster Filter Red", cap:1},
-      {m:"Moods Filter", cap:1},
-      {m:"Winston Cigarillos Blue", cap:1},
-    ]},
-    {label:"Tabac à chauffer", items:[
-      {m:"Heets Sienna", cap:1},
-      {m:"Heets Teak", cap:1},
-      {m:"Heets Turquoise", cap:1},
-    ]},
-    {label:"Hors tiroir", items:[
-      {m:"Dunhill Bleu", cap:1},
-      {m:"Dunhill Rouge", cap:1},
-      {m:"Corset Lilas", cap:1},
-      {m:"BH Gold", cap:1},
-      {m:"LM International Blue", cap:1},
-    ]},
-  ]},
+/* HEADER */
+function renderHeader(){
+  const now = new Date();
+  $("hdr-date").textContent = fmtHeaderDate(now);
+  $("home-date").textContent = fmtFullDate(now);
+}
+renderHeader();
+setInterval(renderHeader, 60000);
+
+/* =========================
+   TABAC — EXACT
+========================= */
+const tabacGroups = [
+  {
+    short:"Tiroir 1",
+    title:"Tiroir 1 — Classiques",
+    sections:[{
+      label:"",
+      items:[
+        {m:"Camel Filters", cap:4},
+        {m:"Winston Classic", cap:5},
+        {m:"Philip Morris FK", cap:5},
+        {m:"Lucky Strike", cap:3},
+        {m:"Marlboro Red", cap:5},
+        {m:"Marlboro Gold", cap:5},
+      ]
+    }]
+  },
+  {
+    short:"Tiroir 2",
+    title:"Tiroir 2 — Variétés",
+    sections:[
+      {
+        label:"100s",
+        items:[
+          {m:"Marlboro Red 100s", cap:1},
+          {m:"Lucky Strike Red Longues 100s", cap:1},
+          {m:"Winston Classic 100s", cap:1},
+          {m:"Camel Filters 100s", cap:1},
+          {m:"Philip Morris Filter Kings 100s", cap:1},
+        ]
+      },
+      {
+        label:"Philip Morris",
+        items:[
+          {m:"Philip Morris Green", cap:1},
+          {m:"Philip Morris White Silver", cap:1},
+          {m:"Philip Morris Bleue", cap:1},
+        ]
+      },
+      {
+        label:"Camel",
+        items:[
+          {m:"Camel Essential Blue", cap:1},
+          {m:"Camel Essential", cap:1},
+          {m:"Camel Blue", cap:1},
+          {m:"Camel Fresh", cap:1},
+        ]
+      },
+      {
+        label:"Winston",
+        items:[
+          {m:"Winston Blue", cap:1},
+          {m:"Winston Fresh", cap:1},
+        ]
+      },
+      {
+        label:"Peter Stuyvesant",
+        items:[
+          {m:"Peter Stuyvesant Rouge", cap:1},
+          {m:"Peter Stuyvesant Bleu", cap:1},
+        ]
+      },
+      {
+        label:"Lucky Strike",
+        items:[
+          {m:"Lucky Strike Bleu", cap:1},
+          {m:"Lucky Strike Ice", cap:1},
+        ]
+      },
+      {
+        label:"Gauloises",
+        items:[
+          {m:"Gauloises Blondes Rouge", cap:1},
+          {m:"Gauloises Blondes Bleu", cap:1},
+        ]
+      },
+      {
+        label:"Marlboro",
+        items:[
+          {m:"Marlboro Crafted Gold", cap:1},
+        ]
+      },
+      {
+        label:"Divers",
+        items:[
+          {m:"News Rouge", cap:1},
+          {m:"Rothmans", cap:1},
+          {m:"L&M International Red", cap:1},
+          {m:"JPS", cap:1},
+        ]
+      }
+    ]
+  },
+  {
+    short:"Tiroir 3",
+    title:"Tiroir 3 — Slims / Vogue",
+    sections:[
+      {
+        label:"Vogue",
+        items:[
+          {m:"Vogue L'Originale Bleue", cap:2},
+          {m:"Vogue L'Essentielle Bleue", cap:3},
+          {m:"Vogue L'Originale Verte", cap:2},
+          {m:"Vogue L'Originale Pastel", cap:2},
+        ]
+      },
+      {
+        label:"Slims",
+        items:[
+          {m:"Winston Slims", cap:3},
+          {m:"Marlboro Gold Slims", cap:2},
+          {m:"Lucky Strike Bleu Longues", cap:1},
+        ]
+      }
+    ]
+  },
+  {
+    short:"Hors tiroir",
+    title:"Hors Tiroir — XL / XXL",
+    sections:[
+      {
+        label:"XL",
+        items:[
+          {m:"Camel XL", cap:1},
+          {m:"Marlboro XL Classic Red", cap:2},
+          {m:"Marlboro XL Classic Gold", cap:1},
+          {m:"Philip Morris FK XL", cap:1},
+          {m:"Chesterfield Original", cap:1},
+        ]
+      },
+      {
+        label:"XXL",
+        items:[
+          {m:"Camel XXL", cap:2},
+          {m:"Marlboro XXL Classic Red", cap:2},
+          {m:"Marlboro XXL Classic Gold", cap:2},
+          {m:"Philip Morris XXL", cap:2},
+          {m:"Winston XXL Classic", cap:2},
+        ]
+      }
+    ]
+  },
+  {
+    short:"Hors tiroir",
+    title:"Hors Tiroir — Cigares & Autres",
+    sections:[
+      {
+        label:"Cigares",
+        items:[
+          {m:"Camel Cigarillos Capsule", cap:1},
+          {m:"Clubmaster Filter Red", cap:1},
+          {m:"Moods Filter", cap:1},
+          {m:"Winston Cigarillos Blue", cap:1},
+        ]
+      },
+      {
+        label:"Tabac à chauffer",
+        items:[
+          {m:"Heets Sienna", cap:1},
+          {m:"Heets Teak", cap:1},
+          {m:"Heets Turquoise", cap:1},
+        ]
+      },
+      {
+        label:"Hors tiroir",
+        items:[
+          {m:"Dunhill Bleu", cap:1},
+          {m:"Dunhill Rouge", cap:1},
+          {m:"Corset Lilas", cap:1},
+          {m:"BH Gold", cap:1},
+          {m:"LM International Blue", cap:1},
+        ]
+      }
+    ]
+  }
 ];
 
-var STOCK = load('mb_stock2', {});
-TIROIRS.forEach(function(t){
-  t.sections.forEach(function(s){
-    s.items.forEach(function(item){
-      if(STOCK[item.m] === undefined) STOCK[item.m] = item.cap;
+let tabacStock = readJSON(LS.tabac, null);
+if(!tabacStock){
+  tabacStock = {};
+  tabacGroups.forEach(g=>{
+    g.sections.forEach(s=>{
+      s.items.forEach(item=>{
+        tabacStock[item.m] = item.cap;
+      });
     });
   });
-});
-
-function getStock(m){return STOCK[m] !== undefined ? STOCK[m] : 0;}
-function setStock(m, v){STOCK[m] = Math.max(0, v); save('mb_stock2', STOCK);}
-function stClass(c,cap){if(c===cap) return 'ok'; if(c<cap) return 'warn'; return 'over';}
-function stLabel(c,cap){
-  if(c===cap) return '✅ OK';
-  if(c===0) return '🔴 Vide';
-  if(c<cap) return '⚠️ -'+(cap-c);
-  return '❌ +'+(c-cap);
+  writeJSON(LS.tabac, tabacStock);
 }
+
+function getTabacStock(name){ return tabacStock[name] ?? 0; }
+function setTabacStock(name, val){ tabacStock[name] = Math.max(0, val); writeJSON(LS.tabac, tabacStock); }
+
+function tabacStatus(cur, cap){
+  if(cur === cap) return {cls:"ok", txt:"✅ OK"};
+  if(cur === 0) return {cls:"bad", txt:"🔴 Vide"};
+  if(cur < cap) return {cls:"warn", txt:"⚠️ -" + (cap - cur)};
+  return {cls:"over", txt:"❌ +" + (cur - cap)};
+}
+
 function resetAllTabac(){
-  if(!confirm('Remettre tout le tabac à sa capacité ?')) return;
-  TIROIRS.forEach(function(t){
-    t.sections.forEach(function(s){
-      s.items.forEach(function(item){ STOCK[item.m] = item.cap; });
+  if(!confirm("Remettre tout le tabac à sa capacité ?")) return;
+  tabacGroups.forEach(g=>{
+    g.sections.forEach(s=>{
+      s.items.forEach(item=>tabacStock[item.m] = item.cap);
     });
   });
-  save('mb_stock2', STOCK);
+  writeJSON(LS.tabac, tabacStock);
   renderTabac();
   renderHome();
-  if($('srch').value.trim()) doSearch();
+  renderTabacSearch();
 }
-function resetT(ti){
-  if(!confirm('Remettre ce tiroir à sa capacité ?')) return;
-  TIROIRS[ti].sections.forEach(function(s){
-    s.items.forEach(function(item){ STOCK[item.m] = item.cap; });
-  });
-  save('mb_stock2', STOCK);
-  renderTabac();
-  renderHome();
-  if($('srch').value.trim()) doSearch();
-}
-function tabacChange(m, delta){
-  m = decodeURIComponent(m);
-  setStock(m, getStock(m) + delta);
-  renderTabac();
-  renderHome();
-  if($('srch').value.trim()) doSearch();
-}
-function renderTabac(){
-  TIROIRS.forEach(function(t, ti){
-    var table = $('tb'+ti);
-    var html = '<thead><tr><th style="min-width:110px">Marque</th><th style="width:110px;text-align:center">Stock</th><th style="width:75px;text-align:center">Statut</th></tr></thead><tbody>';
-    t.sections.forEach(function(s){
-      if(s.label) html += '<tr class="sep-row"><td colspan="3">'+s.label+'</td></tr>';
-      s.items.forEach(function(item){
-        var c = getStock(item.m);
-        var sc = stClass(c, item.cap);
-        html += '<tr>';
-        html += '<td class="nom">'+item.m+'</td>';
-        html += '<td class="ctrl"><div class="ctrl-wrap">';
-        html += '<button class="ctrl-btn" onclick="tabacChange(\''+encodeURIComponent(item.m)+'\',-1)">−</button>';
-        html += '<span class="ctrl-num '+sc+'">'+c+'</span>';
-        html += '<button class="ctrl-btn" onclick="tabacChange(\''+encodeURIComponent(item.m)+'\',1)">+</button>';
-        html += '</div></td>';
-        html += '<td class="stat '+sc+'">'+stLabel(c, item.cap)+'</td>';
-        html += '</tr>';
-      });
-    });
-    html += '</tbody>';
-    table.innerHTML = html;
 
-    var alerts = [];
-    t.sections.forEach(function(s){
-      s.items.forEach(function(item){
-        var c = getStock(item.m);
-        if(c !== item.cap) alerts.push(item.m+' ('+c+'/'+item.cap+')');
-      });
-    });
-    var al = $('al'+ti);
-    if(alerts.length){ al.style.display='block'; al.innerHTML='📦 À corriger : '+alerts.join(' · '); }
-    else al.style.display='none';
-  });
+function resetTabacGroup(groupIndex){
+  if(!confirm("Remettre ce tiroir à sa capacité ?")) return;
+  const g = tabacGroups[groupIndex];
+  g.sections.forEach(s=>s.items.forEach(item=>tabacStock[item.m] = item.cap));
+  writeJSON(LS.tabac, tabacStock);
+  renderTabac();
+  renderHome();
+  renderTabacSearch();
 }
-function doSearch(){
-  var q = $('srch').value.trim().toLowerCase();
-  var box = $('search-results');
-  if(!q){ box.style.display='none'; return; }
-  var results = [];
-  TIROIRS.forEach(function(t){
-    t.sections.forEach(function(s){
-      s.items.forEach(function(item){
-        if(item.m.toLowerCase().indexOf(q) >= 0) results.push(item);
+
+function tabacDelta(name, delta){
+  tabacStock[name] = Math.max(0, (tabacStock[name] ?? 0) + delta);
+  writeJSON(LS.tabac, tabacStock);
+  renderTabac();
+  renderHome();
+  renderTabacSearch();
+}
+
+function renderTabac(){
+  const mount = $("tabac-sections");
+  let html = "";
+  tabacGroups.forEach((g, gi)=>{
+    html += `<div class="section">
+      <div class="section-head">${g.title} <button class="btn-reset" onclick="resetTabacGroup(${gi})">↺ Reset</button></div>
+      <div class="section-body">
+        <table>
+          <thead>
+            <tr>
+              <th>Marque</th>
+              <th>Emplacement</th>
+              <th style="width:120px;text-align:center">Stock</th>
+              <th style="width:80px;text-align:center">Statut</th>
+            </tr>
+          </thead>
+          <tbody>`;
+    g.sections.forEach(sec=>{
+      if(sec.label){
+        html += `<tr class="sep-row"><td colspan="4">${sec.label}</td></tr>`;
+      }
+      sec.items.forEach(item=>{
+        const cur = getTabacStock(item.m);
+        const st = tabacStatus(cur, item.cap);
+        const place = sec.label ? `${g.short} · ${sec.label}` : g.short;
+        html += `<tr>
+          <td class="nom">${item.m}</td>
+          <td class="place">${place}</td>
+          <td class="ctrl">
+            <div class="ctrl-wrap">
+              <button class="ctrl-btn" onclick="tabacDelta('${encodeURIComponent(item.m)}',-1)">−</button>
+              <span class="ctrl-num ${st.cls}">${cur}</span>
+              <button class="ctrl-btn" onclick="tabacDelta('${encodeURIComponent(item.m)}',1)">+</button>
+            </div>
+          </td>
+          <td class="stat ${st.cls}">${st.txt}</td>
+        </tr>`;
+      });
+    });
+    html += `</tbody></table></div></div>`;
+  });
+  mount.innerHTML = html;
+}
+
+function renderTabacSearch(){
+  const q = $("tabac-search").value.trim().toLowerCase();
+  const box = $("search-results");
+  if(!q){ box.style.display = "none"; box.innerHTML = ""; return; }
+
+  const results = [];
+  tabacGroups.forEach(g=>{
+    g.sections.forEach(sec=>{
+      sec.items.forEach(item=>{
+        const place = sec.label ? `${g.short} ${sec.label}` : g.short;
+        if(item.m.toLowerCase().includes(q) || place.toLowerCase().includes(q)) results.push({item, g, sec, place});
       });
     });
   });
-  if(!results.length){ box.style.display='block'; box.innerHTML='<div class="empty-msg">Aucun résultat</div>'; return; }
-  box.style.display='block';
-  var html = '<table><thead><tr><th>Marque</th><th style="width:110px;text-align:center">Stock</th><th style="width:75px;text-align:center">Statut</th></tr></thead><tbody>';
-  results.forEach(function(item){
-    var c = getStock(item.m);
-    var sc = stClass(c, item.cap);
-    html += '<tr><td class="nom">'+item.m+'</td>';
-    html += '<td class="ctrl"><div class="ctrl-wrap">';
-    html += '<button class="ctrl-btn" onclick="tabacChange(\''+encodeURIComponent(item.m)+'\',-1)">−</button>';
-    html += '<span class="ctrl-num '+sc+'">'+c+'</span>';
-    html += '<button class="ctrl-btn" onclick="tabacChange(\''+encodeURIComponent(item.m)+'\',1)">+</button>';
-    html += '</div></td>';
-    html += '<td class="stat '+sc+'">'+stLabel(c, item.cap)+'</td></tr>';
+
+  if(!results.length){
+    box.style.display = "block";
+    box.innerHTML = `<div class="empty-msg">Aucun résultat</div>`;
+    return;
+  }
+
+  let html = `<table>
+    <thead>
+      <tr>
+        <th>Marque</th>
+        <th>Emplacement</th>
+        <th style="width:120px;text-align:center">Stock</th>
+        <th style="width:80px;text-align:center">Statut</th>
+      </tr>
+    </thead><tbody>`;
+
+  results.forEach(r=>{
+    const cur = getTabacStock(r.item.m);
+    const st = tabacStatus(cur, r.item.cap);
+    html += `<tr>
+      <td class="nom">${r.item.m}</td>
+      <td class="place">${r.place}</td>
+      <td class="ctrl">
+        <div class="ctrl-wrap">
+          <button class="ctrl-btn" onclick="tabacDelta('${encodeURIComponent(r.item.m)}',-1)">−</button>
+          <span class="ctrl-num ${st.cls}">${cur}</span>
+          <button class="ctrl-btn" onclick="tabacDelta('${encodeURIComponent(r.item.m)}',1)">+</button>
+        </div>
+      </td>
+      <td class="stat ${st.cls}">${st.txt}</td>
+    </tr>`;
   });
-  html += '</tbody></table>';
+
+  html += `</tbody></table>`;
+  box.style.display = "block";
   box.innerHTML = html;
 }
+
 function openRecap(){
-  var alerts = [];
-  TIROIRS.forEach(function(t){
-    t.sections.forEach(function(s){
-      s.items.forEach(function(item){
-        var c = getStock(item.m);
-        if(c !== item.cap) alerts.push({m:item.m, manque:Math.abs(item.cap - c), c:c, cap:item.cap});
+  const items = [];
+  tabacGroups.forEach(g=>{
+    g.sections.forEach(s=>{
+      s.items.forEach(item=>{
+        const cur = getTabacStock(item.m);
+        if(cur !== item.cap){
+          items.push({m:item.m, cur, cap:item.cap});
+        }
       });
     });
   });
-  var html = '';
-  if(!alerts.length){ html = '<div style="text-align:center;color:#16A34A;font-weight:700;padding:24px;font-size:15px;">✅ Tout est OK !</div>'; }
-  else {
-    alerts.forEach(function(a){
-      html += '<div class="recap-row"><span class="recap-nom">'+a.m+' <span style="color:#888;font-weight:500;">('+a.c+'/'+a.cap+')</span></span><span class="recap-qty">'+(a.c<a.cap?'+':'-')+a.manque+'</span></div>';
+  let html = "";
+  if(!items.length){
+    html = `<div class="empty-msg" style="color:var(--green);font-weight:800;font-size:15px">✅ Tout est exact</div>`;
+  }else{
+    items.forEach(x=>{
+      html += `<div class="recap-row">
+        <span class="recap-nom">${x.m} <span class="small-muted">(${x.cur}/${x.cap})</span></span>
+        <span class="recap-qty">${x.cur < x.cap ? "+" : "-"}${Math.abs(x.cap - x.cur)}</span>
+      </div>`;
     });
   }
-  $('recap-list').innerHTML = html;
-  $('recap-overlay').classList.add('open');
+  $("recap-list").innerHTML = html;
+  $("recap-overlay").classList.add("open");
 }
 renderTabac();
 
-/* ================= PLANNING ================= */
-var PLAN = {
-  lundi:    { bf:[11,16.5], bd:[6,13],  d:[16,20.5],   k:[16.5,20.5] },
-  mardi:    { bf:[15.5,20.5], bd:[6,13], d:[11.5,15.5], k:[9,14]     },
-  mercredi: { bf:[10,15.5], bd:[6,13],  d:[15.5,20.5],  k:[12,20.5]  },
-  jeudi:    { bf:[14,20.5], bd:[6,13],  d:[14.5,20.5],  k:[10,14]    },
-  vendredi: { bf:[11.5,20], bd:[6,13],  d:[15.5,20.5],  k:[12,14]    },
-  samedi:   { bf:[7.5,12.5], bd:[12.5,20], ba:[13,20],  d:[11,20]    },
-  dimanche: {},
+/* =========================
+   PLANNING — RÉEL
+========================= */
+const PLAN = {
+  lundi:    { bf:[11,16.5], bd:[6,13],  d:[16,20.5],  k:[16.5,20.5], y:[9,15] },
+  mardi:    { bf:[16.5,20.5], bd:[6,13], d:[11.5,15.5], k:[17,20.5] },
+  mercredi: { bf:[10,15.5], bd:[6,13],  d:[16,20.5],  k:[16,20.5], y:[9,14] },
+  jeudi:    { bf:[14,20.5], bd:[6,13],  d:[14.5,20.5], k:[11,14], y:[10,14] },
+  vendredi: { bf:[16.5,20.5], ba:[11.5,17], bd:[6,13], d:[17,20.5], k:[12,14] },
+  samedi:   { ba:[13,20], bd:[11,14], d:[16,20] },
+  dimanche: {}
 };
-var EMP = [
-  {id:'bf', nom:'Bachir Faye', cls:'bf', toi:true},
-  {id:'bd', nom:'Badroudine',  cls:'bd'},
-  {id:'d',  nom:'Dame',        cls:'d'},
-  {id:'k',  nom:'Karim',       cls:'k'},
-  {id:'ba', nom:'Baba',        cls:'ba'},
+
+const EMP = [
+  {id:"bf", nom:"Bachir Faye", initials:"BF", color:"#E8192C", toi:true},
+  {id:"bd", nom:"Badroudine", initials:"B", color:"#3b82f6"},
+  {id:"d",  nom:"Dame", initials:"D", color:"#8b5cf6"},
+  {id:"k",  nom:"Karim", initials:"K", color:"#22c55e"},
+  {id:"ba", nom:"Baba", initials:"B", color:"#f97316"},
+  {id:"y",  nom:"Yacine", initials:"Y", color:"#06b6d4"}
 ];
-var EMP_COLORS = {bf:'#E8192C', bd:'#3b82f6', d:'#8b5cf6', k:'#22c55e', ba:'#f97316'};
-var DAY_KEYS = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
-var wkOffset = 0;
-var selDayIdx = new Date().getDay();
+
+let currentWeekOffset = 0;
+let currentDayIdx = mondayIndex(new Date());
 
 function getWeekDates(offset){
-  var now = new Date();
-  var dow = now.getDay();
-  var mon = new Date(now);
-  mon.setDate(now.getDate() - (dow === 0 ? 6 : dow-1) + offset*7);
+  const now = new Date();
+  const mon = new Date(now);
+  const dow = now.getDay(); // Sun=0
+  const diffToMon = dow === 0 ? 6 : dow - 1;
+  mon.setDate(now.getDate() - diffToMon + offset * 7);
   mon.setHours(0,0,0,0);
-  var days = [];
-  for(var i=0;i<7;i++){ var d=new Date(mon); d.setDate(mon.getDate()+i); days.push(d); }
-  return days;
+  const arr = [];
+  for(let i=0;i<7;i++){
+    const d = new Date(mon);
+    d.setDate(mon.getDate() + i);
+    arr.push(d);
+  }
+  return arr;
 }
-function wkChange(dir){ wkOffset += dir; renderPlan(); }
+
+function changeWeek(dir){
+  currentWeekOffset += dir;
+  renderPlan();
+}
+
+function selectDay(idx){
+  currentDayIdx = idx;
+  document.querySelectorAll(".day-pill").forEach((p,i)=>p.classList.toggle("active", i===idx));
+  renderPlan();
+}
+
 function renderPlan(){
-  var dates = getWeekDates(wkOffset);
-  $('wk-label').textContent = dates[0].getDate()+' '+MONTHS[dates[0].getMonth()]+' – '+dates[6].getDate()+' '+MONTHS[dates[6].getMonth()]+' '+dates[6].getFullYear();
-  var html = '';
-  dates.forEach(function(d,i){
-    var isNow = sameDay(d, today0());
-    var isSel = i === selDayIdx;
-    html += '<div class="day-pill'+(isSel?' active':'')+(isNow?' today-pill':'')+'" onclick="selDay('+i+')">';
-    html += '<div class="dp">'+DAYS_SHORT[i]+'</div>';
-    html += '<div class="dd">'+d.getDate()+'</div></div>';
-  });
-  $('days-scroll').innerHTML = html;
-  renderDayPlan(dates[selDayIdx]);
-}
-function selDay(idx){
-  selDayIdx = idx;
-  document.querySelectorAll('.day-pill').forEach(function(p,i){ p.classList.toggle('active', i===idx); });
-  renderDayPlan(getWeekDates(wkOffset)[idx]);
-}
-function renderDayPlan(date){
-  var key = DAY_KEYS[date.getDay()];
-  var dayPlan = PLAN[key] || {};
-  var S=6, E=21, TOT=E-S;
-  var ticks=[]; for(var h=S;h<=E;h+=2) ticks.push(h+'h');
+  const dates = getWeekDates(currentWeekOffset);
+  $("week-label").textContent = `${dates[0].getDate()} ${dates[0].toLocaleDateString('fr',{month:'short'})} — ${dates[6].getDate()} ${dates[6].toLocaleDateString('fr',{month:'short'})}`;
 
-  var html = '<div class="timeline-box"><div class="tl-inner">';
-  html += '<div class="tl-header">'+ticks.map(function(t){return '<div class="tl-tick">'+t+'</div>';}).join('')+'</div>';
-  EMP.forEach(function(emp){
-    var sh = dayPlan[emp.id];
-    html += '<div class="tl-row">';
-    html += '<div class="tl-name">'+emp.nom.split(' ')[0]+'</div>';
-    html += '<div class="tl-track">';
+  const short = ["Lun","Mar","Mer","Jeu","Ven","Sam","Dim"];
+  let daysHtml = "";
+  dates.forEach((d,i)=>{
+    const isToday = today0().toDateString() === d.toDateString();
+    daysHtml += `<div class="day-pill ${i===currentDayIdx ? "active" : ""} ${isToday ? "today" : ""}" onclick="selectDay(${i})">
+      <div class="dp">${short[i]}</div><div class="dd">${d.getDate()}</div>
+    </div>`;
+  });
+  $("days-scroll").innerHTML = daysHtml;
+
+  const current = dates[currentDayIdx];
+  const dayKey = ["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"][current.getDay()];
+  const dayPlan = PLAN[dayKey] || {};
+  const S = 6, E = 21, TOT = E - S;
+  const ticks = [];
+  for(let h=S; h<=E; h+=2) ticks.push(`${h}h`);
+
+  let html = `<div class="timeline-box"><div class="tl-inner">
+    <div class="tl-header">${ticks.map(t=>`<div class="tl-tick">${t}</div>`).join("")}</div>`;
+
+  EMP.forEach(emp=>{
+    const sh = dayPlan[emp.id];
+    html += `<div class="tl-row">
+      <div class="tl-name">${emp.nom.split(" ")[0]}</div>
+      <div class="tl-track">`;
     if(sh){
-      var l=((sh[0]-S)/TOT)*100, w=((sh[1]-sh[0])/TOT)*100;
-      html += '<div class="tl-bar" style="left:'+l+'%;width:'+w+'%;background:'+EMP_COLORS[emp.id]+'">'+toHH(sh[0])+'–'+toHH(sh[1])+'</div>';
+      const l = ((sh[0]-S)/TOT)*100;
+      const w = ((sh[1]-sh[0])/TOT)*100;
+      html += `<div class="tl-bar" style="left:${l}%;width:${w}%;background:${emp.color}">${toHH(sh[0])}–${toHH(sh[1])}</div>`;
     }
-    html += '</div></div>';
+    html += `</div></div>`;
   });
-  html += '</div></div>';
 
-  var presents = EMP.filter(function(emp){ return !!dayPlan[emp.id]; });
-  if(presents.length){
-    html += '<div class="team-list">';
-    presents.forEach(function(emp){
-      var sh = dayPlan[emp.id];
-      html += '<div class="team-row">';
-      html += '<div class="team-av '+emp.cls+'">'+emp.nom[0]+'</div>';
-      html += '<div class="team-info"><div class="team-nom">'+emp.nom+(emp.toi?'<span class="toi-tag">TOI</span>':'')+'</div>';
-      html += '<div class="team-hrs">'+toHH(sh[0])+' → '+toHH(sh[1])+'</div></div>';
-      html += '<div class="team-start">'+toHH(sh[0])+'</div></div>';
+  html += `</div></div>`;
+
+  const present = EMP.filter(emp=>dayPlan[emp.id]);
+  if(present.length){
+    html += `<div class="team-list">`;
+    present.forEach(emp=>{
+      const sh = dayPlan[emp.id];
+      html += `<div class="team-row">
+        <div class="team-av" style="background:${emp.color}">${emp.initials}</div>
+        <div class="team-info">
+          <div class="team-nom">${emp.nom}${emp.toi ? '<span class="toi-tag">TOI</span>' : ''}</div>
+          <div class="team-hrs">${toHH(sh[0])} → ${toHH(sh[1])}</div>
+        </div>
+        <div class="team-start">${toHH(sh[0])}</div>
+      </div>`;
     });
-    html += '</div>';
+    html += `</div>`;
   } else {
-    html += '<div class="empty-msg">Personne ce jour</div>';
+    html += `<div class="empty-msg">Personne ce jour</div>`;
   }
 
-  html += '<div class="hours-box"><div class="hours-title">Total heures semaine</div>';
-  EMP.forEach(function(emp){
-    var total = 0;
-    Object.keys(PLAN).forEach(function(k){
-      var s = PLAN[k][emp.id];
-      if(s) total += s[1]-s[0];
+  html += `<div class="hours-box">
+    <div class="hours-title">Total heures semaine</div>`;
+  EMP.forEach(emp=>{
+    let total = 0;
+    Object.keys(PLAN).forEach(k=>{
+      const sh = PLAN[k][emp.id];
+      if(sh) total += sh[1] - sh[0];
     });
     if(total > 0){
-      html += '<div class="hours-row"><span class="hours-nom">'+emp.nom+'</span><span class="hours-val">'+total.toFixed(1)+'h</span></div>';
+      html += `<div class="hours-row"><span class="hours-nom">${emp.nom}</span><span class="hours-val">${total.toFixed(1)}h</span></div>`;
     }
   });
-  html += '</div>';
+  html += `</div>`;
 
-  $('plan-content').innerHTML = html;
+  $("plan-content").innerHTML = html;
 }
-(function(){
-  selDayIdx = new Date().getDay();
-  if(selDayIdx === 0) selDayIdx = 0;
-  renderPlan();
-})();
+renderPlan();
 
-/* ================= BOULANGERIE ================= */
-var BOUL_DEF = [
-  {nom:"Croissant",        emoji:"🥐", std:6},
-  {nom:"Pain choco",       emoji:"🍫", std:8},
-  {nom:"Pain raisins",     emoji:"🍇", std:4},
-  {nom:"Cookie blanc",     emoji:"🍪", std:2},
-  {nom:"Cookie noir",      emoji:"🍪", std:2},
-  {nom:"Donut sucre",      emoji:"🍩", std:2},
-  {nom:"Donut choco",      emoji:"🍩", std:2},
-  {nom:"Muffin choco",     emoji:"🧁", std:2},
-  {nom:"Muffin myrtilles", emoji:"🧁", std:2},
-  {nom:"Mascotte sucre",   emoji:"⭐",  std:4},
-  {nom:"Mascotte choco",   emoji:"⭐",  std:4},
+/* =========================
+   BOULANGERIE
+========================= */
+const BOUL_DEF = [
+  {nom:"Croissant", emoji:"🥐", std:6, kind:"daily"},
+  {nom:"Pain choco", emoji:"🍫", std:8, kind:"daily"},
+  {nom:"Pain raisins", emoji:"🍇", std:4, kind:"daily"},
+  {nom:"Cookie blanc", emoji:"🍪", std:2, kind:"dated"},
+  {nom:"Cookie noir", emoji:"🍪", std:2, kind:"dated"},
+  {nom:"Donut sucre", emoji:"🍩", std:2, kind:"dated"},
+  {nom:"Donut choco", emoji:"🍩", std:2, kind:"dated"},
+  {nom:"Muffin choco", emoji:"🧁", std:2, kind:"dated"},
+  {nom:"Muffin myrtilles", emoji:"🧁", std:2, kind:"dated"},
+  {nom:"Mascotte sucre", emoji:"⭐", std:4, kind:"dated"},
+  {nom:"Mascotte choco", emoji:"⭐", std:4, kind:"dated"}
 ];
-var boulData = load('mb_boul2', null);
+
+let boulData = readJSON(LS.boul, null);
 if(!boulData){
-  boulData = BOUL_DEF.map(function(b){ return {nom:b.nom, emoji:b.emoji, std:b.std, qte:b.std, date:new Date().toISOString(), detruire:false}; });
+  boulData = BOUL_DEF.map(x=>({
+    ...x,
+    qte:x.std,
+    date:todayISO(),
+    destroyed:false
+  }));
+  writeJSON(LS.boul, boulData);
 }
-function boulSave(){ save('mb_boul2', boulData); }
-function boulNewDay(){
-  if(!confirm('Nouveau jour ? Remet tout au standard avec la date d\'aujourd\'hui.')) return;
-  boulData.forEach(function(b){ b.qte=b.std; b.date=new Date().toISOString(); b.detruire=false; });
-  boulSave();
-  renderBoul();
-  renderHome();
-}
-function boulChange(i, delta){
-  boulData[i].qte = Math.max(0, boulData[i].qte + delta);
-  boulSave();
-  renderBoul();
-  renderHome();
-}
-function boulToggleDestroy(i){
-  boulData[i].detruire = !boulData[i].detruire;
-  if(boulData[i].detruire){ boulData[i].qte = 0; }
-  else { boulData[i].qte = boulData[i].std; boulData[i].date = null; }
-  boulSave();
-  renderBoul();
-  renderHome();
-}
-function renderBoul(){
-  var now = today0();
-  var alertes = [];
-  var html = '';
-  boulData.forEach(function(item, i){
-    var dlcInfo = 'Pas de date';
-    var dlcColor = '#888';
-    if(item.date){
-      var mise = new Date(item.date); mise.setHours(0,0,0,0);
-      var diff = Math.round((now - mise)/(1000*60*60*24));
-      var reste = 3 - diff;
-      if(reste <= 0){ dlcColor='#E8192C'; dlcInfo='🔴 Détruire'; alertes.push(item.nom); }
-      else if(reste === 1){ dlcColor='#CA8A04'; dlcInfo='🟡 Demain'; }
-      else { dlcColor='#16A34A'; dlcInfo='✅ J+'+diff; }
+
+function saveBoul(){ writeJSON(LS.boul, boulData); }
+
+function newDayBoul(){
+  if(!confirm("Nouveau jour ? Remettre les produits quotidiens au standard.")) return;
+  boulData.forEach(item=>{
+    if(item.kind === "daily"){
+      item.qte = item.std;
+      item.date = todayISO();
+      item.destroyed = false;
     }
-    html += '<div class="boul-card">';
-    html += '<div class="boul-emoji">'+item.emoji+'</div>';
-    html += '<div class="boul-nom">'+item.nom+'</div>';
-    html += '<div class="boul-ctrl">';
-    html += '<button class="boul-btn" onclick="boulChange('+i+',-1)">−</button>';
-    html += '<span class="boul-num">'+item.qte+'</span>';
-    html += '<button class="boul-btn" onclick="boulChange('+i+',1)">+</button>';
-    html += '</div>';
-    html += '<div class="boul-dlc" style="color:'+dlcColor+'">'+dlcInfo+'</div>';
-    html += '<button class="boul-destroy-btn'+(item.detruire?' done':'')+'" onclick="boulToggleDestroy('+i+')">';
-    html += item.detruire ? '✓ Détruit' : '🗑️ Détruire';
-    html += '</button></div>';
+    if(!item.date) item.date = todayISO();
   });
-  $('boul-grid').innerHTML = html;
+  saveBoul();
+  renderBoul();
+  renderHome();
+}
 
-  var alEl = $('boul-alerte');
-  if(alertes.length){ alEl.style.display='block'; alEl.innerHTML='⚠️ DLC dépassée : '+alertes.join(', '); }
-  else alEl.style.display='none';
+function boulDelta(i, delta){
+  const item = boulData[i];
+  if(item.destroyed) item.destroyed = false;
+  item.qte = Math.max(0, item.qte + delta);
+  if(!item.date) item.date = todayISO();
+  saveBoul();
+  renderBoul();
+  renderHome();
+}
 
-  var toD = boulData.filter(function(b){ return b.detruire; });
-  $('boul-badge').textContent = toD.length;
-  if(!toD.length){
-    $('boul-destroy-list').innerHTML = '<div class="empty-msg">Rien à détruire 👍</div>';
-  } else {
-    var dh = '';
-    toD.forEach(function(b){
-      dh += '<div class="list-row done"><div class="list-chk">✓</div><div class="list-txt">'+b.emoji+' '+b.nom+'</div></div>';
-    });
-    $('boul-destroy-list').innerHTML = dh;
+function toggleDestroyBoul(i){
+  const item = boulData[i];
+  item.destroyed = !item.destroyed;
+  if(item.destroyed){
+    item.qte = 0;
+  }else{
+    item.qte = item.std;
+    item.date = todayISO();
   }
+  saveBoul();
+  renderBoul();
+  renderHome();
+}
 
-  var toR = boulData.filter(function(b){ return b.detruire && b.qte < b.std; });
-  var refBloc = $('boul-refill-bloc');
-  if(toR.length){
-    refBloc.style.display='block';
-    var rh = '';
-    toR.forEach(function(b){ rh += '<div class="list-row"><div class="list-txt">'+b.emoji+' '+b.nom+' — remettre '+(b.std-b.qte)+'</div></div>'; });
-    $('boul-refill-list').innerHTML = rh;
-  } else refBloc.style.display='none';
+function bowlDaysSince(dateStr){
+  const d = new Date(dateStr);
+  d.setHours(0,0,0,0);
+  return Math.round((today0() - d) / (1000*60*60*24));
+}
+
+function renderBoul(){
+  let refill = [];
+  let destroy = [];
+  let cards = "";
+
+  boulData.forEach((item, i)=>{
+    const isExpired = item.kind === "dated" && item.date && bowlDaysSince(item.date) >= 3;
+    const isLow = !item.destroyed && item.qte < item.std;
+    const isDestroy = item.destroyed || isExpired;
+
+    if(isLow) refill.push({item,i});
+    if(isDestroy) destroy.push({item,i,expired:isExpired});
+
+    const cls = isDestroy ? "red" : (isLow ? "orange" : "green");
+    const tag = item.kind === "daily"
+      ? "Quotidien"
+      : (item.date ? "Date : " + new Date(item.date).toLocaleDateString('fr') : "Sans date");
+
+    cards += `<div class="boul-card ${cls}">
+      <div class="boul-emoji">${item.emoji}</div>
+      <div class="boul-nom">${item.nom}</div>
+      <div class="boul-ctrl">
+        <button class="boul-btn" onclick="boulDelta(${i},-1)">−</button>
+        <span class="boul-num">${item.qte}</span>
+        <button class="boul-btn" onclick="boulDelta(${i},1)">+</button>
+      </div>
+      <div class="boul-sub">${item.qte} / ${item.std}</div>
+      <div class="boul-meta">${tag}</div>
+      <button class="boul-destroy-btn ${isDestroy ? "on" : "off"}" onclick="toggleDestroyBoul(${i})">
+        ${isDestroy ? "✓ Détruit" : "🗑️ Détruire"}
+      </button>
+    </div>`;
+  });
+
+  $("boul-grid").innerHTML = cards;
+
+  $("boul-alert").style.display = destroy.length ? "block" : "none";
+  $("boul-alert").innerHTML = destroy.length ? "⚠️ À détruire : " + destroy.map(x=>x.item.nom).join(", ") : "";
+
+  $("boul-refill-count").textContent = refill.length;
+  $("boul-destroy-count").textContent = destroy.length;
+
+  $("boul-refill-list").innerHTML = refill.length
+    ? refill.map(x=>`<div class="list-row"><div class="list-txt">${x.item.emoji} ${x.item.nom} → remettre ${x.item.std - x.item.qte}</div></div>`).join("")
+    : `<div class="empty-msg">Rien à remettre 👍</div>`;
+
+  $("boul-destroy-list").innerHTML = destroy.length
+    ? destroy.map(x=>`<div class="list-row ${x.item.destroyed ? "done" : ""}"><div class="list-chk">${x.item.destroyed ? "✓" : "!"}</div><div class="list-txt">${x.item.emoji} ${x.item.nom} ${x.expired ? "<span class='small-muted'>(date dépassée)</span>" : "<span class='small-muted'>(marqué)</span>"}</div></div>`).join("")
+    : `<div class="empty-msg">Rien à détruire 👍</div>`;
 }
 renderBoul();
 
-/* ================= DLC ================= */
-var dlcData = load('mb_dlc2', []);
-function dlcSave(){ save('mb_dlc2', dlcData); }
-function dlcAdd(){
-  var nom = $('dlc-nom').value.trim();
-  var gr  = $('dlc-gr').value.trim();
-  var dt  = $('dlc-date').value;
-  if(!nom){ alert('Entrez le nom du produit'); return; }
-  if(!dt){  alert('Entrez la date DLC'); return; }
-  dlcData.push({nom:nom, gr:gr||'-', date:dt, retire:false});
-  $('dlc-nom').value=''; $('dlc-gr').value=''; $('dlc-date').value='';
-  dlcSave();
+/* =========================
+   DLC
+========================= */
+let dlcData = readJSON(LS.dlc, []);
+
+function saveDLC(){ writeJSON(LS.dlc, dlcData); }
+
+function addDLC(){
+  const name = $("dlc-name").value.trim();
+  const gr = $("dlc-gr").value.trim();
+  const date = $("dlc-date").value;
+  if(!name || !date){ alert("Entrez le nom et la date."); return; }
+  dlcData.unshift({name, gr:gr || "-", date, retired:false});
+  $("dlc-name").value = "";
+  $("dlc-gr").value = "";
+  $("dlc-date").value = "";
+  saveDLC();
   renderDLC();
   renderHome();
 }
-function dlcRetire(i){
-  dlcData[i].retire = !dlcData[i].retire;
-  dlcSave(); renderDLC(); renderHome();
-}
-function dlcDel(i){
-  dlcData.splice(i,1);
-  dlcSave(); renderDLC(); renderHome();
-}
-function renderDLC(){
-  var now = today0();
-  var rouge=[], orange=[], badge=0;
-  var sorted = dlcData.map(function(d,i){ return {i:i,nom:d.nom,gr:d.gr,date:d.date,retire:d.retire}; })
-    .sort(function(a,b){ return new Date(a.date)-new Date(b.date); });
 
-  var html='';
-  if(!sorted.length){ html='<tr><td colspan="4" class="empty-msg">Ajoutez un produit ↓</td></tr>'; }
-  else {
-    sorted.forEach(function(item){
-      var exp = new Date(item.date); exp.setHours(0,0,0,0);
-      var diff = Math.round((exp-now)/(1000*60*60*24));
-      var tag='';
-      if(item.retire){ tag='<span class="tag-ok">✓ Retiré</span>'; }
-      else if(diff<0){ tag='<span class="tag-red">🔴 '+Math.abs(diff)+'j</span>'; rouge.push(item.nom); badge++; }
-      else if(diff===0){ tag='<span class="tag-red">🔴 Auj.</span>'; rouge.push(item.nom); badge++; }
-      else if(diff===1){ tag='<span class="tag-ora">🟡 Demain</span>'; orange.push(item.nom); badge++; }
-      else if(diff<=3){ tag='<span class="tag-ora">🟡 '+diff+'j</span>'; }
-      else { tag='<span class="tag-ok">✅ '+diff+'j</span>'; }
-      var ds = item.date.slice(8,10)+'/'+item.date.slice(5,7);
-      html += '<tr style="'+(item.retire?'opacity:.4':'')+'">';
-      html += '<td class="nom" style="'+(item.retire?'text-decoration:line-through':'')+'">'+item.nom+'</td>';
-      html += '<td style="text-align:center;color:#888;font-size:11px;">'+item.gr+'</td>';
-      html += '<td style="text-align:center;font-size:11px;">'+ds+'</td>';
-      html += '<td style="text-align:center;">'+tag;
-      html += '<div style="margin-top:3px;display:flex;justify-content:center;gap:8px;">';
-      html += '<span onclick="dlcRetire('+item.i+')" style="font-size:10px;color:#888;cursor:pointer;text-decoration:underline;">'+(item.retire?'Annuler':'✓')+'</span>';
-      html += '<span onclick="dlcDel('+item.i+')" style="font-size:10px;color:#E8192C;cursor:pointer;">✕</span>';
-      html += '</div></td></tr>';
+function toggleRetireDLC(i){
+  dlcData[i].retired = !dlcData[i].retired;
+  saveDLC();
+  renderDLC();
+  renderHome();
+}
+
+function delDLC(i){
+  dlcData.splice(i,1);
+  saveDLC();
+  renderDLC();
+  renderHome();
+}
+
+function renderDLC(){
+  const now = today0();
+  const sorted = dlcData.map((d,i)=>({i,...d})).sort((a,b)=>new Date(a.date)-new Date(b.date));
+
+  let red = [];
+  let orange = [];
+  let urgent = 0;
+  let html = "";
+
+  if(!sorted.length){
+    html = `<tr><td colspan="4" class="empty-msg">Ajoutez un produit ↓</td></tr>`;
+  }else{
+    sorted.forEach(item=>{
+      const exp = new Date(item.date);
+      exp.setHours(0,0,0,0);
+      const diff = Math.round((exp - now) / (1000*60*60*24));
+
+      let tag = `<span class="tag-ok">✅ ${diff}j</span>`;
+      if(item.retired){
+        tag = `<span class="tag-ok">✓ Retiré</span>`;
+      }else if(diff < 0){
+        tag = `<span class="tag-red">🔴 ${Math.abs(diff)}j</span>`;
+        red.push(item.name);
+        urgent++;
+      }else if(diff === 0){
+        tag = `<span class="tag-red">🔴 Auj.</span>`;
+        red.push(item.name);
+        urgent++;
+      }else if(diff === 1){
+        tag = `<span class="tag-ora">🟡 Demain</span>`;
+        orange.push(item.name);
+        urgent++;
+      }else if(diff <= 3){
+        tag = `<span class="tag-ora">🟡 ${diff}j</span>`;
+      }
+
+      const dateStr = item.date.slice(8,10) + "/" + item.date.slice(5,7);
+
+      html += `<tr style="${item.retired ? "opacity:.45" : ""}">
+        <td class="nom" style="${item.retired ? "text-decoration:line-through" : ""}">${item.name}</td>
+        <td style="text-align:center;color:var(--muted);font-size:11px">${item.gr}</td>
+        <td style="text-align:center;font-size:11px">${dateStr}</td>
+        <td style="text-align:center">
+          ${tag}
+          <div style="margin-top:3px;display:flex;justify-content:center;gap:8px">
+            <span onclick="event.stopPropagation(); toggleRetireDLC(${item.i})" style="font-size:10px;color:var(--muted);cursor:pointer;text-decoration:underline">${item.retired ? "Annuler" : "Retirer"}</span>
+            <span onclick="event.stopPropagation(); delDLC(${item.i})" style="font-size:10px;color:var(--red);cursor:pointer">✕</span>
+          </div>
+        </td>
+      </tr>`;
     });
   }
-  $('dlc-body').innerHTML = html;
-  $('dlc-badge').textContent = badge;
 
-  var ar=$('dlc-red'), ao=$('dlc-ora');
-  if(rouge.length){ ar.style.display='block'; ar.innerHTML='🔴 À retirer MAINTENANT : '+rouge.join(', '); } else ar.style.display='none';
-  if(orange.length){ ao.style.display='block'; ao.innerHTML='🟡 À retirer DEMAIN : '+orange.join(', '); } else ao.style.display='none';
+  $("dlc-body").innerHTML = html;
+  $("dlc-badge").textContent = urgent;
+  $("dlc-red").style.display = red.length ? "block" : "none";
+  $("dlc-red").innerHTML = red.length ? "🔴 À retirer maintenant : " + red.join(", ") : "";
+  $("dlc-ora").style.display = orange.length ? "block" : "none";
+  $("dlc-ora").innerHTML = orange.length ? "🟡 À retirer demain : " + orange.join(", ") : "";
 }
-$('dlc-date').addEventListener('click', function(){ try{ this.showPicker(); }catch(e){} });
 renderDLC();
 
-/* ================= TODO ================= */
-var todoData = load('mb_todo2', []);
-if(!todoData.length){
-  todoData = [
-    {t:"Vérifier DLC plateau boulangerie",done:false},
-    {t:"Tour des tiroirs tabac",done:false},
-    {t:"Bordereau invendus MMLP",done:false},
-    {t:"Transfert Too Good To Go → Jean-Philippe",done:false},
-    {t:"Réappro frigo boissons",done:false},
-  ];
+/* =========================
+   COMMANDE MANUELLE
+========================= */
+let cmdData = readJSON(LS.cmd, []);
+
+function saveCmd(){ writeJSON(LS.cmd, cmdData); }
+
+function addCmd(){
+  const name = $("cmd-name").value.trim();
+  const qty = $("cmd-qty").value.trim();
+  if(!name || !qty) return;
+  cmdData.unshift({name, qty});
+  $("cmd-name").value = "";
+  $("cmd-qty").value = "";
+  saveCmd();
+  renderCmd();
+  renderHome();
 }
-function todoSave(){ save('mb_todo2', todoData); }
-function todoAdd(){
-  var input = $('todo-input');
-  var val = input.value.trim();
-  if(!val) return;
-  todoData.unshift({t:val, done:false});
-  input.value='';
-  todoSave(); renderTodo();
+
+function delCmd(i){
+  cmdData.splice(i,1);
+  saveCmd();
+  renderCmd();
+  renderHome();
 }
-function todoToggle(i){ todoData[i].done=!todoData[i].done; todoSave(); renderTodo(); }
+
+function renderCmd(){
+  $("cmd-count").textContent = cmdData.length;
+  $("cmd-list").innerHTML = cmdData.length
+    ? cmdData.map((c,i)=>`
+        <div class="list-row">
+          <div class="list-txt">${c.name} (x${c.qty})</div>
+          <div class="cmd-delete" onclick="event.stopPropagation(); delCmd(${i})">✕</div>
+        </div>
+      `).join("")
+    : `<div class="empty-msg">Rien à commander 👍</div>`;
+}
+renderCmd();
+
+/* =========================
+   TÂCHES
+========================= */
+let todoData = readJSON(LS.todo, []);
+
+function saveTodo(){ writeJSON(LS.todo, todoData); }
+
+function addTodo(){
+  const txt = $("todo-name").value.trim();
+  if(!txt) return;
+  todoData.unshift({txt, done:false});
+  $("todo-name").value = "";
+  saveTodo();
+  renderTodo();
+  renderHome();
+}
+
+function toggleTodo(i){
+  todoData[i].done = !todoData[i].done;
+  saveTodo();
+  renderTodo();
+  renderHome();
+}
+
+function delTodo(i){
+  todoData.splice(i,1);
+  saveTodo();
+  renderTodo();
+  renderHome();
+}
+
 function renderTodo(){
-  var rem = todoData.filter(function(x){ return !x.done; }).length;
-  $('todo-badge').textContent = rem;
-  var sorted = todoData.map(function(x,i){ return {t:x.t,done:x.done,i:i}; }).sort(function(a,b){ return a.done-b.done; });
-  var html='';
-  sorted.forEach(function(x){
-    html += '<div class="list-row'+(x.done?' done':'')+'" onclick="todoToggle('+x.i+')">';
-    html += '<div class="list-chk">'+(x.done?'✓':'')+'</div>';
-    html += '<div class="list-txt">'+x.t+'</div></div>';
-  });
-  $('todo-list').innerHTML = html || '<div class="empty-msg">Rien pour l\'instant</div>';
+  $("todo-count").textContent = todoData.filter(x=>!x.done).length;
+  $("todo-list").innerHTML = todoData.length
+    ? todoData.map((t,i)=>`
+      <div class="list-row ${t.done ? "done" : ""}" onclick="toggleTodo(${i})">
+        <div class="list-chk">${t.done ? "✓" : ""}</div>
+        <div class="list-txt">${t.txt}</div>
+        <div class="task-delete" onclick="event.stopPropagation(); delTodo(${i})">✕</div>
+      </div>
+    `).join("")
+    : `<div class="empty-msg">Rien pour l'instant</div>`;
 }
-$('todo-add-btn').addEventListener('click', todoAdd);
-$('todo-input').addEventListener('keydown', function(e){ if(e.key==='Enter') todoAdd(); });
 renderTodo();
 
-/* ================= HOME ================= */
+/* =========================
+   HOME
+========================= */
 function renderHome(){
-  var now = today0();
+  const now = today0();
 
-  var tabBad=0, tabWarn=0;
-  TIROIRS.forEach(function(t){
-    t.sections.forEach(function(s){
-      s.items.forEach(function(item){
-        var c=getStock(item.m);
-        if(c !== item.cap) tabBad++;
-        else tabWarn += 0;
+  let tabLow = 0, tabOver = 0;
+  tabacGroups.forEach(g=>{
+    g.sections.forEach(s=>{
+      s.items.forEach(item=>{
+        const cur = getTabacStock(item.m);
+        if(cur < item.cap) tabLow++;
+        if(cur > item.cap) tabOver++;
       });
     });
   });
+  const tabIssues = tabLow + tabOver;
 
-  var dlcBad=0, dlcWarn=0;
-  dlcData.forEach(function(d){
-    if(d.retire) return;
-    var exp=new Date(d.date); exp.setHours(0,0,0,0);
-    var diff=Math.round((exp-now)/(1000*60*60*24));
-    if(diff<=0) dlcBad++;
-    else if(diff===1) dlcWarn++;
+  let boulRefill = 0, boulDestroy = 0;
+  boulData.forEach(item=>{
+    const expired = item.kind === "dated" && item.date && bowlDaysSince(item.date) >= 3;
+    if(!item.destroyed && item.qte < item.std) boulRefill++;
+    if(item.destroyed || expired) boulDestroy++;
+  });
+  const boulIssues = boulRefill + boulDestroy;
+
+  let dlcSoon = 0, dlcUrgent = 0;
+  dlcData.forEach(item=>{
+    if(item.retired) return;
+    const exp = new Date(item.date);
+    exp.setHours(0,0,0,0);
+    const diff = Math.round((exp - now) / (1000*60*60*24));
+    if(diff <= 0) dlcUrgent++;
+    else if(diff === 1) dlcSoon++;
   });
 
-  var boulBad=0;
-  boulData.forEach(function(b){
-    if(!b.date) return;
-    var mise=new Date(b.date); mise.setHours(0,0,0,0);
-    if(Math.round((now-mise)/(1000*60*60*24))>=3) boulBad++;
-  });
+  const cmdCount = cmdData.length;
+  const todoRem = todoData.filter(x=>!x.done).length;
 
-  var todoRem = todoData.filter(function(x){ return !x.done; }).length;
-
-  function cardClass(bad,warn){ return bad>0?'red':warn>0?'orange':'green'; }
-  var cards = '';
-  cards += '<div class="card '+cardClass(tabBad,0)+'">';
-  cards += '<div class="card-icon">🚬</div><div class="card-label">Tabac</div>';
-  cards += '<div class="card-val">'+tabBad+'</div>';
-  cards += '<div class="card-sub">'+(tabBad>0?'à corriger':'Tout exact')+'</div></div>';
-
-  cards += '<div class="card '+cardClass(dlcBad,dlcWarn)+'">';
-  cards += '<div class="card-icon">⏱️</div><div class="card-label">DLC</div>';
-  cards += '<div class="card-val">'+(dlcBad>0?dlcBad:dlcWarn>0?dlcWarn:'0')+'</div>';
-  cards += '<div class="card-sub">'+(dlcBad>0?'à retirer':dlcWarn>0?'demain':'Tout OK')+'</div></div>';
-
-  cards += '<div class="card '+(boulBad>0?'red':'green')+'">';
-  cards += '<div class="card-icon">🥐</div><div class="card-label">Boulangerie</div>';
-  cards += '<div class="card-val">'+(boulBad>0?boulBad:'0')+'</div>';
-  cards += '<div class="card-sub">'+(boulBad>0?'à détruire':'OK')+'</div></div>';
-
-  cards += '<div class="card '+(todoRem>0?'orange':'green')+'">';
-  cards += '<div class="card-icon">✅</div><div class="card-label">À faire</div>';
-  cards += '<div class="card-val">'+todoRem+'</div>';
-  cards += '<div class="card-sub">'+(todoRem>0?'tâches':'Tout fait')+'</div></div>';
-
-  $('home-cards').innerHTML = cards;
-
-  var actions='';
-  if(tabBad>0) actions+='<div class="action-row"><div class="dot red"></div><div class="action-text">Tabac à corriger</div><span class="badge red">'+tabBad+'</span></div>';
-  if(dlcBad>0) actions+='<div class="action-row"><div class="dot red"></div><div class="action-text">DLC dépassées</div><span class="badge red">'+dlcBad+'</span></div>';
-  if(boulBad>0) actions+='<div class="action-row"><div class="dot red"></div><div class="action-text">Boulangerie à détruire</div><span class="badge red">'+boulBad+'</span></div>';
-  if(dlcWarn>0) actions+='<div class="action-row"><div class="dot orange"></div><div class="action-text">DLC demain</div><span class="badge orange">'+dlcWarn+'</span></div>';
-  todoData.filter(function(x){ return !x.done; }).slice(0,3).forEach(function(x){
-    actions+='<div class="action-row"><div class="dot green"></div><div class="action-text">'+x.t+'</div></div>';
-  });
-  if(!actions) actions='<div class="empty-action">✅ Tout est bon — bonne journée !</div>';
-  $('home-actions').innerHTML = actions;
-
-  var key = DAY_KEYS[new Date().getDay()];
-  var dayPlan = PLAN[key]||{};
-  var team='';
-  EMP.forEach(function(emp){
-    var sh=dayPlan[emp.id];
-    if(sh){
-      team+='<div class="action-row">';
-      team+='<div style="width:32px;height:32px;border-radius:8px;background:'+EMP_COLORS[emp.id]+';display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:white;flex-shrink:0;">'+emp.nom[0]+'</div>';
-      team+='<div style="flex:1;margin-left:4px;"><div style="font-size:13px;font-weight:700;color:#111;">'+emp.nom+(emp.toi?'<span class="toi-tag">TOI</span>':'')+'</div>';
-      team+='<div style="font-size:11px;color:#888;">'+toHH(sh[0])+' → '+toHH(sh[1])+'</div></div>';
-      team+='<div style="font-size:13px;font-weight:700;color:#16A34A;">'+toHH(sh[0])+'</div></div>';
+  function cardClass(value, type){
+    if(type === "tabac"){
+      if(tabOver > 0) return "red";
+      if(tabLow > 0) return "orange";
+      return "green";
     }
-  });
-  if(!team) team='<div class="empty-action">Personne aujourd\'hui</div>';
-  $('home-team').innerHTML = team;
-}
-
-/* INIT */
-renderHome();
-</script>
-</body><script>
-
-// =====================
-// LISTE À COMMANDER SIMPLE
-// =====================
-
-// DATA
-var commandeData = JSON.parse(localStorage.getItem('mb_commande') || '[]');
-
-// SAVE
-function saveCommande(){
-  localStorage.setItem('mb_commande', JSON.stringify(commandeData));
-}
-
-// AJOUT
-function addCommande(){
-  var nom = document.getElementById('cmd-nom').value.trim();
-  var qte = document.getElementById('cmd-qte').value.trim();
-
-  if(!nom || !qte) return;
-
-  commandeData.unshift({nom:nom, qte:qte});
-
-  document.getElementById('cmd-nom').value = '';
-  document.getElementById('cmd-qte').value = '';
-
-  saveCommande();
-  renderCommande();
-}
-
-// SUPPRIMER
-function deleteCommande(i){
-  commandeData.splice(i,1);
-  saveCommande();
-  renderCommande();
-}
-
-// RENDER
-function renderCommande(){
-  var html = '';
-
-  if(!commandeData.length){
-    html = '<div class="empty-msg">Rien à commander 👍</div>';
-  } else {
-    commandeData.forEach(function(item,i){
-      html += '<div class="list-row">';
-      html += '<div class="list-txt">'+item.nom+' (x'+item.qte+')</div>';
-      html += '<div onclick="deleteCommande('+i+')" style="color:#E8192C;font-weight:700;cursor:pointer;">✕</div>';
-      html += '</div>';
-    });
+    if(type === "boul"){
+      if(boulDestroy > 0) return "red";
+      if(boulRefill > 0) return "orange";
+      return "green";
+    }
+    if(type === "dlc"){
+      if(dlcUrgent > 0) return "red";
+      if(dlcSoon > 0) return "orange";
+      return "green";
+    }
+    if(type === "cmd") return value > 0 ? "blue" : "green";
+    if(type === "todo") return value > 0 ? "orange" : "green";
+    return "green";
   }
 
-  document.getElementById('commande-list').innerHTML = html;
+  let cards = "";
+  cards += `<div class="stat-card ${cardClass(tabIssues,"tabac")}">
+    <div class="stat-icon">🚬</div>
+    <div class="stat-label">Tabac</div>
+    <div class="stat-val">${tabIssues}</div>
+    <div class="stat-sub">${tabIssues > 0 ? "à corriger" : "Tout exact"}</div>
+  </div>`;
+
+  cards += `<div class="stat-card ${cardClass(boulIssues,"boul")}">
+    <div class="stat-icon">🥐</div>
+    <div class="stat-label">Boulangerie</div>
+    <div class="stat-val">${boulIssues}</div>
+    <div class="stat-sub">${boulIssues > 0 ? "à remettre / jeter" : "OK"}</div>
+  </div>`;
+
+  cards += `<div class="stat-card ${cardClass(dlcSoon + dlcUrgent,"dlc")}">
+    <div class="stat-icon">⏱️</div>
+    <div class="stat-label">DLC</div>
+    <div class="stat-val">${dlcSoon + dlcUrgent}</div>
+    <div class="stat-sub">${dlcUrgent > 0 ? "urgent" : (dlcSoon > 0 ? "demain" : "OK")}</div>
+  </div>`;
+
+  cards += `<div class="stat-card ${cardClass(cmdCount,"cmd")}">
+    <div class="stat-icon">📦</div>
+    <div class="stat-label">Commande</div>
+    <div class="stat-val">${cmdCount}</div>
+    <div class="stat-sub">liste manuelle</div>
+  </div>`;
+
+  cards += `<div class="stat-card ${cardClass(todoRem,"todo")}">
+    <div class="stat-icon">✅</div>
+    <div class="stat-label">Tâches</div>
+    <div class="stat-val">${todoRem}</div>
+    <div class="stat-sub">${todoRem > 0 ? "à faire" : "tout fait"}</div>
+  </div>`;
+
+  $("home-cards").innerHTML = cards;
+
+  let actions = "";
+
+  if(tabIssues > 0){
+    const list = [];
+    tabacGroups.forEach(g=>{
+      g.sections.forEach(s=>{
+        s.items.forEach(item=>{
+          const cur = getTabacStock(item.m);
+          if(cur !== item.cap) list.push(`${item.m} (${cur}/${item.cap})`);
+        });
+      });
+    });
+    actions += `<div class="action-row"><div class="dot red"></div><div class="action-text">Tabac à corriger</div><span class="badge red">${list.length}</span></div>`;
+  }
+
+  if(boulRefill > 0){
+    actions += `<div class="action-row"><div class="dot orange"></div><div class="action-text">Boulangerie à remettre</div><span class="badge orange">${boulRefill}</span></div>`;
+  }
+
+  if(boulDestroy > 0){
+    actions += `<div class="action-row"><div class="dot red"></div><div class="action-text">Boulangerie à détruire</div><span class="badge red">${boulDestroy}</span></div>`;
+  }
+
+  if(dlcUrgent > 0){
+    actions += `<div class="action-row"><div class="dot red"></div><div class="action-text">DLC à retirer maintenant</div><span class="badge red">${dlcUrgent}</span></div>`;
+  }else if(dlcSoon > 0){
+    actions += `<div class="action-row"><div class="dot orange"></div><div class="action-text">DLC à retirer demain</div><span class="badge orange">${dlcSoon}</span></div>`;
+  }
+
+  cmdData.slice(0,3).forEach(c=>{
+    actions += `<div class="action-row"><div class="dot green"></div><div class="action-text">${c.name} (x${c.qty})</div></div>`;
+  });
+
+  todoData.filter(x=>!x.done).slice(0,3).forEach(t=>{
+    actions += `<div class="action-row"><div class="dot green"></div><div class="action-text">${t.txt}</div></div>`;
+  });
+
+  if(!actions){
+    actions = `<div class="empty-msg">✅ Tout est bon</div>`;
+  }
+
+  $("home-actions").innerHTML = actions;
+
+  const todayKey = ["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"][new Date().getDay()];
+  const dayPlan = PLAN[todayKey] || {};
+  let team = "";
+  EMP.forEach(emp=>{
+    const sh = dayPlan[emp.id];
+    if(sh){
+      team += `<div class="action-row">
+        <div style="width:32px;height:32px;border-radius:8px;background:${emp.color};color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex:none">${emp.initials}</div>
+        <div style="flex:1">
+          <div style="font-size:13px;font-weight:800">${emp.nom}${emp.toi ? '<span class="toi-tag">TOI</span>' : ""}</div>
+          <div class="small-muted">${toHH(sh[0])} → ${toHH(sh[1])}</div>
+        </div>
+        <div style="font-size:13px;font-weight:800;color:var(--green)">${toHH(sh[0])}</div>
+      </div>`;
+    }
+  });
+  if(!team) team = `<div class="empty-msg">Personne aujourd’hui</div>`;
+  $("home-team").innerHTML = team;
 }
 
-// =====================
-// AJOUT AUTOMATIQUE DANS LA PAGE DLC
-// =====================
+/* SAVE ALL */
+function saveAll(){
+  writeJSON(LS.tabac, tabacStock);
+  writeJSON(LS.boul, boulData);
+  writeJSON(LS.dlc, dlcData);
+  writeJSON(LS.cmd, cmdData);
+  writeJSON(LS.todo, todoData);
+}
+setInterval(saveAll, 5000);
+window.addEventListener("beforeunload", saveAll);
 
-var bloc = document.createElement("div");
-bloc.innerHTML = `
-<div style="margin-top:14px">
-  <div class="list-head">📦 À commander <span class="list-badge">manuel</span></div>
-  <div class="list-body">
-    <div id="commande-list"></div>
-    <div class="add-form">
-      <input type="text" id="cmd-nom" placeholder="Produit...">
-      <input type="number" id="cmd-qte" placeholder="Qté" style="width:70px">
-      <button onclick="addCommande()" class="btn-add">+</button>
-    </div>
-  </div>
-</div>
-`;
-
-document.getElementById('page-dlc').appendChild(bloc);
-
-// INIT
-renderCommande();
-
+/* INITIAL */
+renderHome();
 </script>
+</body>
 </html>
