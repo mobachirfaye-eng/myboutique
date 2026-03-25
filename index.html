@@ -1016,5 +1016,84 @@ function renderHome(){
 /* INIT */
 renderHome();
 </script>
-</body>
+</body><script>
+
+// =====================
+// LISTE À COMMANDER SIMPLE
+// =====================
+
+// DATA
+var commandeData = JSON.parse(localStorage.getItem('mb_commande') || '[]');
+
+// SAVE
+function saveCommande(){
+  localStorage.setItem('mb_commande', JSON.stringify(commandeData));
+}
+
+// AJOUT
+function addCommande(){
+  var nom = document.getElementById('cmd-nom').value.trim();
+  var qte = document.getElementById('cmd-qte').value.trim();
+
+  if(!nom || !qte) return;
+
+  commandeData.unshift({nom:nom, qte:qte});
+
+  document.getElementById('cmd-nom').value = '';
+  document.getElementById('cmd-qte').value = '';
+
+  saveCommande();
+  renderCommande();
+}
+
+// SUPPRIMER
+function deleteCommande(i){
+  commandeData.splice(i,1);
+  saveCommande();
+  renderCommande();
+}
+
+// RENDER
+function renderCommande(){
+  var html = '';
+
+  if(!commandeData.length){
+    html = '<div class="empty-msg">Rien à commander 👍</div>';
+  } else {
+    commandeData.forEach(function(item,i){
+      html += '<div class="list-row">';
+      html += '<div class="list-txt">'+item.nom+' (x'+item.qte+')</div>';
+      html += '<div onclick="deleteCommande('+i+')" style="color:#E8192C;font-weight:700;cursor:pointer;">✕</div>';
+      html += '</div>';
+    });
+  }
+
+  document.getElementById('commande-list').innerHTML = html;
+}
+
+// =====================
+// AJOUT AUTOMATIQUE DANS LA PAGE DLC
+// =====================
+
+var bloc = document.createElement("div");
+bloc.innerHTML = `
+<div style="margin-top:14px">
+  <div class="list-head">📦 À commander <span class="list-badge">manuel</span></div>
+  <div class="list-body">
+    <div id="commande-list"></div>
+    <div class="add-form">
+      <input type="text" id="cmd-nom" placeholder="Produit...">
+      <input type="number" id="cmd-qte" placeholder="Qté" style="width:70px">
+      <button onclick="addCommande()" class="btn-add">+</button>
+    </div>
+  </div>
+</div>
+`;
+
+document.getElementById('page-dlc').appendChild(bloc);
+
+// INIT
+renderCommande();
+
+</script>
 </html>
