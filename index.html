@@ -1,1236 +1,1235 @@
+Colle ça tel quel dans ton index.html.
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 <title>MyBoutique — Relay Montparnasse</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
 :root{
-  --red:#E8192C; --red2:#fee2e2; --orange:#f97316; --orange2:#fef3c7;
-  --green:#16A34A; --green2:#dcfce7; --blue:#2563eb;
-  --bg:#f2f2f7; --line:#e5e7eb; --text:#111827; --muted:#6b7280;
+  --red:#E8192C;
+  --red2:#fee2e2;
+  --orange:#f97316;
+  --orange2:#fef3c7;
+  --green:#16A34A;
+  --green2:#dcfce7;
+  --blue:#2563eb;
+  --bg:#f2f2f7;
+  --line:#e5e7eb;
+  --text:#111827;
+  --muted:#6b7280;
 }
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--text)}
-body{padding-bottom:84px;-webkit-tap-highlight-color:transparent}
-button,input,select{font-family:'DM Sans',sans-serif}
+html,body{margin:0;padding:0;background:var(--bg);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text)}
+body{padding:12px 12px 30px;-webkit-tap-highlight-color:transparent}
+button,input,select{font:inherit}
 button{cursor:pointer}
-.pg{display:none;padding:14px}
-.pg.on{display:block}
+h1{margin:4px 0 4px;font-size:22px}
+.top-sub{font-size:12px;color:var(--muted);margin-bottom:10px}
 
-/* HEADER */
-.hdr{
-  background:var(--red);color:#fff;padding:12px 16px;position:sticky;top:0;z-index:50;
-  display:flex;justify-content:space-between;align-items:center;
-}
-.hdr-l h1{font-size:17px;font-weight:700;margin:0}
-.hdr-l h1 em{opacity:.75;font-style:normal;font-weight:400}
-.hdr-l small{font-size:11px;opacity:.75;display:block;margin-top:1px}
-.hdr-r{text-align:right;font-size:11px;opacity:.85;line-height:1.5}
-
-/* NAV */
-.nav{
-  position:fixed;left:0;right:0;bottom:0;z-index:100;
-  background:#fff;border-top:1px solid var(--line);
-  display:grid;grid-template-columns:repeat(5,1fr);
-  padding-bottom:env(safe-area-inset-bottom,0px);
-}
-.nb{
-  border:none;background:none;color:#9ca3af;
-  padding:7px 2px 6px;font-size:10px;
-  display:flex;flex-direction:column;align-items:center
-}
-.nb .ic{font-size:21px;line-height:1;margin-bottom:1px}
-.nb.on{color:var(--red);font-weight:700}
-
-/* COMMON */
-.sec{margin-bottom:16px}
+.sec{margin:0 0 14px}
 .sec-h{
   background:var(--red);color:#fff;padding:9px 12px;border-radius:10px 10px 0 0;
-  font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;
+  font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;
   display:flex;justify-content:space-between;align-items:center;gap:8px
 }
-.sec-h .breset{
-  background:rgba(255,255,255,.22);border:none;color:#fff;border-radius:6px;
-  padding:3px 9px;font-size:10px;font-weight:700
+.sec-h .btn-mini{
+  background:rgba(255,255,255,.2);border:none;color:#fff;border-radius:7px;
+  padding:4px 10px;font-size:10px;font-weight:800
 }
-.sec-body{
-  background:#fff;border:1.5px solid #ddd;border-top:none;border-radius:0 0 10px 10px;overflow:hidden
+.sec-b{
+  background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 10px 10px;overflow:hidden
 }
-.empty-b{padding:16px;text-align:center;color:#ccc;font-size:12px}
-.alert-s{padding:8px 12px;font-size:11px;font-weight:600;display:none;background:var(--red2);color:var(--red);border-top:1px solid #fca5a5}
-.block{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:14px}
-.block-t{padding:10px 14px;font-size:11px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:.8px;border-bottom:1px solid #f0f0f0}
-.arow{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid #f5f5f5}
-.arow:last-child{border-bottom:none}
-.dot{width:8px;height:8px;border-radius:50%;flex:none}
-.dot.r{background:var(--red)} .dot.o{background:var(--orange)} .dot.g{background:var(--green)}
-.arow-t{flex:1;font-size:13px;font-weight:500;color:#111}
-.arow-b{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px}
-.arow-b.r{background:var(--red2);color:var(--red)}
-.arow-b.o{background:var(--orange2);color:var(--orange)}
-.arow-b.g{background:var(--green2);color:var(--green)}
+.pad{padding:10px 12px}
+.muted{color:var(--muted);font-size:12px}
+.small{font-size:11px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px;border-bottom:1px solid #f3f4f6}
+.row:last-child{border-bottom:none}
+.row .name{font-weight:600;color:#111;font-size:13px;line-height:1.2}
+.row .meta{font-size:11px;color:var(--muted)}
+.row .right{display:flex;align-items:center;gap:6px;flex-shrink:0}
 
-/* DASH */
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-.kard{background:#fff;border-radius:14px;padding:14px;border:1.5px solid var(--line)}
-.kard.red{border-color:var(--red);background:#fff5f5}
-.kard.ora{border-color:var(--orange);background:#fff7ed}
-.kard.grn{border-color:var(--green);background:#f0fdf4}
-.kard.blu{border-color:var(--blue);background:#eff6ff}
-.kard .ki{font-size:26px;margin-bottom:5px}
-.kard .kl{font-size:11px;font-weight:600;color:#777;text-transform:uppercase;letter-spacing:.5px}
-.kard .kv{font-size:30px;font-weight:700;margin-top:2px}
-.kard.red .kv{color:var(--red)} .kard.ora .kv{color:var(--orange)} .kard.grn .kv{color:var(--green)} .kard.blu .kv{color:var(--blue)}
-.kard .ks{font-size:10px;color:#888;margin-top:2px}
-
-/* TABLE / SEARCH */
-.srch-row{display:flex;gap:8px;margin-bottom:12px}
-.srch-inp{
-  flex:1;border:1.5px solid #ddd;border-radius:10px;padding:10px 14px;font-size:13px;outline:none;background:#fff
+.ctrl{display:inline-flex;align-items:center;border:1px solid #ddd;border-radius:8px;overflow:hidden;background:#fff}
+.cb{
+  width:28px;height:28px;border:none;background:#fff;font-weight:800;font-size:16px;
+  display:flex;align-items:center;justify-content:center;color:#333
 }
-.srch-inp:focus{border-color:var(--red)}
-.btn-recap{background:var(--red);color:#fff;border:none;border-radius:10px;padding:10px 14px;font-size:12px;font-weight:700}
-#srch-results{display:none;background:#fff;border:1.5px solid #ddd;border-radius:10px;margin-bottom:12px;overflow:hidden}
+.cb:active{background:#f0f0f0}
+.cn{
+  min-width:30px;text-align:center;line-height:28px;font-weight:800;font-size:14px;background:#fff
+}
+.cn.ok{color:var(--green)}
+.cn.warn{color:var(--orange)}
+.cn.bad{color:var(--red)}
+.cn.over{color:#7c3aed}
+
+.badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:800;padding:2px 8px;border-radius:999px
+}
+.badge.red{background:var(--red2);color:var(--red)}
+.badge.orange{background:var(--orange2);color:var(--orange)}
+.badge.green{background:var(--green2);color:var(--green)}
+.badge.blue{background:#dbeafe;color:var(--blue)}
+
+.btn-cmd{
+  border:none;border-radius:7px;padding:4px 8px;font-size:10px;font-weight:800;
+  background:var(--red2);color:var(--red);white-space:nowrap
+}
+.btn-clear{
+  border:none;border-radius:7px;padding:4px 8px;font-size:10px;font-weight:800;
+  background:#e5e7eb;color:#111
+}
+.btn-clear.red{background:var(--red2);color:var(--red)}
+.btn-clear.green{background:var(--green2);color:var(--green)}
+
+.search-row{display:flex;gap:8px;margin-bottom:10px}
+.search-row input{
+  flex:1;border:1px solid #ddd;border-radius:10px;padding:10px 12px;font-size:13px;outline:none;background:#fff
+}
+.search-row input:focus{border-color:var(--red)}
+.search-row button{
+  border:none;border-radius:10px;padding:10px 12px;font-size:12px;font-weight:800;background:var(--red);color:#fff
+}
+#search-results{display:none;margin-bottom:12px}
+
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-bottom:10px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  border:1px solid #ddd;background:#fff;border-radius:999px;padding:7px 12px;font-size:12px;font-weight:700;color:#666;white-space:nowrap
+}
+.tab.on{background:var(--red);border-color:var(--red);color:#fff}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px}
+.card.red{border-color:var(--red);background:#fff5f5}
+.card.orange{border-color:var(--orange);background:#fff7ed}
+.card.green{border-color:var(--green);background:#f0fdf4}
+.card.blue{border-color:var(--blue);background:#eff6ff}
+.card .i{font-size:24px;margin-bottom:4px}
+.card .l{font-size:11px;font-weight:800;color:#666;text-transform:uppercase;letter-spacing:.4px}
+.card .v{font-size:28px;font-weight:900;margin-top:1px}
+.card.red .v{color:var(--red)}
+.card.orange .v{color:var(--orange)}
+.card.green .v{color:var(--green)}
+.card.blue .v{color:var(--blue)}
+.card .s{font-size:10px;color:var(--muted);margin-top:2px}
+
+.list-head{
+  background:var(--red);color:#fff;padding:9px 12px;border-radius:10px 10px 0 0;
+  font-size:12px;font-weight:800;display:flex;justify-content:space-between;align-items:center
+}
+.list-body{
+  background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 10px 10px;overflow:hidden
+}
+.list-item{
+  display:flex;align-items:center;gap:10px;padding:11px 12px;border-bottom:1px solid #f3f4f6
+}
+.list-item:last-child{border-bottom:none}
+.list-item.done{opacity:.4}
+.list-item.done .list-txt{text-decoration:line-through}
+.list-check{
+  width:22px;height:22px;border-radius:6px;border:2px solid #ddd;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0
+}
+.list-item.done .list-check{background:var(--green);border-color:var(--green);color:#fff}
+.list-txt{flex:1;font-size:13px;font-weight:600}
+.add-row{display:flex;gap:8px;padding:10px 12px;border-top:1px solid #f3f4f6;background:#fafafa}
+.add-row input{
+  flex:1;border:1px solid #ddd;border-radius:8px;padding:9px 11px;font-size:13px;outline:none;background:#fff
+}
+.add-row input:focus{border-color:var(--red)}
+.add-row button{
+  border:none;background:var(--red);color:#fff;border-radius:8px;padding:9px 16px;font-size:18px;font-weight:900
+}
+
 table{width:100%;border-collapse:collapse}
 thead tr{background:#2d2d2d;color:#fff}
-thead th{padding:8px;font-size:11px;font-weight:600;text-align:left;border-right:1px solid #444}
-thead th:last-child{border-right:none}
-tbody tr{border-bottom:1px solid #f0f0f0}
-tbody tr:nth-child(even){background:#fafafa}
-td{padding:8px;border-right:1px solid #f0f0f0;vertical-align:middle}
-td:last-child{border-right:none}
-td.tn{font-weight:600;color:#111;font-size:12px}
-td.tc{text-align:center}
-td.ts{text-align:center;font-size:11px;font-weight:600}
-td.ts.ok{color:var(--green)} td.ts.warn{color:var(--orange)} td.ts.bad{color:var(--red)} td.ts.over{color:#8b5cf6}
-tr.sep td{background:#f5f5f5;color:#777;font-size:10px;font-weight:700;text-transform:uppercase;padding:5px 8px}
-
-.ctrl{display:inline-flex;align-items:center;border:1.5px solid #ddd;border-radius:8px;overflow:hidden}
-.cb{width:30px;height:30px;border:none;background:#fff;font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center;color:#333}
-.cb:active{background:#f0f0f0}
-.cn{min-width:32px;text-align:center;font-size:14px;font-weight:700;line-height:30px;background:#fff}
-.cn.ok{color:var(--green)} .cn.warn{color:var(--orange)} .cn.bad{color:var(--red)} .cn.over{color:#8b5cf6}
-.btn-cmd{background:var(--red2);border:none;border-radius:6px;color:var(--red);font-size:10px;font-weight:700;padding:4px 8px;cursor:pointer;white-space:nowrap}
-
-/* HOME */
-.dash-title{font-size:17px;font-weight:700;color:#111;margin-bottom:2px}
-.dash-sub{font-size:12px;color:#888;margin-bottom:14px}
-
-/* PLANNING */
-.wk-nav{display:flex;align-items:center;justify-content:space-between;background:#fff;border-radius:12px;padding:10px 14px;margin-bottom:12px;border:1px solid #e5e5e5}
-.bwk{background:var(--red);color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:14px;font-weight:700}
-.wk-lbl{font-size:13px;font-weight:700;color:#111}
-.days-row{display:flex;gap:6px;overflow-x:auto;margin-bottom:12px;padding-bottom:2px;scrollbar-width:none}
-.days-row::-webkit-scrollbar{display:none}
-.dpill{
-  min-width:50px;padding:8px;border-radius:12px;border:1.5px solid #e5e5e5;background:#fff;color:#999;
-  font-size:11px;font-weight:600;cursor:pointer;text-align:center;flex-shrink:0
+thead th{
+  padding:8px;font-size:11px;font-weight:700;text-align:left;border-right:1px solid #444
 }
-.dpill .dp{font-size:9px;text-transform:uppercase;margin-bottom:2px}
-.dpill .dd{font-size:17px;font-weight:700;color:#444}
-.dpill.on{border-color:var(--red);border-width:2px}
-.dpill.on .dd{color:var(--red)}
-.dpill.tj{background:#fff5f5}
-.team-box{background:#fff;border-radius:12px;overflow:hidden;border:1px solid #e5e5e5;margin-bottom:12px}
-.team-r{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid #f5f5f5}
-.team-r:last-child{border-bottom:none}
-.tav{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
-.team-info{flex:1}
-.team-nom{font-size:13px;font-weight:700;color:#111}
-.toi-tag{background:var(--red);color:white;font-size:9px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:5px}
-.team-hrs{font-size:11px;color:#888;margin-top:1px}
-.team-st{font-size:14px;font-weight:700;color:var(--green)}
-.hrs-box{background:#fff;border-radius:12px;padding:12px 14px;border:1px solid #e5e5e5}
-.hrs-t{font-size:11px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
-.hrs-r{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #f5f5f5;font-size:12px}
-.hrs-r:last-child{border-bottom:none}
-.hrs-n{font-weight:600;color:#333}
-.hrs-v{font-weight:700;color:var(--red)}
-.vertical-day{background:#fff;border:1px solid #e5e5e5;border-radius:12px;overflow:hidden;margin-bottom:10px}
-.vertical-day .vh{padding:10px 12px;font-size:12px;font-weight:800;background:#fafafa;border-bottom:1px solid #f0f0f0}
-.vertical-day .vr{display:flex;justify-content:space-between;gap:10px;padding:10px 12px;border-bottom:1px solid #f8f8f8}
-.vertical-day .vr:last-child{border-bottom:none}
-.vertical-day .vn{font-size:13px;font-weight:600}
-.vertical-day .vhours{font-size:12px;color:#666}
-.vertical-day .vtotal{padding:10px 12px;background:#fff5f5;font-size:12px;font-weight:700;color:var(--red)}
+thead th:last-child{border-right:none}
+tbody tr{border-bottom:1px solid #f3f4f6}
+tbody tr:nth-child(even){background:#fafafa}
+td{padding:8px;border-right:1px solid #f3f4f6;vertical-align:middle}
+td:last-child{border-right:none}
+td.tn{font-weight:600;font-size:12px}
+td.tc{text-align:center}
+td.ts{text-align:center;font-size:11px;font-weight:700}
+td.ts.ok{color:var(--green)}
+td.ts.warn{color:var(--orange)}
+td.ts.bad{color:var(--red)}
+td.ts.over{color:#7c3aed}
+tr.sep td{background:#f5f5f5;color:#777;font-size:10px;font-weight:800;text-transform:uppercase;padding:5px 8px}
 
-/* BOULANGERIE */
-.boul-al{background:var(--red2);border:1.5px solid var(--red);border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:12px;font-weight:700;color:var(--red);display:none}
-.boul-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px}
-.boul-c{background:#fff;border:1.5px solid #e5e5e5;border-radius:12px;padding:10px 6px;text-align:center}
-.boul-c.destroyed{opacity:.45;background:#f5f5f5}
-.be{font-size:24px}
-.bn{font-size:10px;font-weight:600;color:#333;margin:3px 0;line-height:1.3}
-.bctrl{display:flex;align-items:center;justify-content:center;border:1.5px solid #ddd;border-radius:8px;overflow:hidden;margin:5px auto 0;width:fit-content}
-.bb{width:29px;height:29px;border:none;background:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;color:#333}
-.bb:active{background:#f0f0f0}
-.bnum{min-width:28px;text-align:center;font-size:14px;font-weight:700;color:var(--red);line-height:29px;background:#fff}
-.bdlc{font-size:9px;margin-top:3px}
-.bdbtn{display:block;width:100%;margin-top:5px;background:var(--red2);border:none;border-radius:6px;color:var(--red);font-size:10px;font-weight:700;padding:4px}
-.bdbtn.ok{background:var(--green2);color:var(--green)}
-.dest-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid #f5f5f5;font-size:13px}
+.res-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px;border-bottom:1px solid #f3f4f6}
+.res-row:last-child{border-bottom:none}
+.res-name{font-weight:600;font-size:13px}
+.res-place{font-size:11px;color:var(--muted)}
+
+.dlc-al-r,.dlc-al-o,.boul-al{
+  border-radius:10px;padding:10px 12px;margin-bottom:10px;font-size:12px;font-weight:800;display:none
+}
+.dlc-al-r,.boul-al{background:var(--red2);border:1px solid var(--red);color:var(--red)}
+.dlc-al-o{background:var(--orange2);border:1px solid var(--orange);color:var(--orange)}
+
+.boul-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px}
+.boul-card{
+  background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 6px;text-align:center
+}
+.boul-card.destroyed{opacity:.45;background:#f5f5f5}
+.b-emoji{font-size:24px}
+.b-name{font-size:10px;font-weight:700;color:#333;margin:3px 0;line-height:1.2}
+.b-ctrl{display:flex;align-items:center;justify-content:center;border:1px solid #ddd;border-radius:8px;overflow:hidden;margin:5px auto 0;width:fit-content}
+.b-btn{width:28px;height:28px;border:none;background:#fff;font-weight:800;font-size:16px}
+.b-num{min-width:28px;text-align:center;font-weight:800;font-size:14px;line-height:28px;color:var(--red);background:#fff}
+.b-dlc{font-size:9px;margin-top:3px}
+.b-del{border:none;width:100%;margin-top:5px;background:var(--red2);color:var(--red);border-radius:6px;padding:4px;font-size:10px;font-weight:800}
+.b-del.ok{background:var(--green2);color:var(--green)}
+
+.dest-item{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-bottom:1px solid #f3f4f6}
 .dest-item:last-child{border-bottom:none}
-.dest-nom{font-weight:600;color:#111}
-.dest-q{font-weight:700;color:var(--red)}
-.dest-total{padding:10px 14px;font-size:13px;font-weight:700;color:#333;background:#fafafa;border-top:1px solid #f0f0f0}
-.btn-val{width:100%;background:var(--green);color:white;border:none;border-radius:10px;padding:14px;font-size:14px;font-weight:700;cursor:pointer;margin-top:10px}
+.dest-name{font-weight:600;font-size:13px}
+.dest-qty{font-weight:800;color:var(--red)}
+.dest-total{
+  padding:10px 12px;font-size:13px;font-weight:800;background:#fafafa;border-top:1px solid #f3f4f6
+}
+.btn-valid{
+  width:100%;margin-top:10px;border:none;border-radius:10px;padding:13px;font-size:14px;font-weight:900;background:var(--green);color:#fff
+}
 
-/* DLC */
-.dlc-al-r{background:var(--red2);border:1.5px solid var(--red);border-radius:10px;padding:10px 14px;margin-bottom:8px;font-size:12px;font-weight:700;color:var(--red);display:none}
-.dlc-al-o{background:var(--orange2);border:1.5px solid var(--orange);border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:12px;font-weight:700;color:var(--orange);display:none}
-.dlc-form{padding:10px 12px;background:#fafafa;border:1.5px solid #ddd;border-top:none;border-radius:0 0 10px 10px}
-.dlc-form input{border:1.5px solid #ddd;border-radius:8px;padding:9px 11px;font-size:13px;outline:none}
-.dlc-form input:focus{border-color:var(--red)}
-.tag-r{background:var(--red2);color:var(--red);border-radius:5px;padding:2px 6px;font-size:10px;font-weight:700}
-.tag-o{background:var(--orange2);color:var(--orange);border-radius:5px;padding:2px 6px;font-size:10px;font-weight:700}
-.tag-g{background:var(--green2);color:var(--green);border-radius:5px;padding:2px 6px;font-size:10px;font-weight:700}
-
-/* TODO */
-.todo-item{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid #f5f5f5;cursor:pointer}
-.todo-item:last-child{border-bottom:none}
-.todo-item.done{opacity:.4}
-.todo-item.done .todo-t{text-decoration:line-through}
-.todo-chk{width:22px;height:22px;border-radius:6px;border:2px solid #ddd;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
-.todo-item.done .todo-chk{background:var(--green);border-color:var(--green);color:white}
-.todo-t{flex:1;font-weight:500;color:#111;font-size:13px}
-.add-f{display:flex;gap:8px;padding:10px 14px;border-top:1px solid #f0f0f0;background:#fafafa}
-.add-f input{flex:1;border:1.5px solid #ddd;border-radius:8px;padding:9px 12px;font-size:13px;outline:none}
-.add-f input:focus{border-color:var(--red)}
-.add-f .badd{background:var(--red);color:white;border:none;border-radius:8px;padding:9px 16px;font-size:20px;font-weight:700}
-
-/* COMMANDE */
-.cmd-cat-tabs{display:flex;gap:6px;margin-bottom:12px;overflow-x:auto;scrollbar-width:none}
-.cmd-cat-tabs::-webkit-scrollbar{display:none}
-.cat-tab{padding:7px 14px;border-radius:20px;border:1.5px solid #ddd;background:#fff;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;color:#888}
-.cat-tab.on{background:var(--red);border-color:var(--red);color:#fff}
-.cmd-item{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid #f5f5f5}
+.cmd-item{display:flex;align-items:center;gap:10px;padding:11px 12px;border-bottom:1px solid #f3f4f6}
 .cmd-item:last-child{border-bottom:none}
-.cmd-nom{flex:1;font-weight:600;font-size:13px;color:#111}
-.cmd-qty{font-size:12px;color:#888;margin-top:1px}
-.cmd-statut{border:none;border-radius:8px;padding:5px 10px;font-size:11px;font-weight:700;cursor:pointer}
-.cmd-statut.s0{background:var(--red2);color:var(--red)}
-.cmd-statut.s1{background:var(--orange2);color:var(--orange)}
-.cmd-statut.s2{background:var(--green2);color:var(--green)}
-.cmd-del{background:none;border:none;color:#ccc;font-size:16px;cursor:pointer;padding:0 4px}
-.cmd-add-form{padding:12px 14px;background:#fafafa;border-top:1px solid #f0f0f0;display:flex;flex-direction:column;gap:8px}
-.cmd-add-form input,.cmd-add-form select{border:1.5px solid #ddd;border-radius:8px;padding:9px 12px;font-size:13px;outline:none;background:#fff}
-.cmd-add-form input:focus,.cmd-add-form select:focus{border-color:var(--red)}
+.cmd-main{flex:1}
+.cmd-name{font-size:13px;font-weight:700}
+.cmd-sub{font-size:11px;color:var(--muted);margin-top:1px}
+.cmd-stat{
+  border:none;border-radius:8px;padding:5px 10px;font-size:11px;font-weight:900
+}
+.cmd-stat.s0{background:var(--red2);color:var(--red)}
+.cmd-stat.s1{background:var(--orange2);color:var(--orange)}
+.cmd-stat.s2{background:var(--green2);color:var(--green)}
+.cmd-del{border:none;background:none;color:#ccc;font-size:16px;padding:0 4px}
+.cmd-form{padding:12px;background:#fafafa;border-top:1px solid #f3f4f6;display:flex;flex-direction:column;gap:8px}
+.cmd-form input,.cmd-form select{
+  border:1px solid #ddd;border-radius:8px;padding:9px 11px;font-size:13px;outline:none;background:#fff
+}
+.cmd-form input:focus,.cmd-form select:focus{border-color:var(--red)}
 
-/* OVERLAY RECAP */
-.ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;align-items:flex-end;justify-content:center}
-.ov.on{display:flex}
-.sheet{background:white;border-radius:20px 20px 0 0;padding:20px 18px 38px;width:100%;max-width:440px;max-height:85vh;overflow-y:auto}
-.sheet h3{font-size:17px;font-weight:700;margin-bottom:4px}
-.sheet p{font-size:12px;color:#888;margin-bottom:14px}
-.re-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #f0f0f0}
-.re-row:last-child{border-bottom:none}
-.re-n{font-weight:600;color:#111}
-.re-q{background:var(--red);color:white;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700}
-.btn-full{width:100%;background:var(--red);color:white;border:none;border-radius:12px;padding:14px;font-size:14px;font-weight:700;margin-top:14px}
-.small-muted{font-size:11px;color:var(--muted)}
+.plan-top{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:10px;gap:8px}
+.plan-top button{border:none;background:var(--red);color:#fff;border-radius:8px;padding:7px 12px;font-size:13px;font-weight:800}
+.plan-lbl{font-weight:800;font-size:13px}
+.day-buttons{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-bottom:10px;padding-bottom:2px}
+.day-buttons::-webkit-scrollbar{display:none}
+.day-btn{
+  min-width:52px;border:1px solid #ddd;background:#fff;border-radius:12px;padding:8px 6px;text-align:center;font-size:11px;font-weight:700;color:#666
+}
+.day-btn.on{border-color:var(--red);border-width:2px;color:var(--red);background:#fff5f5}
+.day-btn .d1{font-size:9px;text-transform:uppercase;margin-bottom:2px}
+.day-btn .d2{font-size:17px;font-weight:900;color:#333}
+.day-btn.on .d2{color:var(--red)}
+.plan-box{
+  background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;overflow-x:auto;margin-bottom:10px
+}
+.timeline{
+  min-width:360px
+}
+.tl-head{display:flex;padding-left:76px;margin-bottom:8px}
+.tl-tick{flex:1;min-width:30px;font-size:9px;color:#c4c4c4}
+.tl-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.tl-name{
+  width:70px;flex:none;font-size:11px;font-weight:700;color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap
+}
+.tl-track{flex:1;height:30px;background:#f0f0f0;border-radius:6px;position:relative;overflow:hidden}
+.tl-bar{
+  position:absolute;height:100%;border-radius:6px;color:#fff;font-size:9px;font-weight:900;
+  display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden;padding:0 6px
+}
+.emp-box{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:10px}
+.emp-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #f3f4f6}
+.emp-row:last-child{border-bottom:none}
+.emp-av{
+  width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:900;flex:none
+}
+.emp-info{flex:1}
+.emp-name{font-size:13px;font-weight:800}
+.emp-hours{font-size:11px;color:var(--muted);margin-top:1px}
+.emp-start{font-size:14px;font-weight:900;color:var(--green)}
+.tot-box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.tot-t{font-size:11px;font-weight:900;color:#999;text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px}
+.tot-row{display:flex;justify-content:space-between;border-bottom:1px solid #f3f4f6;padding:5px 0;font-size:12px}
+.tot-row:last-child{border-bottom:none}
+.tot-n{font-weight:700}
+.tot-v{font-weight:900;color:var(--red)}
+
+.todo-head{background:var(--red);color:#fff;padding:9px 12px;border-radius:10px 10px 0 0;font-size:12px;font-weight:900;display:flex;justify-content:space-between;align-items:center}
+.todo-count{background:rgba(255,255,255,.22);border-radius:999px;padding:2px 8px;font-size:11px}
+.todo-body{background:#fff;border:1px solid var(--line);border-top:none;border-radius:0 0 10px 10px;overflow:hidden}
+
+.spacer{height:2px}
 </style>
 </head>
 <body>
 
-<div class="hdr">
-  <div class="hdr-l">
-    <h1>MyBoutique <em>Relay</em></h1>
-    <small>Gare Montparnasse · Bachir Faye</small>
-  </div>
-  <div class="hdr-r" id="hdr-d"></div>
-</div>
+<h1>MyBoutique</h1>
+<div class="top-sub">Gare Montparnasse · Bachir Faye</div>
 
-<!-- ACCUEIL -->
-<div class="pg on" id="pg-home">
-  <div class="dash-title">Bonjour Bachir 👋</div>
-  <div class="dash-sub" id="home-date"></div>
-  <div class="grid2" id="home-cards"></div>
-  <div class="block"><div class="block-t">⚡ Actions urgentes</div><div id="home-actions"></div></div>
-  <div class="block"><div class="block-t">👥 Équipe aujourd'hui</div><div id="home-team"></div></div>
-</div>
-
-<!-- TABAC -->
-<div class="pg" id="pg-tabac">
-  <div class="srch-row">
-    <input class="srch-inp" id="srch" placeholder="🔍 Rechercher une marque ou un emplacement..." oninput="doSearch()">
-    <button class="btn-recap" onclick="openRecap()">📋 Récap</button>
-  </div>
-  <div id="srch-results"></div>
-
-  <div class="sec">
-    <div class="sec-h">Tiroir 1 — Classiques <button class="breset" onclick="resetT(0)">↺ Vider</button></div>
-    <div class="sec-body"><table id="tb0"></table></div>
-    <div class="alert-s" id="al0"></div>
-  </div>
-  <div class="sec">
-    <div class="sec-h">Tiroir 2 — Variétés <button class="breset" onclick="resetT(1)">↺ Vider</button></div>
-    <div class="sec-body"><table id="tb1"></table></div>
-    <div class="alert-s" id="al1"></div>
-  </div>
-  <div class="sec">
-    <div class="sec-h">Tiroir 3 — Slims / Vogue <button class="breset" onclick="resetT(2)">↺ Vider</button></div>
-    <div class="sec-body"><table id="tb2"></table></div>
-    <div class="alert-s" id="al2"></div>
-  </div>
-  <div class="sec">
-    <div class="sec-h">Hors Tiroir — XL / XXL <button class="breset" onclick="resetT(3)">↺ Vider</button></div>
-    <div class="sec-body"><table id="tb3"></table></div>
-    <div class="alert-s" id="al3"></div>
-  </div>
-  <div class="sec">
-    <div class="sec-h">Hors Tiroir — Cigares &amp; Autres <button class="breset" onclick="resetT(4)">↺ Vider</button></div>
-    <div class="sec-body"><table id="tb4"></table></div>
-    <div class="alert-s" id="al4"></div>
-  </div>
-
-  <div class="sec">
-    <div class="sec-h">📦 Réserve tabac <span class="small-muted" style="color:#fff;opacity:.85">hors tiroirs</span></div>
-    <div class="sec-body">
-      <table id="reserve-table"></table>
+<!-- DASHBOARD -->
+<div class="sec">
+  <div class="sec-h">🏠 Tableau de bord</div>
+  <div class="sec-b pad">
+    <div class="grid2" id="dash-cards"></div>
+    <div class="sec" style="margin-bottom:10px">
+      <div class="list-head">⚡ À faire maintenant <span class="badge blue" id="dash-todo-badge">0</span></div>
+      <div class="list-body" id="dash-actions"></div>
     </div>
   </div>
 </div>
 
-<!-- COMMANDE -->
-<div class="pg" id="pg-cmd">
-  <div class="cmd-cat-tabs">
-    <button class="cat-tab on" onclick="setCat('all',this)">Tout</button>
-    <button class="cat-tab" onclick="setCat('tabac',this)">🚬 Tabac</button>
-    <button class="cat-tab" onclick="setCat('alim',this)">🥐 Alimentaire</button>
-    <button class="cat-tab" onclick="setCat('autre',this)">📦 Autre</button>
+<!-- TABAC -->
+<div class="sec">
+  <div class="sec-h">
+    <span>🚬 Tabac</span>
+    <button class="btn-mini" onclick="resetAllTabac()">Vider tout</button>
   </div>
+  <div class="sec-b">
+    <div class="pad">
+      <div class="search-row">
+        <input id="tabac-search" placeholder="Rechercher une marque ou un emplacement..." oninput="searchTabac()">
+        <button onclick="openRecap()">Récap</button>
+      </div>
+      <div id="search-results"></div>
+    </div>
 
-  <div class="sec">
-    <div class="sec-h" style="justify-content:flex-start;gap:8px;">🛒 À commander <span id="cmd-badge" style="background:rgba(255,255,255,.25);border-radius:10px;padding:2px 8px;font-size:11px;">0</span></div>
-    <div class="sec-body">
-      <div id="cmd-list"></div>
-      <div class="cmd-add-form">
-        <div style="display:flex;gap:8px;">
-          <input type="text" id="cmd-nom" placeholder="Nom du produit..." style="flex:1;">
-          <input type="number" id="cmd-qty" placeholder="Qté" style="width:70px;text-align:center;">
-        </div>
-        <div style="display:flex;gap:8px;">
-          <select id="cmd-cat" style="flex:1;">
-            <option value="tabac">🚬 Tabac</option>
-            <option value="alim">🥐 Alimentaire</option>
-            <option value="autre">📦 Autre</option>
-          </select>
-          <button onclick="cmdAdd()" style="background:var(--red);color:white;border:none;border-radius:8px;padding:9px 18px;font-size:20px;font-weight:700;">+</button>
-        </div>
+    <div id="tabac-sections"></div>
+  </div>
+</div>
+
+<!-- COMMANDE -->
+<div class="sec">
+  <div class="sec-h">
+    <span>🛒 Commande</span>
+    <span class="badge orange" id="cmd-badge">0</span>
+  </div>
+  <div class="sec-b">
+    <div class="pad">
+      <div class="tabs" id="cmd-tabs"></div>
+    </div>
+    <div id="cmd-list"></div>
+    <div class="cmd-form">
+      <div style="display:flex;gap:8px">
+        <input id="cmd-nom" type="text" placeholder="Nom du produit..." style="flex:1">
+        <input id="cmd-qty" type="number" min="1" placeholder="Qté" style="width:70px;text-align:center">
+      </div>
+      <div style="display:flex;gap:8px">
+        <select id="cmd-cat" style="flex:1">
+          <option value="tabac">🚬 Tabac</option>
+          <option value="alim">🥐 Alimentaire</option>
+          <option value="autre">📦 Autre</option>
+        </select>
+        <button onclick="addManualCmd()" style="border:none;border-radius:8px;padding:9px 16px;font-size:20px;font-weight:900;background:var(--red);color:#fff">+</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESERVE -->
+<div class="sec">
+  <div class="sec-h">📦 Réserve tabac</div>
+  <div class="sec-b" id="reserve-list"></div>
+</div>
+
+<!-- BOULANGERIE -->
+<div class="sec">
+  <div class="sec-h">
+    <span>🥐 Boulangerie</span>
+    <button class="btn-mini" onclick="newBoulDay()">Nouveau jour</button>
+  </div>
+  <div class="sec-b">
+    <div class="boul-al" id="boul-alert"></div>
+    <div class="boul-grid" id="boul-grid"></div>
+  </div>
+</div>
+
+<div class="sec">
+  <div class="sec-h">
+    <span>🗑️ Destruction du jour</span>
+    <span class="badge orange" id="dest-count">0</span>
+  </div>
+  <div class="sec-b">
+    <div id="dest-list"></div>
+    <div class="dest-total" id="dest-total" style="display:none"></div>
+  </div>
+  <button class="btn-valid" id="dest-valid-btn" style="display:none" onclick="validateDestroy()">Déclaré — Réinitialiser</button>
+</div>
+
+<!-- DLC -->
+<div class="sec">
+  <div class="sec-h">
+    <span>⏱️ DLC Snacking</span>
+    <span class="badge orange" id="dlc-badge">0</span>
+  </div>
+  <div class="sec-b">
+    <div class="dlc-al-r" id="dlc-red"></div>
+    <div class="dlc-al-o" id="dlc-orange"></div>
+    <table style="font-size:12px">
+      <thead>
+        <tr>
+          <th style="padding:8px;text-align:left">Produit</th>
+          <th style="padding:8px;text-align:center;width:50px">Gr.</th>
+          <th style="padding:8px;text-align:center;width:70px">Date</th>
+          <th style="padding:8px;text-align:center;width:76px">Statut</th>
+        </tr>
+      </thead>
+      <tbody id="dlc-tbody"></tbody>
+    </table>
+    <div class="cmd-form" style="border-top:1px solid #f3f4f6">
+      <div style="display:flex;gap:8px">
+        <input id="dlc-nom" type="text" placeholder="Nom du produit..." style="flex:1">
+        <input id="dlc-gr" type="text" placeholder="Gr." style="width:60px;text-align:center">
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <input id="dlc-date" type="date" style="flex:1">
+        <button onclick="addDLC()" style="border:none;border-radius:8px;padding:10px 16px;font-size:20px;font-weight:900;background:var(--red);color:#fff">+</button>
       </div>
     </div>
   </div>
 </div>
 
 <!-- PLANNING -->
-<div class="pg" id="pg-plan">
-  <div class="wk-nav">
-    <button class="bwk" onclick="wkChange(-1)">◀</button>
-    <div class="wk-lbl" id="wk-lbl"></div>
-    <button class="bwk" onclick="wkChange(1)">▶</button>
-  </div>
-  <div class="days-row" id="days-row"></div>
-  <div id="plan-out"></div>
-</div>
-
-<!-- BOULANGERIE + DLC + TODO -->
-<div class="pg" id="pg-boul">
-  <div class="boul-al" id="boul-al"></div>
-
-  <div class="sec">
-    <div class="sec-h">🥐 Stock plateau bas <button class="breset" onclick="boulNewDay()">↺ Nouveau jour</button></div>
-    <div class="sec-body"><div class="boul-grid" id="boul-grid"></div></div>
-  </div>
-
-  <div class="sec">
-    <div class="sec-h" style="justify-content:flex-start;gap:8px;">🗑️ Destruction du jour <span id="dest-badge" style="background:rgba(255,255,255,.25);border-radius:10px;padding:2px 8px;font-size:11px;">0</span></div>
-    <div class="sec-body">
-      <div id="dest-list"></div>
-      <div id="dest-total" style="display:none;" class="dest-total"></div>
+<div class="sec">
+  <div class="sec-h">📅 Planning</div>
+  <div class="sec-b pad">
+    <div class="plan-top">
+      <button onclick="changePlanDay(-1)">◀</button>
+      <div class="plan-lbl" id="plan-label"></div>
+      <button onclick="changePlanDay(1)">▶</button>
     </div>
-    <button class="btn-val" id="dest-val-btn" onclick="validerDest()" style="display:none;">✅ Déclaré — Réinitialiser</button>
-  </div>
-
-  <div class="dlc-al-r" id="dlc-r"></div>
-  <div class="dlc-al-o" id="dlc-o"></div>
-  <div class="sec">
-    <div class="sec-h" style="justify-content:flex-start;gap:8px;">⏱️ DLC Snacking <span id="dlc-badge" style="background:rgba(255,255,255,.25);border-radius:10px;padding:2px 8px;font-size:11px;">0</span></div>
-    <div class="sec-body">
-      <table style="font-size:12px;">
-        <thead><tr>
-          <th style="padding:8px;text-align:left;">Produit</th>
-          <th style="padding:8px;text-align:center;width:40px;">Gr.</th>
-          <th style="padding:8px;text-align:center;width:62px;">Date</th>
-          <th style="padding:8px;text-align:center;width:68px;">Statut</th>
-        </tr></thead>
-        <tbody id="dlc-tbody"></tbody>
-      </table>
-    </div>
-    <div class="dlc-form">
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        <div style="display:flex;gap:8px;">
-          <input type="text" id="dlc-nom" placeholder="Nom du produit..." style="flex:1;">
-          <input type="text" id="dlc-gr" placeholder="Gr." style="width:55px;text-align:center;">
-        </div>
-        <div style="display:flex;gap:8px;align-items:center;">
-          <input type="date" id="dlc-date" style="flex:1;background:white;">
-          <button onclick="dlcAdd()" style="background:var(--red);color:white;border:none;border-radius:8px;padding:10px 18px;font-size:20px;font-weight:700;">+</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="sec">
-    <div class="sec-h" style="justify-content:flex-start;gap:8px;">✅ À faire <span id="todo-badge" style="background:rgba(255,255,255,.25);border-radius:10px;padding:2px 8px;font-size:11px;">0</span></div>
-    <div class="sec-body">
-      <div id="todo-list"></div>
-      <div class="add-f">
-        <input type="text" id="todo-inp" placeholder="Ajouter une tâche...">
-        <button class="badd" id="todo-btn">+</button>
-      </div>
-    </div>
+    <div class="day-buttons" id="day-buttons"></div>
+    <div id="plan-out"></div>
   </div>
 </div>
 
-<div class="nav">
-  <button class="nb on" onclick="goPage('home',this)"><div class="ic">🏠</div>Accueil</button>
-  <button class="nb" onclick="goPage('tabac',this)"><div class="ic">🚬</div>Tabac</button>
-  <button class="nb" onclick="goPage('cmd',this)"><div class="ic">🛒</div>Commande</button>
-  <button class="nb" onclick="goPage('plan',this)"><div class="ic">📅</div>Planning</button>
-  <button class="nb" onclick="goPage('boul',this)"><div class="ic">🥐</div>Boulang.</button>
-</div>
-
-<div class="ov" id="recap-ov">
-  <div class="sheet">
-    <h3>📋 À corriger / ramener</h3>
-    <p>Ce qui manque dans les tiroirs</p>
-    <div id="recap-list"></div>
-    <button class="btn-full" onclick="document.getElementById('recap-ov').classList.remove('on')">Fermer</button>
+<!-- TODO -->
+<div class="sec">
+  <div class="todo-head">✅ À faire <span class="todo-count" id="todo-count">0</span></div>
+  <div class="todo-body">
+    <div id="todo-list"></div>
+    <div class="add-row">
+      <input id="todo-input" type="text" placeholder="Ajouter une tâche...">
+      <button id="todo-add">+</button>
+    </div>
   </div>
 </div>
 
 <script>
-/* ===================== UTILS ===================== */
-function G(id){ return document.getElementById(id); }
-function sv(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
-function ld(k,def){ try{ var x=localStorage.getItem(k); return x ? JSON.parse(x) : def; }catch(e){ return def; } }
+/* ========= utils ========= */
+const $ = id => document.getElementById(id);
+const LS = {
+  tabac:'mb_tabac_v4',
+  cmd:'mb_cmd_v4',
+  boul:'mb_boul_v4',
+  destroy:'mb_destroy_v4',
+  dlc:'mb_dlc_v4',
+  todo:'mb_todo_v4'
+};
+const save = (k,v)=>localStorage.setItem(k, JSON.stringify(v));
+const load = (k,d)=>{ try{ const x=localStorage.getItem(k); return x ? JSON.parse(x) : d; } catch(e){ return d; } };
+const months=['jan','fév','mar','avr','mai','jun','jul','aoû','sep','oct','nov','déc'];
+const daysFR=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+const daysShort=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+const dayKeys=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+const today0 = ()=>{ const d=new Date(); d.setHours(0,0,0,0); return d; };
+const toHH = h => { const hh=Math.floor(h); const mm=Math.round((h-hh)*60); return hh+'h'+(mm?('0'+mm).slice(-2):'00'); };
+const fmtDate = d => daysFR[d.getDay()]+' '+d.getDate()+' '+months[d.getMonth()]+' '+d.getFullYear();
+const fmtDM = s => s.slice(8,10)+'/'+s.slice(5,7);
 
-var MO=['jan','fév','mar','avr','mai','jun','jul','aoû','sep','oct','nov','déc'];
-var DS=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
-var DS2=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
-var DK=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
-
-function now0(){ var d=new Date(); d.setHours(0,0,0,0); return d; }
-function toHH(h){ var hh=Math.floor(h), mm=Math.round((h-hh)*60); return hh+'h'+(mm?('0'+mm).slice(-2):'00'); }
-function fmtFull(d){ return DS[d.getDay()]+' '+d.getDate()+' '+MO[d.getMonth()]+' '+d.getFullYear(); }
-function fmtDt(s){ return s.slice(8,10)+'/'+s.slice(5,7); }
-function sameD(a,b){ return a.getTime()===b.getTime(); }
-
-/* ===================== NAV ===================== */
-function goPage(name, btn){
-  document.querySelectorAll('.pg').forEach(function(p){ p.classList.remove('on'); });
-  document.querySelectorAll('.nb').forEach(function(b){ b.classList.remove('on'); });
-  G('pg-'+name).classList.add('on');
-  btn.classList.add('on');
-  if(name==='home') renderHome();
-  if(name==='tabac') renderTabac();
-  if(name==='cmd') renderCmd();
-  if(name==='plan') renderPlan();
-  if(name==='boul'){ renderBoul(); renderDLC(); renderTodo(); }
-}
-
-/* HEADER */
-function updHdr(){
-  var n=new Date();
-  G('hdr-d').innerHTML=DS2[n.getDay()]+'<br>'+n.getDate()+' '+MO[n.getMonth()];
-  G('home-date').textContent=fmtFull(n);
-}
-updHdr();
-setInterval(updHdr,60000);
-
-/* ===================== TABAC ===================== */
-var TIROIRS=[
-  {label:"Tiroir 1 — Classiques", sections:[
+/* ========= TABAC DATA ========= */
+const TIROIRS = [
+  {title:'Tiroir 1 — Classiques', sections:[
     {label:null, items:[
       {m:"Camel Filters", cap:4},
       {m:"Winston Classic", cap:5},
       {m:"Philip Morris FK", cap:5},
       {m:"Lucky Strike", cap:3},
       {m:"Marlboro Red", cap:5},
-      {m:"Marlboro Gold", cap:5},
+      {m:"Marlboro Gold", cap:5}
     ]}
   ]},
-  {label:"Tiroir 2 — Variétés", sections:[
+  {title:'Tiroir 2 — Variétés', sections:[
     {label:"100s", items:[
       {m:"Marlboro Red 100s", cap:1},
       {m:"Lucky Strike Red Longues 100s", cap:1},
       {m:"Winston Classic 100s", cap:1},
       {m:"Camel Filters 100s", cap:1},
-      {m:"Philip Morris Filter Kings 100s", cap:1},
+      {m:"Philip Morris Filter Kings 100s", cap:1}
     ]},
     {label:"Philip Morris", items:[
       {m:"Philip Morris Green", cap:1},
       {m:"Philip Morris White Silver", cap:1},
-      {m:"Philip Morris Bleue", cap:1},
+      {m:"Philip Morris Bleue", cap:1}
     ]},
     {label:"Camel", items:[
       {m:"Camel Essential Blue", cap:1},
       {m:"Camel Essential", cap:1},
       {m:"Camel Blue", cap:1},
-      {m:"Camel Fresh", cap:1},
+      {m:"Camel Fresh", cap:1}
     ]},
     {label:"Winston", items:[
       {m:"Winston Blue", cap:1},
-      {m:"Winston Fresh", cap:1},
+      {m:"Winston Fresh", cap:1}
     ]},
     {label:"Peter Stuyvesant", items:[
       {m:"Peter Stuyvesant Rouge", cap:1},
-      {m:"Peter Stuyvesant Bleu", cap:1},
+      {m:"Peter Stuyvesant Bleu", cap:1}
     ]},
     {label:"Lucky Strike", items:[
       {m:"Lucky Strike Bleu", cap:1},
-      {m:"Lucky Strike Ice", cap:1},
+      {m:"Lucky Strike Ice", cap:1}
     ]},
     {label:"Gauloises", items:[
       {m:"Gauloises Blondes Rouge", cap:1},
-      {m:"Gauloises Blondes Bleu", cap:1},
+      {m:"Gauloises Blondes Bleu", cap:1}
     ]},
-    {label:"Marlboro", items:[{m:"Marlboro Crafted Gold", cap:1}]},
+    {label:"Marlboro", items:[
+      {m:"Marlboro Crafted Gold", cap:1}
+    ]},
     {label:"Divers", items:[
       {m:"News Rouge", cap:1},
       {m:"Rothmans", cap:1},
       {m:"L&M International Red", cap:1},
-      {m:"JPS", cap:1},
-    ]},
+      {m:"JPS", cap:1}
+    ]}
   ]},
-  {label:"Tiroir 3 — Slims / Vogue", sections:[
+  {title:'Tiroir 3 — Slims / Vogue', sections:[
     {label:"Vogue", items:[
       {m:"Vogue L'Originale Bleue", cap:2},
       {m:"Vogue L'Essentielle Bleue", cap:3},
       {m:"Vogue L'Originale Verte", cap:2},
-      {m:"Vogue L'Originale Pastel", cap:2},
+      {m:"Vogue L'Originale Pastel", cap:2}
     ]},
     {label:"Slims", items:[
       {m:"Winston Slims", cap:3},
       {m:"Marlboro Gold Slims", cap:2},
-      {m:"Lucky Strike Bleu Longues", cap:1},
-    ]},
+      {m:"Lucky Strike Bleu Longues", cap:1}
+    ]}
   ]},
-  {label:"Hors Tiroir — XL / XXL", sections:[
+  {title:'Hors Tiroir — XL / XXL', sections:[
     {label:"XL", items:[
       {m:"Camel XL", cap:1},
       {m:"Marlboro XL Classic Red", cap:2},
       {m:"Marlboro XL Classic Gold", cap:1},
       {m:"Philip Morris FK XL", cap:1},
-      {m:"Chesterfield Original", cap:1},
+      {m:"Chesterfield Original", cap:1}
     ]},
     {label:"XXL", items:[
       {m:"Camel XXL", cap:2},
       {m:"Marlboro XXL Classic Red", cap:2},
       {m:"Marlboro XXL Classic Gold", cap:2},
       {m:"Philip Morris XXL", cap:2},
-      {m:"Winston XXL Classic", cap:2},
-    ]},
+      {m:"Winston XXL Classic", cap:2}
+    ]}
   ]},
-  {label:"Hors Tiroir — Cigares & Autres", sections:[
+  {title:'Hors Tiroir — Cigares & Autres', sections:[
     {label:"Cigares", items:[
       {m:"Camel Cigarillos Capsule", cap:1},
       {m:"Clubmaster Filter Red", cap:1},
       {m:"Moods Filter", cap:1},
-      {m:"Winston Cigarillos Blue", cap:1},
+      {m:"Winston Cigarillos Blue", cap:1}
     ]},
     {label:"Tabac à chauffer", items:[
       {m:"Heets Sienna", cap:1},
       {m:"Heets Teak", cap:1},
-      {m:"Heets Turquoise", cap:1},
+      {m:"Heets Turquoise", cap:1}
     ]},
     {label:"Hors tiroir", items:[
       {m:"Dunhill Bleu", cap:1},
       {m:"Dunhill Rouge", cap:1},
       {m:"Corset Lilas", cap:1},
       {m:"BH Gold", cap:1},
-      {m:"LM International Blue", cap:1},
-    ]},
-  ]},
+      {m:"LM International Blue", cap:1}
+    ]}
+  ]}
 ];
 
-// Réserve tabac = ce qui est en magasin mais pas dans les 3 tiroirs
-var RESERVE=[
-  {m:"1637 Basque Blond EN30g", place:"Réserve"},
-  {m:"1637 Blond Blague EN30g", place:"Réserve"},
-  {m:"Amsterdamer Original 30g", place:"Réserve"},
-  {m:"Camel Blague EN30g", place:"Réserve"},
-  {m:"Camel S A Tuber Pot 30g", place:"Réserve"},
-  {m:"Drum Bleu Blague EN30g", place:"Réserve"},
-  {m:"Fergreen Virginia Green 30g", place:"Réserve"},
-  {m:"Fleur du Pays Blague EN30g", place:"Réserve"},
-  {m:"Lucky Strike Original Blague EN30g", place:"Réserve"},
-  {m:"Makla Ifrikia EN20g", place:"Réserve"},
-  {m:"Marlboro Crafted Select Pipe 30g", place:"Réserve"},
-  {m:"Marlboro Red Tobacco Rouler 30g", place:"Réserve"},
-  {m:"Philip Morris Cigarette Rouler 30g", place:"Réserve"},
-  {m:"Philip Morris S Tobacco Pot 30g", place:"Réserve"},
-  {m:"Pueblo Blue EN30g", place:"Réserve"},
-  {m:"Pueblo EN30g", place:"Réserve"},
-  {m:"Winston A Tuber S Pot 30g", place:"Réserve"},
-  {m:"Winston Classic Blague EN30g", place:"Réserve"},
-  {m:"Heets Sienna Selection EN20", place:"Réserve"},
-  {m:"Heets Teak Selection EN20", place:"Réserve"},
-  {m:"Heets Turquoise Selection EN20", place:"Réserve"},
-  {m:"BH Gold EN20", place:"Réserve"},
-  {m:"BH Silver EN20", place:"Réserve"},
-  {m:"BH Platinum EN20", place:"Réserve"},
-  {m:"Chesterfield Original Blue KS", place:"Réserve"},
-  {m:"Chesterfield Original Red KS", place:"Réserve"},
-  {m:"Corset Lilas EN20", place:"Réserve"},
-  {m:"Dunhill Bleu EN20", place:"Réserve"},
-  {m:"Dunhill International Rouge EN20", place:"Réserve"},
-  {m:"Dunhill Rouge EN20", place:"Réserve"},
-  {m:"LM International Blue EN20", place:"Réserve"},
-  {m:"LM International Red EN20", place:"Réserve"},
-  {m:"News Bleu EN20", place:"Réserve"},
-  {m:"Peter Stuyvesant Rouge EN20", place:"Réserve"},
-  {m:"Vogue Gold EN20", place:"Réserve"},
-  {m:"Vogue Lessentielle Bleue EN20", place:"Réserve"},
-  {m:"Vogue Originale Verte Ice EN20", place:"Réserve"}
+const RESERVE = [
+  {m:"1637 Basque Blond EN30g", p:"Réserve"},
+  {m:"1637 Blond Blague EN30g", p:"Réserve"},
+  {m:"Amsterdamer Original 30g", p:"Réserve"},
+  {m:"Camel Blague EN30g", p:"Réserve"},
+  {m:"Camel S A Tuber Pot 30g", p:"Réserve"},
+  {m:"Drum Bleu Blague EN30g", p:"Réserve"},
+  {m:"Fergreen Virginia Green 30g", p:"Réserve"},
+  {m:"Fleur du Pays Blague EN30g", p:"Réserve"},
+  {m:"Lucky Strike Original Blague EN30g", p:"Réserve"},
+  {m:"Makla Ifrikia EN20g", p:"Réserve"},
+  {m:"Marlboro Crafted Select Pipe 30g", p:"Réserve"},
+  {m:"Marlboro Red Tobacco à Rouler 30g", p:"Réserve"},
+  {m:"Philip Morris Cigarette à Rouler 30g", p:"Réserve"},
+  {m:"Philip Morris S Tobacco Pot 30g", p:"Réserve"},
+  {m:"Pueblo Blue EN30g", p:"Réserve"},
+  {m:"Pueblo EN30g", p:"Réserve"},
+  {m:"Winston A Tuber S Pot 30g", p:"Réserve"},
+  {m:"Winston Classic Blague EN30g", p:"Réserve"},
+  {m:"Heets Sienna Selection EN20", p:"Réserve"},
+  {m:"Heets Teak Selection EN20", p:"Réserve"},
+  {m:"Heets Turquoise Selection EN20", p:"Réserve"},
+  {m:"BH Gold EN20", p:"Réserve"},
+  {m:"BH Silver EN20", p:"Réserve"},
+  {m:"BH Platinum EN20", p:"Réserve"},
+  {m:"Chesterfield Original Blue KS", p:"Réserve"},
+  {m:"Chesterfield Original Red KS", p:"Réserve"},
+  {m:"Corset Lilas EN20", p:"Réserve"},
+  {m:"Dunhill Bleu EN20", p:"Réserve"},
+  {m:"Dunhill International Rouge EN20", p:"Réserve"},
+  {m:"Dunhill Rouge EN20", p:"Réserve"},
+  {m:"LM International Blue EN20", p:"Réserve"},
+  {m:"LM International Red EN20", p:"Réserve"},
+  {m:"News Bleu EN20", p:"Réserve"},
+  {m:"Peter Stuyvesant Rouge EN20", p:"Réserve"},
+  {m:"Vogue Gold EN20", p:"Réserve"},
+  {m:"Vogue Lessentielle Bleue EN20", p:"Réserve"},
+  {m:"Vogue Originale Verte Ice EN20", p:"Réserve"}
 ];
 
-// Stock tabac
-var STOCK=ld('mb_stk3',{});
-TIROIRS.forEach(function(t){
-  t.sections.forEach(function(s){
-    s.items.forEach(function(item){
-      if(STOCK[item.m]===undefined) STOCK[item.m]=item.cap;
-    });
-  });
-});
+let STOCK = load(LS.tabac, {});
+TIROIRS.forEach(t=>t.sections.forEach(s=>s.items.forEach(it=>{
+  if(STOCK[it.m]===undefined) STOCK[it.m]=it.cap;
+})));
 
-function getS(m){ return STOCK[m]!==undefined ? STOCK[m] : 0; }
-function setS(m,v){ STOCK[m]=Math.max(0,v); sv('mb_stk3',STOCK); }
+function tabacSave(){ save(LS.tabac, STOCK); }
+function getS(m){ return STOCK[m] ?? 0; }
+function setS(m,v){ STOCK[m]=Math.max(0,v); tabacSave(); }
 
-function stC(c,cap){
+function stClass(c,cap){
   if(c===0) return 'bad';
   if(c<cap) return 'warn';
   if(c===cap) return 'ok';
   return 'over';
 }
-function stL(c,cap){
+function stLabel(c,cap){
   if(c===0) return '🔴 Vide';
   if(c<cap) return '⚠️ −'+(cap-c);
   if(c===cap) return '✅ OK';
   return '⬆️ +'+(c-cap);
 }
 
-function tChg(enc,cap,delta){
-  var m=decodeURIComponent(enc);
-  setS(m,getS(m)+delta);
-  renderTabac(); renderHome(); if(G('srch').value.trim()) doSearch();
-}
-
-function addToCmd(nom, qty, cat){
-  if(!qty || qty<=0) return;
-  CMD_DATA.unshift({nom:nom, qty:qty, cat:cat||'tabac', statut:0});
-  sv('mb_cmd2',CMD_DATA);
-  renderCmd(); renderHome();
-}
-
-function cmdFromTabac(enc,cap,c){
-  var m=decodeURIComponent(enc);
-  var manque=cap-c;
-  if(manque<=0) return;
-  addToCmd(m, manque, 'tabac');
-}
-
-function resetT(ti){
-  if(!confirm('Remettre tout à 0 pour ce tiroir ?')) return;
-  TIROIRS[ti].sections.forEach(function(s){ s.items.forEach(function(item){ STOCK[item.m]=0; }); });
-  sv('mb_stk3',STOCK);
-  renderTabac(); renderHome();
+function changeStock(enc, cap, delta){
+  const m=decodeURIComponent(enc);
+  setS(m, getS(m)+delta);
+  renderTabac();
+  renderHome();
+  if($('tabac-search').value.trim()) searchTabac();
 }
 
 function resetAllTabac(){
   if(!confirm('Remettre tout le tabac à 0 ?')) return;
-  TIROIRS.forEach(function(t){ t.sections.forEach(function(s){ s.items.forEach(function(item){ STOCK[item.m]=0; }); }); });
-  sv('mb_stk3',STOCK);
-  renderTabac(); renderHome(); doSearch();
+  TIROIRS.forEach(t=>t.sections.forEach(s=>s.items.forEach(it=>STOCK[it.m]=0)));
+  tabacSave();
+  renderTabac();
+  renderHome();
+  searchTabac();
 }
 
-function renderTabac(){
-  TIROIRS.forEach(function(t,ti){
-    var tbl=G('tb'+ti);
-    if(!tbl) return;
-    var h='<thead><tr><th style="min-width:110px">Marque</th><th style="width:120px;text-align:center">Stock</th><th style="width:70px;text-align:center">Statut</th></tr></thead><tbody>';
-    t.sections.forEach(function(s){
-      if(s.label) h+='<tr class="sep"><td colspan="3">'+s.label+'</td></tr>';
-      s.items.forEach(function(item){
-        var c=getS(item.m), sc=stC(c,item.cap), me=encodeURIComponent(item.m);
-        h+='<tr><td class="tn">'+item.m+'</td>';
-        h+='<td class="tc"><div class="ctrl">';
-        h+='<button class="cb" onclick="tChg(\''+me+'\','+item.cap+',-1)">−</button>';
-        h+='<span class="cn '+sc+'">'+c+'</span>';
-        h+='<button class="cb" onclick="tChg(\''+me+'\','+item.cap+',1)">+</button>';
-        h+='</div>';
-        if(c<item.cap) h+=' <button class="btn-cmd" onclick="cmdFromTabac(\''+me+'\','+item.cap+','+c+')">🛒 Commander</button>';
-        h+='</td>';
-        h+='<td class="ts '+sc+'">'+stL(c,item.cap)+'</td></tr>';
-      });
-    });
-    h+='</tbody>';
-    tbl.innerHTML=h;
-
-    var al=[], ov=[];
-    t.sections.forEach(function(s){
-      s.items.forEach(function(item){
-        var c=getS(item.m);
-        if(c<item.cap) al.push(item.m+' ('+c+'/'+item.cap+')');
-        if(c>item.cap) ov.push(item.m);
-      });
-    });
-    var el=G('al'+ti);
-    var msgs=[];
-    if(al.length) msgs.push('📦 Manque : '+al.join(' · '));
-    if(ov.length) msgs.push('⬆️ Trop : '+ov.join(', '));
-    if(msgs.length){ el.style.display='block'; el.innerHTML=msgs.join('<br>'); }
-    else el.style.display='none';
-  });
-
-  // Réserve
-  var rh='<thead><tr><th style="min-width:110px">Produit</th><th style="width:110px;text-align:center">Emplacement</th><th style="width:90px;text-align:center">Action</th></tr></thead><tbody>';
-  RESERVE.forEach(function(r,idx){
-    rh+='<tr><td class="tn">'+r.m+'</td><td style="text-align:center;font-size:11px;color:#666;">'+r.place+'</td>';
-    rh+='<td style="text-align:center;"><button class="btn-cmd" onclick="cmdReserve('+idx+')">🛒 Commander</button></td></tr>';
-  });
-  rh+='</tbody>';
-  G('reserve-table').innerHTML=rh;
+function resetDrawer(idx){
+  if(!confirm('Remettre ce tiroir à 0 ?')) return;
+  TIROIRS[idx].sections.forEach(s=>s.items.forEach(it=>STOCK[it.m]=0));
+  tabacSave();
+  renderTabac();
+  renderHome();
+  searchTabac();
 }
 
-function cmdReserve(i){
-  var nom=RESERVE[i].m;
-  var q=prompt('Quantité à commander pour "'+nom+'" ?', '1');
+function addCommand(nom, qty, cat){
+  if(!qty || qty<=0) return;
+  const ex = CMD.find(x => x.nom===nom && x.cat===cat && x.statut<2);
+  if(ex) ex.qty += qty;
+  else CMD.unshift({nom, qty, cat, statut:0});
+  cmdSave();
+  renderCmd();
+  renderHome();
+}
+
+function addFromStock(enc, cap, c){
+  const m=decodeURIComponent(enc);
+  const manque=cap-c;
+  if(manque<=0) return;
+  addCommand(m, manque, 'tabac');
+}
+
+function addFromReserve(enc){
+  const m=decodeURIComponent(enc);
+  const q=prompt('Quantité à commander pour "'+m+'" ?', '1');
   if(q===null) return;
-  q=parseInt(q,10);
-  if(!q || q<=0) return;
-  addToCmd(nom,q,'tabac');
+  const qty=parseInt(q,10);
+  if(!qty || qty<=0) return;
+  addCommand(m, qty, 'tabac');
 }
 
-function doSearch(){
-  var q=G('srch').value.trim().toLowerCase();
-  var box=G('srch-results');
+function searchTabac(){
+  const q=$('tabac-search').value.trim().toLowerCase();
+  const box=$('search-results');
   if(!q){ box.style.display='none'; box.innerHTML=''; return; }
-
-  var res=[];
-  TIROIRS.forEach(function(t){
-    t.sections.forEach(function(s){
-      s.items.forEach(function(item){
-        var place=t.label + (s.label ? ' · '+s.label : '');
-        if(item.m.toLowerCase().indexOf(q)>=0 || place.toLowerCase().indexOf(q)>=0){
-          res.push({item:item, place:place});
-        }
-      });
-    });
+  const res=[];
+  TIROIRS.forEach(t=>t.sections.forEach(s=>s.items.forEach(it=>{
+    const place=t.title + (s.label ? ' · '+s.label : '');
+    if(it.m.toLowerCase().includes(q) || place.toLowerCase().includes(q)) res.push({it, place});
+  })));
+  RESERVE.forEach(r=>{
+    if(r.m.toLowerCase().includes(q)) res.push({reserve:true, m:r.m, p:r.p});
   });
-  RESERVE.forEach(function(r){
-    if(r.m.toLowerCase().indexOf(q)>=0) res.push({reserve:true, item:{m:r.m,cap:0}, place:r.place});
-  });
-
-  if(!res.length){ box.style.display='block'; box.innerHTML='<div class="empty-b">Aucun résultat</div>'; return; }
+  if(!res.length){ box.style.display='block'; box.innerHTML='<div class="sec-b"><div class="pad"><div class="muted">Aucun résultat</div></div></div>'; return; }
   box.style.display='block';
-  var h='<table><thead><tr><th>Marque</th><th style="width:120px;text-align:center">Emplacement</th><th style="width:90px;text-align:center">Action</th></tr></thead><tbody>';
-  res.forEach(function(r){
+  let h='<div class="sec-b"><table><thead><tr><th>Marque</th><th style="width:130px;text-align:center">Emplacement</th><th style="width:92px;text-align:center">Action</th></tr></thead><tbody>';
+  res.forEach(r=>{
     if(r.reserve){
-      h+='<tr><td class="tn">'+r.item.m+'</td><td style="text-align:center;font-size:11px;color:#666;">'+r.place+'</td>';
-      h+='<td style="text-align:center;"><button class="btn-cmd" onclick="cmdReserveByName(\''+encodeURIComponent(r.item.m)+'\')">🛒 Commander</button></td></tr>';
+      h+='<tr><td class="tn">'+r.m+'</td><td style="text-align:center;font-size:11px;color:#666">'+r.p+'</td><td style="text-align:center"><button class="btn-cmd" onclick="addFromReserve(\''+encodeURIComponent(r.m)+'\')">Commander</button></td></tr>';
     }else{
-      var item=r.item, c=getS(item.m), sc=stC(c,item.cap), me=encodeURIComponent(item.m);
-      h+='<tr><td class="tn">'+item.m+'</td><td style="text-align:center;font-size:11px;color:#666;">'+r.place+'</td>';
-      h+='<td style="text-align:center;"><div class="ctrl">';
-      h+='<button class="cb" onclick="tChg(\''+me+'\','+item.cap+',-1)">−</button>';
-      h+='<span class="cn '+sc+'">'+c+'</span>';
-      h+='<button class="cb" onclick="tChg(\''+me+'\','+item.cap+',1)">+</button>';
-      h+='</div>';
-      if(c<item.cap) h+=' <button class="btn-cmd" onclick="cmdFromTabac(\''+me+'\','+item.cap+','+c+')">🛒</button>';
+      const c=getS(r.it.m), sc=stClass(c, r.it.cap), enc=encodeURIComponent(r.it.m);
+      h+='<tr><td class="tn">'+r.it.m+'</td><td style="text-align:center;font-size:11px;color:#666">'+r.place+'</td><td style="text-align:center">';
+      h+='<div class="ctrl"><button class="cb" onclick="changeStock(\''+enc+'\','+r.it.cap+',-1)">−</button><span class="cn '+sc+'">'+c+'</span><button class="cb" onclick="changeStock(\''+enc+'\','+r.it.cap+',1)">+</button></div>';
+      if(c<r.it.cap) h+=' <button class="btn-cmd" onclick="addFromStock(\''+enc+'\','+r.it.cap+','+c+')">Commander</button>';
       h+='</td></tr>';
     }
   });
-  h+='</tbody></table>';
+  h+='</tbody></table></div>';
   box.innerHTML=h;
 }
 
-function cmdReserveByName(enc){
-  var nom=decodeURIComponent(enc);
-  var q=prompt('Quantité à commander pour "'+nom+'" ?', '1');
-  if(q===null) return;
-  q=parseInt(q,10);
-  if(!q || q<=0) return;
-  addToCmd(nom,q,'tabac');
-}
-
-function openRecap(){
-  var al=[];
-  TIROIRS.forEach(function(t){
-    t.sections.forEach(function(s){
-      s.items.forEach(function(item){
-        var c=getS(item.m);
-        if(c<item.cap) al.push({m:item.m, manque:item.cap-c, cap:item.cap, c:c});
+function renderTabac(){
+  let out='';
+  TIROIRS.forEach((t,ti)=>{
+    out+='<div class="sec">';
+    out+='<div class="sec-h"><span>'+t.title+'</span><button class="btn-mini" onclick="resetDrawer('+ti+')">Vider</button></div>';
+    out+='<div class="sec-b"><table><thead><tr><th>Marque</th><th style="width:140px;text-align:center">Stock</th><th style="width:72px;text-align:center">Statut</th></tr></thead><tbody>';
+    t.sections.forEach(s=>{
+      if(s.label) out+='<tr class="sep"><td colspan="3">'+s.label+'</td></tr>';
+      s.items.forEach(it=>{
+        const c=getS(it.m), sc=stClass(c, it.cap), enc=encodeURIComponent(it.m);
+        out+='<tr><td class="tn">'+it.m+'</td><td class="tc"><div class="ctrl"><button class="cb" onclick="changeStock(\''+enc+'\','+it.cap+',-1)">−</button><span class="cn '+sc+'">'+c+'</span><button class="cb" onclick="changeStock(\''+enc+'\','+it.cap+',1)">+</button></div>';
+        if(c<it.cap) out+=' <button class="btn-cmd" onclick="addFromStock(\''+enc+'\','+it.cap+','+c+')">Commander</button>';
+        out+='</td><td class="ts '+sc+'">'+stLabel(c,it.cap)+'</td></tr>';
       });
     });
+    let alerts=[], overs=[];
+    t.sections.forEach(s=>s.items.forEach(it=>{
+      const c=getS(it.m);
+      if(c<it.cap) alerts.push(it.m+' ('+c+'/'+it.cap+')');
+      if(c>it.cap) overs.push(it.m);
+    }));
+    out+='</tbody></table>';
+    if(alerts.length || overs.length){
+      let msg='';
+      if(alerts.length) msg+='Manque : '+alerts.join(' · ');
+      if(overs.length) msg+=(msg?'<br>':'')+'Trop : '+overs.join(', ');
+      out+='<div class="pad" style="padding-top:8px"><div class="badge orange" style="border-radius:8px">'+msg+'</div></div>';
+    }
+    out+='</div></div>';
   });
-  var h='';
-  if(!al.length) h='<div style="text-align:center;color:#16A34A;font-weight:700;padding:24px;font-size:15px;">✅ Tout est OK !</div>';
-  else al.forEach(function(a){ h+='<div class="re-row"><span class="re-n">'+a.m+'</span><span class="re-q">'+a.c+'/'+a.cap+' — +'+a.manque+'</span></div>'; });
-  G('recap-list').innerHTML=h;
-  G('recap-ov').classList.add('on');
-}
-renderTabac();
+  $('tabac-sections').innerHTML=out;
 
-/* ===================== COMMANDE ===================== */
-var CMD_DATA=ld('mb_cmd2',[]);
-var curCat='all';
-function setCat(cat,btn){
-  curCat=cat;
-  document.querySelectorAll('.cat-tab').forEach(function(b){ b.classList.remove('on'); });
+  let rh='<table><thead><tr><th>Produit</th><th style="width:120px;text-align:center">Emplacement</th><th style="width:88px;text-align:center">Action</th></tr></thead><tbody>';
+  RESERVE.forEach((r,i)=>{
+    rh+='<tr><td class="tn">'+r.m+'</td><td style="text-align:center;font-size:11px;color:#666">'+r.p+'</td><td style="text-align:center"><button class="btn-cmd" onclick="addFromReserve(\''+encodeURIComponent(r.m)+'\')">Commander</button></td></tr>';
+  });
+  rh+='</tbody></table>';
+  $('reserve-list').innerHTML=rh;
+}
+
+/* ========= COMMANDES ========= */
+let CMD = load(LS.cmd, []);
+let activeCat='all';
+
+function cmdSave(){ save(LS.cmd, CMD); }
+function setCmdCat(cat, btn){
+  activeCat=cat;
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   renderCmd();
 }
-function cmdAdd(){
-  var nom=G('cmd-nom').value.trim();
-  var qty=parseInt(G('cmd-qty').value,10)||1;
-  var cat=G('cmd-cat').value;
-  if(!nom){ alert('Entrez un nom'); return; }
-  CMD_DATA.unshift({nom:nom, qty:qty, cat:cat, statut:0});
-  G('cmd-nom').value=''; G('cmd-qty').value='';
-  sv('mb_cmd2',CMD_DATA);
-  renderCmd(); renderHome();
+function addManualCmd(){
+  const nom=$('cmd-nom').value.trim();
+  const qty=parseInt($('cmd-qty').value,10)||1;
+  const cat=$('cmd-cat').value;
+  if(!nom) return alert('Entrez un nom');
+  addCommand(nom, qty, cat);
+  $('cmd-nom').value='';
+  $('cmd-qty').value='';
 }
 function cmdNext(i){
-  CMD_DATA[i].statut=Math.min(2, CMD_DATA[i].statut+1);
-  sv('mb_cmd2',CMD_DATA);
-  renderCmd(); renderHome();
+  CMD[i].statut=Math.min(2, CMD[i].statut+1);
+  cmdSave();
+  renderCmd();
+  renderHome();
 }
 function cmdDel(i){
-  CMD_DATA.splice(i,1);
-  sv('mb_cmd2',CMD_DATA);
-  renderCmd(); renderHome();
+  CMD.splice(i,1);
+  cmdSave();
+  renderCmd();
+  renderHome();
 }
 function renderCmd(){
-  var filtered=curCat==='all' ? CMD_DATA : CMD_DATA.filter(function(c){ return c.cat===curCat; });
-  var pending=CMD_DATA.filter(function(c){ return c.statut<2; }).length;
-  G('cmd-badge').textContent=pending;
-  var SLBL=['🔴 À commander','🟡 Commandé','✅ Reçu'];
-  var SCLS=['s0','s1','s2'];
+  const tabs=[
+    {k:'all', l:'Tout'},
+    {k:'tabac', l:'🚬 Tabac'},
+    {k:'alim', l:'🥐 Alimentaire'},
+    {k:'autre', l:'📦 Autre'}
+  ];
+  $('cmd-tabs').innerHTML=tabs.map(t=>'<button class="tab'+(activeCat===t.k?' on':'')+'" onclick="setCmdCat(\''+t.k+'\',this)">'+t.l+'</button>').join('');
+  const pending=CMD.filter(c=>c.statut<2).length;
+  $('cmd-badge').textContent=pending;
 
-  if(!filtered.length){ G('cmd-list').innerHTML='<div class="empty-b">Aucun produit — ajoutez ci-dessous</div>'; return; }
+  const filtered=activeCat==='all' ? CMD : CMD.filter(c=>c.cat===activeCat);
+  const labels=['🔴 À commander','🟡 Commandé','✅ Reçu'];
+  const cls=['s0','s1','s2'];
 
-  var h='';
-  filtered.forEach(function(item){
-    var i=CMD_DATA.indexOf(item);
+  if(!filtered.length){
+    $('cmd-list').innerHTML='<div class="pad muted">Aucun produit</div>';
+    return;
+  }
+
+  let h='';
+  filtered.forEach(item=>{
+    const i=CMD.indexOf(item);
     h+='<div class="cmd-item">';
-    h+='<div style="flex:1;"><div class="cmd-nom">'+item.nom+'</div><div class="cmd-qty">×'+item.qty+' · '+(item.cat==='tabac'?'🚬':item.cat==='alim'?'🥐':'📦')+'</div></div>';
-    h+='<button class="cmd-statut '+SCLS[item.statut]+'" onclick="cmdNext('+i+')">'+SLBL[item.statut]+'</button>';
+    h+='<div class="cmd-main"><div class="cmd-name">'+item.nom+'</div><div class="cmd-sub">×'+item.qty+' · '+(item.cat==='tabac'?'🚬':item.cat==='alim'?'🥐':'📦')+'</div></div>';
+    h+='<button class="cmd-stat '+cls[item.statut]+'" onclick="cmdNext('+i+')">'+labels[item.statut]+'</button>';
     h+='<button class="cmd-del" onclick="cmdDel('+i+')">✕</button>';
     h+='</div>';
   });
-  G('cmd-list').innerHTML=h;
-}
-renderCmd();
-
-/* ===================== PLANNING ===================== */
-/* Semaine basée sur les horaires que tu as donnés */
-var PLAN={
-  lundi:    {bf:[11,16.5], bd:[6,13], d:[16,20.5], k:[16.5,20.5]},
-  mardi:    {bf:[16.5,20.5], bd:[6,13], d:[11.5,15.5], k:[17,20.5]},
-  mercredi: {bf:[10,15.5], bd:[6,13], d:[16,20.5], k:[16,20.5], y:[9,14]},
-  jeudi:    {bf:[14,20.5], bd:[6,13], d:[14.5,20.5], k:[11,14], y:[10,14]},
-  vendredi: {bf:[16.5,20.5], bd:[6,13], d:[17,20.5], k:[12,14], ba:[11.5,17]},
-  samedi:   {ba:[13,20], bd:[11,14], d:[16,20], bf:[7.5,12.5]},
-  dimanche: {}
-};
-var EMP=[
-  {id:'bf',nom:'Bachir Faye',cls:'cbf',toi:true},
-  {id:'bd',nom:'Badroudine', cls:'cbd'},
-  {id:'d', nom:'Dame',       cls:'cd'},
-  {id:'k', nom:'Karim',      cls:'ck'},
-  {id:'ba',nom:'Baba',       cls:'cba'},
-  {id:'y', nom:'Yacine',     cls:'cya'}
-];
-var ECOL={bf:'#E8192C',bd:'#3b82f6',d:'#8b5cf6',k:'#22c55e',ba:'#f97316',y:'#06b6d4'};
-var wkOff=0, selDay=new Date().getDay();
-
-function getWeek(off){
-  var n=new Date(), dow=n.getDay();
-  var mon=new Date(n);
-  mon.setDate(n.getDate()-(dow===0?6:dow-1)+off*7);
-  mon.setHours(0,0,0,0);
-  var days=[]; for(var i=0;i<7;i++){ var d=new Date(mon); d.setDate(mon.getDate()+i); days.push(d); }
-  return days;
-}
-function wkChange(dir){ wkOff+=dir; renderPlan(); }
-function selPillDay(idx){
-  selDay=idx;
-  document.querySelectorAll('.dpill').forEach(function(p,i){ p.classList.toggle('on',i===idx); });
-  renderPlan();
+  $('cmd-list').innerHTML=h;
 }
 
-function renderPlan(){
-  var dates=getWeek(wkOff);
-  G('wk-lbl').textContent=dates[0].getDate()+' '+MO[dates[0].getMonth()]+' – '+dates[6].getDate()+' '+MO[dates[6].getMonth()]+' '+dates[6].getFullYear();
-  var h='';
-  dates.forEach(function(d,i){
-    var isN=sameD(d,now0()), isSel=i===selDay;
-    h+='<div class="dpill'+(isSel?' on':'')+(isN?' tj':'')+'" onclick="selPillDay('+i+')"><div class="dp">'+DS2[i]+'</div><div class="dd">'+d.getDate()+'</div></div>';
-  });
-  G('days-row').innerHTML=h;
-  renderDayPlan(dates[selDay]);
-}
-function renderDayPlan(date){
-  var key=DK[date.getDay()];
-  var dp=PLAN[key]||{};
-  var pres=EMP.filter(function(e){ return !!dp[e.id]; });
-
-  var out='';
-  out+='<div class="vertical-day">';
-  out+='<div class="vh">'+DS[date.getDay()]+' '+date.getDate()+' '+MO[date.getMonth()]+'</div>';
-  if(pres.length){
-    pres.forEach(function(emp){
-      var sh=dp[emp.id];
-      out+='<div class="vr"><div class="vn">'+emp.nom+(emp.toi?'<span class="toi-tag">TOI</span>':'')+'</div><div class="vhours">'+toHH(sh[0])+' → '+toHH(sh[1])+'</div></div>';
-    });
-  } else {
-    out+='<div class="empty-b">Personne ce jour</div>';
-  }
-  out+='</div>';
-
-  out+='<div class="team-box">';
-  if(pres.length){
-    pres.forEach(function(emp){
-      var sh=dp[emp.id];
-      out+='<div class="team-r"><div class="tav '+emp.cls+'" style="background:'+ECOL[emp.id]+'">'+emp.nom[0]+'</div>';
-      out+='<div class="team-info"><div class="team-nom">'+emp.nom+(emp.toi?'<span class="toi-tag">TOI</span>':'')+'</div>';
-      out+='<div class="team-hrs">'+toHH(sh[0])+' → '+toHH(sh[1])+'</div></div>';
-      out+='<div class="team-st">'+toHH(sh[0])+'</div></div>';
-    });
-  } else {
-    out+='<div class="empty-b">Personne ce jour</div>';
-  }
-  out+='</div>';
-
-  out+='<div class="hrs-box"><div class="hrs-t">Total heures semaine</div>';
-  EMP.forEach(function(emp){
-    var tot=0;
-    Object.keys(PLAN).forEach(function(k){ var s=PLAN[k][emp.id]; if(s) tot+=s[1]-s[0]; });
-    if(tot>0) out+='<div class="hrs-r"><span class="hrs-n">'+emp.nom+'</span><span class="hrs-v">'+tot.toFixed(1)+'h</span></div>';
-  });
-  out+='</div>';
-  G('plan-out').innerHTML=out;
-}
-renderPlan();
-
-/* ===================== BOULANGERIE ===================== */
-var BOUL_DEF=[
-  {nom:"Croissant",        emoji:"🥐", std:6, kind:"daily"},
-  {nom:"Pain choco",       emoji:"🍫", std:8, kind:"daily"},
-  {nom:"Pain raisins",     emoji:"🍇", std:4, kind:"daily"},
-  {nom:"Cookie blanc",     emoji:"🍪", std:2, kind:"dated"},
-  {nom:"Cookie noir",      emoji:"🍪", std:2, kind:"dated"},
-  {nom:"Donut sucre",      emoji:"🍩", std:2, kind:"dated"},
-  {nom:"Donut choco",      emoji:"🍩", std:2, kind:"dated"},
-  {nom:"Muffin choco",     emoji:"🧁", std:2, kind:"dated"},
+/* ========= BOULANGERIE ========= */
+const BOUL_DEF = [
+  {nom:"Croissant", emoji:"🥐", std:6, kind:"daily"},
+  {nom:"Pain choco", emoji:"🍫", std:8, kind:"daily"},
+  {nom:"Pain raisin", emoji:"🍇", std:4, kind:"daily"},
+  {nom:"Cookie blanc", emoji:"🍪", std:2, kind:"dated"},
+  {nom:"Cookie noir", emoji:"🍪", std:2, kind:"dated"},
+  {nom:"Donut sucre", emoji:"🍩", std:2, kind:"dated"},
+  {nom:"Donut choco", emoji:"🍩", std:2, kind:"dated"},
+  {nom:"Muffin choco", emoji:"🧁", std:2, kind:"dated"},
   {nom:"Muffin myrtilles", emoji:"🧁", std:2, kind:"dated"},
-  {nom:"Mascotte sucre",   emoji:"⭐", std:4, kind:"dated"},
-  {nom:"Mascotte choco",   emoji:"⭐", std:4, kind:"dated"}
+  {nom:"Mascotte sucre", emoji:"⭐", std:4, kind:"dated"},
+  {nom:"Mascotte choco", emoji:"⭐", std:4, kind:"dated"}
 ];
-var boulData=ld('mb_boul3',null);
-if(!boulData){
-  boulData=BOUL_DEF.map(function(b){ return {nom:b.nom,emoji:b.emoji,std:b.std,qte:b.std,date:new Date().toISOString(),destroyed:false,kind:b.kind}; });
-}
-var destList=ld('mb_dest3',[]);
-function boulSv(){ sv('mb_boul3',boulData); }
-function destSv(){ sv('mb_dest3',destList); }
 
-function boulNewDay(){
-  if(!confirm("Nouveau plateau ? Remet tout au standard avec la date d'aujourd'hui.")) return;
-  boulData.forEach(function(b){
-    if(b.kind==='daily'){ b.qte=b.std; b.date=new Date().toISOString(); b.destroyed=false; }
-    if(!b.date) b.date=new Date().toISOString();
+let boul = load(LS.boul, null);
+if(!boul){
+  boul = BOUL_DEF.map(b=>({nom:b.nom, emoji:b.emoji, std:b.std, qte:b.std, date:new Date().toISOString(), destroyed:false, kind:b.kind}));
+}
+let destroyList = load(LS.destroy, []);
+
+function boulSave(){ save(LS.boul, boul); }
+function destroySave(){ save(LS.destroy, destroyList); }
+
+function daysSince(dateStr){
+  const d=new Date(dateStr); d.setHours(0,0,0,0);
+  return Math.round((today0()-d)/(1000*60*60*24));
+}
+
+function newBoulDay(){
+  if(!confirm("Nouveau jour ? Remet les produits quotidiens au standard et remet la date du jour.")) return;
+  boul.forEach(b=>{
+    if(b.kind==='daily'){
+      b.qte=b.std;
+      b.date=new Date().toISOString();
+      b.destroyed=false;
+    }
   });
-  destList=[]; destSv(); boulSv(); renderBoul(); renderHome();
+  destroyList=[];
+  boulSave(); destroySave();
+  renderBoul();
+  renderHome();
 }
-function boulChg(i,delta){
-  boulData[i].qte=Math.max(0,boulData[i].qte+delta);
-  if(!boulData[i].date) boulData[i].date=new Date().toISOString();
-  boulSv(); renderBoul(); renderHome();
+
+function boulChg(i, delta){
+  boul[i].qte = Math.max(0, boul[i].qte + delta);
+  if(!boul[i].date) boul[i].date=new Date().toISOString();
+  boulSave();
+  renderBoul();
+  renderHome();
 }
+
 function boulDestroy(i){
-  var item=boulData[i];
+  const item=boul[i];
   if(item.destroyed){
-    item.destroyed=false; item.qte=item.std;
-    var idx=destList.findIndex(function(d){ return d.nom===item.nom; });
-    if(idx>=0) destList.splice(idx,1);
+    item.destroyed=false;
+    item.qte=item.std;
+    const idx=destroyList.findIndex(x=>x.nom===item.nom);
+    if(idx>=0) destroyList.splice(idx,1);
   }else{
-    var qty=item.qte;
+    const qty=item.qte;
     item.destroyed=true;
-    var existing=destList.find(function(d){ return d.nom===item.nom; });
-    if(existing) existing.qty+=qty;
-    else destList.push({nom:item.nom,emoji:item.emoji,qty:qty});
+    const ex=destroyList.find(x=>x.nom===item.nom);
+    if(ex) ex.qty += qty;
+    else destroyList.push({nom:item.nom, emoji:item.emoji, qty});
     item.qte=0;
   }
-  boulSv(); destSv(); renderBoul(); renderHome();
+  boulSave(); destroySave();
+  renderBoul();
+  renderHome();
 }
-function validerDest(){
+
+function validateDestroy(){
   if(!confirm("Déclarer la destruction et réinitialiser ?")) return;
-  destList=[]; boulData.forEach(function(b){ b.destroyed=false; });
-  destSv(); boulSv(); renderBoul(); renderHome();
+  destroyList=[];
+  boul.forEach(b=>b.destroyed=false);
+  destroySave(); boulSave();
+  renderBoul();
+  renderHome();
 }
-function daysSince(dateStr){
-  var d=new Date(dateStr); d.setHours(0,0,0,0);
-  return Math.round((now0()-d)/(1000*60*60*24));
-}
+
 function renderBoul(){
-  var alertes=[], h='';
-  boulData.forEach(function(item,i){
-    var dlcInfo='Pas de date', dlcColor='#888';
+  let alertes=[], html='';
+  boul.forEach((item,i)=>{
+    let dlcText='Pas de date', dlcColor='#888';
     if(item.date){
       if(item.kind==='daily'){
-        dlcInfo='Quotidien';
-        dlcColor='#16A34A';
+        dlcText='Quotidien';
+        dlcColor=varGreen();
       }else{
-        var diff=daysSince(item.date);
-        var reste=3-diff;
-        if(reste<=0){ dlcColor='#E8192C'; dlcInfo='🔴 Détruire'; alertes.push(item.nom); }
-        else if(reste===1){ dlcColor='#CA8A04'; dlcInfo='🟡 Demain'; }
-        else { dlcColor='#16A34A'; dlcInfo='✅ J+'+diff; }
+        const diff=daysSince(item.date);
+        const reste=3-diff;
+        if(reste<=0){ dlcText='🔴 Détruire'; dlcColor='var(--red)'; alertes.push(item.nom); }
+        else if(reste===1){ dlcText='🟡 Demain'; dlcColor='var(--orange)'; }
+        else { dlcText='✅ J+'+diff; dlcColor='var(--green)'; }
       }
     }
-
-    h+='<div class="boul-c'+(item.destroyed?' destroyed':'')+'">';
-    h+='<div class="be">'+item.emoji+'</div>';
-    h+='<div class="bn">'+item.nom+'</div>';
+    html+='<div class="boul-card'+(item.destroyed?' destroyed':'')+'">';
+    html+='<div class="b-emoji">'+item.emoji+'</div>';
+    html+='<div class="b-name">'+item.nom+'</div>';
     if(!item.destroyed){
-      h+='<div class="bctrl">';
-      h+='<button class="bb" onclick="boulChg('+i+',-1)">−</button>';
-      h+='<span class="bnum">'+item.qte+'</span>';
-      h+='<button class="bb" onclick="boulChg('+i+',1)">+</button>';
-      h+='</div>';
-      h+='<div class="bdlc" style="color:'+dlcColor+'">'+dlcInfo+'</div>';
-      h+='<button class="bdbtn" onclick="boulDestroy('+i+')">🗑️ Détruire</button>';
+      html+='<div class="b-ctrl"><button class="b-btn" onclick="boulChg('+i+',-1)">−</button><div class="b-num">'+item.qte+'</div><button class="b-btn" onclick="boulChg('+i+',1)">+</button></div>';
+      html+='<div class="b-dlc" style="color:'+dlcColor+'">'+dlcText+'</div>';
+      html+='<button class="b-del" onclick="boulDestroy('+i+')">🗑️ Détruire</button>';
     }else{
-      h+='<div class="bdlc" style="color:#16A34A;margin-top:6px;">✅ Détruit</div>';
-      h+='<button class="bdbtn ok" onclick="boulDestroy('+i+')">↩ Annuler</button>';
+      html+='<div class="b-dlc" style="color:var(--green);margin-top:6px;font-weight:800">✅ Détruit</div>';
+      html+='<button class="b-del ok" onclick="boulDestroy('+i+')">↩ Annuler</button>';
     }
-    h+='</div>';
+    html+='</div>';
   });
-  G('boul-grid').innerHTML=h;
+  $('boul-grid').innerHTML=html;
 
-  var al=G('boul-al');
-  if(alertes.length){ al.style.display='block'; al.innerHTML='⚠️ DLC dépassée : '+alertes.join(', '); }
+  const al=$('boul-alert');
+  if(alertes.length){ al.style.display='block'; al.textContent='⚠️ DLC dépassée : '+alertes.join(', '); }
   else al.style.display='none';
 
-  if(!destList.length){
-    G('dest-list').innerHTML='<div class="empty-b">Rien détruit aujourd\'hui</div>';
-    G('dest-total').style.display='none';
-    G('dest-val-btn').style.display='none';
-    G('dest-badge').textContent='0';
-  }else{
-    var dh='', total=0;
-    destList.forEach(function(d){
-      total+=d.qty;
-      dh+='<div class="dest-item"><span class="dest-nom">'+d.emoji+' '+d.nom+'</span><span class="dest-q">×'+d.qty+'</span></div>';
-    });
-    G('dest-list').innerHTML=dh;
-    G('dest-total').style.display='block';
-    G('dest-total').innerHTML='Total détruit : <b>'+total+' produits</b>';
-    G('dest-val-btn').style.display='block';
-    G('dest-badge').textContent=String(destList.length);
-  }
+  renderDestroy();
 }
-renderBoul();
 
-/* ===================== DLC ===================== */
-var dlcData=ld('mb_dlc3',[]);
-function dlcSv(){ sv('mb_dlc3',dlcData); }
-function dlcAdd(){
-  var nom=G('dlc-nom').value.trim(), gr=G('dlc-gr').value.trim(), dt=G('dlc-date').value;
-  if(!nom){ alert('Entrez le nom du produit'); return; }
-  if(!dt){ alert('Entrez la date DLC'); return; }
-  dlcData.push({nom:nom,gr:gr||'-',date:dt,retire:false});
-  G('dlc-nom').value=''; G('dlc-gr').value=''; G('dlc-date').value='';
-  dlcSv(); renderDLC(); renderHome();
+function renderDestroy(){
+  const badge=$('dest-count');
+  const list=$('dest-list');
+  const totalBox=$('dest-total');
+  const btn=$('dest-valid-btn');
+
+  if(!destroyList.length){
+    badge.textContent='0';
+    list.innerHTML='<div class="pad muted">Rien détruit aujourd’hui</div>';
+    totalBox.style.display='none';
+    btn.style.display='none';
+    return;
+  }
+
+  badge.textContent=String(destroyList.length);
+  let total=0;
+  list.innerHTML=destroyList.map(d=>{
+    total+=d.qty;
+    return '<div class="dest-item"><span class="dest-name">'+d.emoji+' '+d.nom+'</span><span class="dest-qty">×'+d.qty+'</span></div>';
+  }).join('');
+  totalBox.style.display='block';
+  totalBox.innerHTML='Total détruit : <b>'+total+' produits</b>';
+  btn.style.display='block';
 }
-function dlcRetire(i){ dlcData[i].retire=!dlcData[i].retire; dlcSv(); renderDLC(); renderHome(); }
-function dlcDel(i){ dlcData.splice(i,1); dlcSv(); renderDLC(); renderHome(); }
+
+/* ========= DLC ========= */
+let dlc = load(LS.dlc, []);
+function dlcSave(){ save(LS.dlc, dlc); }
+function addDLC(){
+  const nom=$('dlc-nom').value.trim();
+  const gr=$('dlc-gr').value.trim();
+  const date=$('dlc-date').value;
+  if(!nom) return alert('Entrez le nom du produit');
+  if(!date) return alert('Entrez la date DLC');
+  dlc.unshift({nom, gr:gr||'-', date, retire:false});
+  $('dlc-nom').value=''; $('dlc-gr').value=''; $('dlc-date').value='';
+  dlcSave(); renderDLC(); renderHome();
+}
+function dlcToggle(i){ dlc[i].retire=!dlc[i].retire; dlcSave(); renderDLC(); renderHome(); }
+function dlcDel(i){ dlc.splice(i,1); dlcSave(); renderDLC(); renderHome(); }
 function renderDLC(){
-  var n=now0(), rouge=[],orange=[],badge=0;
-  var sorted=dlcData.map(function(d,i){ return {i:i,nom:d.nom,gr:d.gr,date:d.date,retire:d.retire}; })
-    .sort(function(a,b){ return new Date(a.date)-new Date(b.date); });
-
-  var h='';
-  if(!sorted.length){ h='<tr><td colspan="4" class="empty-b">Ajoutez un produit ↓</td></tr>'; }
-  else{
-    sorted.forEach(function(item){
-      var exp=new Date(item.date); exp.setHours(0,0,0,0);
-      var diff=Math.round((exp-n)/(1000*60*60*24));
-      var tag='';
-      if(item.retire){ tag='<span class="tag-g">✓</span>'; }
-      else if(diff<0){ tag='<span class="tag-r">🔴 '+Math.abs(diff)+'j</span>'; rouge.push(item.nom); badge++; }
-      else if(diff===0){ tag='<span class="tag-r">🔴 Auj.</span>'; rouge.push(item.nom); badge++; }
-      else if(diff===1){ tag='<span class="tag-o">🟡 Demain</span>'; orange.push(item.nom); badge++; }
-      else if(diff<=3){ tag='<span class="tag-o">🟡 '+diff+'j</span>'; }
-      else { tag='<span class="tag-g">✅ '+diff+'j</span>'; }
-      h+='<tr style="'+(item.retire?'opacity:.4':'')+'"><td class="tn" style="'+(item.retire?'text-decoration:line-through':'')+'">'+item.nom+'</td>';
-      h+='<td style="text-align:center;color:#888;font-size:11px;">'+item.gr+'</td>';
-      h+='<td style="text-align:center;font-size:11px;">'+fmtDt(item.date)+'</td>';
-      h+='<td style="text-align:center;">'+tag+'<div style="margin-top:3px;display:flex;justify-content:center;gap:8px;">';
-      h+='<span onclick="dlcRetire('+item.i+')" style="font-size:10px;color:#888;cursor:pointer;text-decoration:underline;">'+(item.retire?'Annuler':'✓ Retiré')+'</span>';
-      h+='<span onclick="dlcDel('+item.i+')" style="font-size:10px;color:#E8192C;cursor:pointer;">✕</span>';
-      h+='</div></td></tr>';
+  const n=today0();
+  let red=[], orange=[], badge=0, html='';
+  const sorted=[...dlc].sort((a,b)=>new Date(a.date)-new Date(b.date));
+  if(!sorted.length){
+    html='<tr><td colspan="4" class="pad muted">Ajoutez un produit</td></tr>';
+  }else{
+    sorted.forEach(item=>{
+      const i=dlc.indexOf(item);
+      const exp=new Date(item.date); exp.setHours(0,0,0,0);
+      const diff=Math.round((exp-n)/(1000*60*60*24));
+      let tag='';
+      if(item.retire){ tag='<span class="badge green">Retiré</span>'; }
+      else if(diff<0){ tag='<span class="badge red">🔴 '+Math.abs(diff)+'j</span>'; red.push(item.nom); badge++; }
+      else if(diff===0){ tag='<span class="badge red">🔴 Auj.</span>'; red.push(item.nom); badge++; }
+      else if(diff===1){ tag='<span class="badge orange">🟡 Demain</span>'; orange.push(item.nom); badge++; }
+      else if(diff<=3){ tag='<span class="badge orange">🟡 '+diff+'j</span>'; }
+      else { tag='<span class="badge green">✅ '+diff+'j</span>'; }
+      html+='<tr style="'+(item.retire?'opacity:.4':'')+'">';
+      html+='<td class="tn" style="'+(item.retire?'text-decoration:line-through':'')+'">'+item.nom+'</td>';
+      html+='<td style="text-align:center;font-size:11px;color:#666">'+item.gr+'</td>';
+      html+='<td style="text-align:center;font-size:11px">'+fmtDM(item.date)+'</td>';
+      html+='<td style="text-align:center">';
+      html+=tag;
+      html+='<div style="margin-top:3px;display:flex;justify-content:center;gap:8px">';
+      html+='<span style="font-size:10px;color:#888;text-decoration:underline;cursor:pointer" onclick="dlcToggle('+i+')">'+(item.retire?'Annuler':'✓')+'</span>';
+      html+='<span style="font-size:10px;color:var(--red);cursor:pointer" onclick="dlcDel('+i+')">✕</span>';
+      html+='</div></td></tr>';
     });
   }
-  G('dlc-tbody').innerHTML=h;
-  G('dlc-badge').textContent=badge;
-  var ar=G('dlc-r'),ao=G('dlc-o');
-  if(rouge.length){ ar.style.display='block'; ar.innerHTML='🔴 À retirer MAINTENANT : '+rouge.join(', '); } else ar.style.display='none';
-  if(orange.length){ ao.style.display='block'; ao.innerHTML='🟡 À retirer DEMAIN : '+orange.join(', '); } else ao.style.display='none';
+  $('dlc-tbody').innerHTML=html;
+  $('dlc-badge').textContent=String(badge);
+  const ar=$('dlc-red'), ao=$('dlc-orange');
+  if(red.length){ ar.style.display='block'; ar.textContent='🔴 À retirer MAINTENANT : '+red.join(', '); } else ar.style.display='none';
+  if(orange.length){ ao.style.display='block'; ao.textContent='🟡 À retirer DEMAIN : '+orange.join(', '); } else ao.style.display='none';
 }
-G('dlc-date').addEventListener('click', function(){ try{ this.showPicker(); }catch(e){} });
-renderDLC();
 
-/* ===================== TODO ===================== */
-var todoData=ld('mb_todo3',[]);
-if(!todoData.length){
-  todoData=[
-    {t:"Vérifier DLC plateau boulangerie",done:false},
-    {t:"Tour des tiroirs tabac",done:false},
-    {t:"Bordereau invendus MMLP",done:false},
-    {t:"Transfert Too Good To Go → Jean-Philippe",done:false},
-    {t:"Réappro frigo boissons",done:false},
+/* ========= PLANNING ========= */
+const PLAN = {
+  lundi: {
+    bf:[[11,16.5]],
+    bd:[[6,13]],
+    d:[[16,20.5]],
+    k:[[16.5,20.5]],
+    y:[[9,15]]
+  },
+  mardi: {
+    bf:[[15.5,20.5]],
+    bd:[[6,13]],
+    d:[[11.5,15.5]],
+    k:[[17,20.5]]
+  },
+  mercredi: {
+    bf:[[10,15.5]],
+    bd:[[6,13]],
+    d:[[16,20.5]],
+    k:[[16,20.5]],
+    y:[[9,14]]
+  },
+  jeudi: {
+    bf:[[14,20.5]],
+    bd:[[6,13]],
+    d:[[14.5,20.5]],
+    k:[[11,14]],
+    y:[[10,14]]
+  },
+  vendredi: {
+    bf:[[16.5,20.5]],
+    bd:[[6,13]],
+    d:[[17,20.5]],
+    k:[[12,14]],
+    ba:[[11.5,17]]
+  },
+  samedi: {
+    ba:[[13,20]],
+    bd:[[11,14]],
+    d:[[16,20]]
+  },
+  dimanche: {}
+};
+
+const EMP = [
+  {id:'bf', name:'Bachir Faye', short:'Bachir', color:'#E8192C', cls:'red', toi:true},
+  {id:'bd', name:'Badroudine', short:'Badrou', color:'#3b82f6', cls:'blue'},
+  {id:'d',  name:'Dame', short:'Dame', color:'#8b5cf6', cls:'purple'},
+  {id:'k',  name:'Karim', short:'Karim', color:'#16A34A', cls:'green'},
+  {id:'ba', name:'Baba', short:'Baba', color:'#f97316', cls:'orange'},
+  {id:'y',  name:'Yacine', short:'Yacine', color:'#06b6d4', cls:'cyan'}
+];
+
+let planIndex = 0;
+const planDays = ['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche'];
+const planLabels = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
+
+function hoursSum(list){ return list.reduce((a,b)=>a+(b[1]-b[0]),0); }
+function weekHours(id){
+  let total=0;
+  Object.values(PLAN).forEach(day=>{ if(day[id]) total+=hoursSum(day[id]); });
+  return total;
+}
+function changePlanDay(delta){
+  planIndex = Math.max(0, Math.min(6, planIndex + delta));
+  renderPlan();
+}
+function setPlanDay(i){
+  planIndex=i;
+  renderPlan();
+}
+function renderPlan(){
+  $('plan-label').textContent = 'Semaine du 16 au 22 mars 2026';
+  $('day-buttons').innerHTML = planLabels.map((l,i)=>'<button class="day-btn'+(i===planIndex?' on':'')+'" onclick="setPlanDay('+i+')"><div class="d1">'+l.slice(0,3)+'</div><div class="d2">'+(17+i)+'</div></button>').join('');
+
+  const key=planDays[planIndex];
+  const dp=PLAN[key] || {};
+  const S=6, E=21, T=E-S;
+  const ticks=[];
+  for(let h=S; h<=E; h+=2) ticks.push(h+'h');
+
+  let out='';
+  out+='<div class="plan-box"><div class="timeline">';
+  out+='<div class="tl-head">'+ticks.map(t=>'<div class="tl-tick">'+t+'</div>').join('')+'</div>';
+  EMP.forEach(emp=>{
+    const sh=dp[emp.id];
+    out+='<div class="tl-row">';
+    out+='<div class="tl-name">'+emp.short+'</div>';
+    out+='<div class="tl-track">';
+    if(sh){
+      const l=((sh[0]-S)/T)*100;
+      const w=((sh[1]-sh[0])/T)*100;
+      out+='<div class="tl-bar" style="left:'+l+'%;width:'+w+'%;background:'+emp.color+'">'+toHH(sh[0])+'–'+toHH(sh[1])+'</div>';
+    }
+    out+='</div></div>';
+  });
+  out+='</div></div>';
+
+  out+='<div class="emp-box">';
+  const present = EMP.filter(e=>!!dp[e.id]);
+  if(present.length){
+    present.forEach(emp=>{
+      const sh=dp[emp.id][0];
+      const eh=dp[emp.id][1];
+      out+='<div class="emp-row">';
+      out+='<div class="emp-av" style="background:'+emp.color+'">'+emp.short[0]+'</div>';
+      out+='<div class="emp-info"><div class="emp-name">'+emp.name+(emp.toi?'<span class="badge red" style="margin-left:6px">TOI</span>':'')+'</div><div class="emp-hours">'+toHH(sh)+' → '+toHH(eh)+'</div></div>';
+      out+='<div class="emp-start">'+toHH(sh)+'</div>';
+      out+='</div>';
+    });
+  }else{
+    out+='<div class="pad muted">Personne ce jour</div>';
+  }
+  out+='</div>';
+
+  out+='<div class="tot-box"><div class="tot-t">Total heures semaine</div>';
+  EMP.forEach(emp=>{
+    const total = weekHours(emp.id);
+    if(total>0) out+='<div class="tot-row"><span class="tot-n">'+emp.name+'</span><span class="tot-v">'+total.toFixed(1)+'h</span></div>';
+  });
+  out+='</div>';
+
+  $('plan-out').innerHTML=out;
+}
+
+/* ========= TODO ========= */
+let TODO = load(LS.todo, []);
+if(!TODO.length){
+  TODO = [
+    {t:'Vérifier DLC plateau boulangerie', done:false},
+    {t:'Tour des tiroirs tabac', done:false},
+    {t:'Bordereau invendus MMLP', done:false},
+    {t:'Transfert Too Good To Go → Jean-Philippe', done:false},
+    {t:'Réappro frigo boissons', done:false}
   ];
 }
-function todoSv(){ sv('mb_todo3',todoData); }
+function todoSave(){ save(LS.todo, TODO); }
 function todoAdd(){
-  var inp=G('todo-inp'), val=inp.value.trim();
-  if(!val) return;
-  todoData.unshift({t:val,done:false});
-  inp.value=''; todoSv(); renderTodo();
+  const v=$('todo-input').value.trim();
+  if(!v) return;
+  TODO.unshift({t:v, done:false});
+  $('todo-input').value='';
+  todoSave();
+  renderTodo();
+  renderHome();
 }
-function todoTgl(i){ todoData[i].done=!todoData[i].done; todoSv(); renderTodo(); renderHome(); }
+function todoToggle(i){
+  TODO[i].done=!TODO[i].done;
+  todoSave();
+  renderTodo();
+  renderHome();
+}
 function renderTodo(){
-  var rem=todoData.filter(function(x){ return !x.done; }).length;
-  G('todo-badge').textContent=rem;
-  var sorted=todoData.map(function(x,i){ return {t:x.t,done:x.done,i:i}; }).sort(function(a,b){ return a.done-b.done; });
-  var h='';
-  sorted.forEach(function(x){
-    h+='<div class="todo-item'+(x.done?' done':'')+'" onclick="todoTgl('+x.i+')">';
-    h+='<div class="todo-chk">'+(x.done?'✓':'')+'</div>';
-    h+='<div class="todo-t">'+x.t+'</div></div>';
-  });
-  G('todo-list').innerHTML=h||'<div class="empty-b">Rien pour l\'instant</div>';
+  $('todo-count').textContent = TODO.filter(x=>!x.done).length;
+  $('dash-todo-badge').textContent = TODO.filter(x=>!x.done).length;
+  $('todo-list').innerHTML = TODO.length
+    ? TODO.map((x,i)=>'<div class="list-item'+(x.done?' done':'')+'" onclick="todoToggle('+i+')"><div class="list-check">'+(x.done?'✓':'')+'</div><div class="list-txt">'+x.t+'</div></div>').join('')
+    : '<div class="pad muted">Rien pour l’instant</div>';
 }
-G('todo-btn').addEventListener('click',todoAdd);
-G('todo-inp').addEventListener('keydown',function(e){ if(e.key==='Enter') todoAdd(); });
-renderTodo();
+$('todo-add').addEventListener('click', todoAdd);
+$('todo-input').addEventListener('keydown', e=>{ if(e.key==='Enter') todoAdd(); });
 
-/* ===================== HOME ===================== */
+/* ========= DASHBOARD ========= */
 function renderHome(){
-  var n=now0();
+  const n=today0();
 
-  // Tabac
-  var tBad=0,tWarn=0,tOver=0;
-  TIROIRS.forEach(function(t){
-    t.sections.forEach(function(s){
-      s.items.forEach(function(item){
-        var c=getS(item.m);
-        if(c===0) tBad++;
-        else if(c<item.cap) tWarn++;
-        else if(c>item.cap) tOver++;
-      });
-    });
-  });
+  let tBad=0, tWarn=0, tOver=0;
+  TIROIRS.forEach(t=>t.sections.forEach(s=>s.items.forEach(it=>{
+    const c=getS(it.m);
+    if(c===0) tBad++;
+    else if(c<it.cap) tWarn++;
+    else if(c>it.cap) tOver++;
+  })));
 
-  // DLC
-  var dBad=0,dWarn=0;
-  dlcData.forEach(function(d){
+  let cPend=CMD.filter(x=>x.statut<2).length;
+  let dBad=0, dWarn=0;
+  dlc.forEach(d=>{
     if(d.retire) return;
-    var exp=new Date(d.date); exp.setHours(0,0,0,0);
-    var diff=Math.round((exp-n)/(1000*60*60*24));
+    const exp=new Date(d.date); exp.setHours(0,0,0,0);
+    const diff=Math.round((exp-n)/(1000*60*60*24));
     if(diff<=0) dBad++;
     else if(diff===1) dWarn++;
   });
 
-  // Boulangerie destruction
-  var bBad=0;
-  boulData.forEach(function(b){
-    if(!b.date||b.destroyed) return;
-    if(b.kind==='dated'){
-      var mise=new Date(b.date); mise.setHours(0,0,0,0);
-      if(Math.round((n-mise)/(1000*60*60*24))>=3) bBad++;
+  let bBad=0;
+  boul.forEach(b=>{
+    if(b.destroyed) return;
+    if(b.kind==='dated' && b.date){
+      if(daysSince(b.date)>=3) bBad++;
     }
   });
 
-  // Commandes
-  var cmdPend=CMD_DATA.filter(function(c){ return c.statut<2; }).length;
-  // Tâches
-  var tdRem=todoData.filter(function(x){ return !x.done; }).length;
+  let todoRem = TODO.filter(x=>!x.done).length;
 
-  function klass(bad,warn,over){ if(over>0) return 'blu'; if(bad>0) return 'red'; if(warn>0) return 'ora'; return 'grn'; }
+  $('dash-cards').innerHTML = [
+    {cls:tBad>0?'red':tWarn>0?'orange':tOver>0?'blue':'green', i:'🚬', l:'Tabac', v:tBad>0?tBad:tWarn>0?tWarn:tOver>0?tOver:'✅', s:tBad>0?'vides':tWarn>0?'manquent':tOver>0?'trop':'Tout OK'},
+    {cls:bBad>0?'red':'green', i:'🥐', l:'Boulangerie', v:bBad>0?bBad:'✅', s:bBad>0?'à détruire':'OK'},
+    {cls:dBad>0?'red':dWarn>0?'orange':'green', i:'⏱️', l:'DLC', v:dBad>0?dBad:dWarn>0?dWarn:'✅', s:dBad>0?'à retirer':dWarn>0?'demain':'Tout OK'},
+    {cls:cPend>0?'orange':'green', i:'🛒', l:'Commandes', v:cPend, s:cPend>0?'en attente':'Tout reçu'}
+  ].map(c=>'<div class="card '+c.cls+'"><div class="i">'+c.i+'</div><div class="l">'+c.l+'</div><div class="v">'+c.v+'</div><div class="s">'+c.s+'</div></div>').join('');
 
-  var cards='';
-  cards+='<div class="kard '+klass(tBad,tWarn,tOver)+'">';
-  cards+='<div class="ki">🚬</div><div class="kl">Tabac</div>';
-  cards+='<div class="kv">'+(tBad>0?tBad:tWarn>0?tWarn:tOver>0?tOver+'⚡':'✅')+'</div>';
-  cards+='<div class="ks">'+(tOver>0?'trop':tBad>0?'vides':tWarn>0?'manquent':'Tout OK')+'</div></div>';
-
-  cards+='<div class="kard '+(bBad>0?'red':'grn')+'">';
-  cards+='<div class="ki">🥐</div><div class="kl">Boulangerie</div>';
-  cards+='<div class="kv">'+(bBad>0?bBad:'✅')+'</div>';
-  cards+='<div class="ks">'+(bBad>0?'à détruire':'OK')+'</div></div>';
-
-  cards+='<div class="kard '+(dBad>0?'red':dWarn>0?'ora':'grn')+'">';
-  cards+='<div class="ki">⏱️</div><div class="kl">DLC</div>';
-  cards+='<div class="kv">'+(dBad>0?dBad:dWarn>0?dWarn:' ✅')+'</div>';
-  cards+='<div class="ks">'+(dBad>0?'à retirer':dWarn>0?'demain':'Tout OK')+'</div></div>';
-
-  cards+='<div class="kard '+(cmdPend>0?'ora':'grn')+'">';
-  cards+='<div class="ki">🛒</div><div class="kl">Commandes</div>';
-  cards+='<div class="kv">'+cmdPend+'</div>';
-  cards+='<div class="ks">'+(cmdPend>0?'en attente':'Tout reçu')+'</div></div>';
-
-  G('home-cards').innerHTML=cards;
-
-  var ac='';
-  if(tBad>0) ac+='<div class="arow"><div class="dot r"></div><div class="arow-t">Tiroirs vides à remplir</div><span class="arow-b r">'+tBad+'</span></div>';
-  if(tOver>0) ac+='<div class="arow"><div class="dot o"></div><div class="arow-t">Tabac au-dessus de la capacité</div><span class="arow-b o">'+tOver+'</span></div>';
-  if(dBad>0) ac+='<div class="arow"><div class="dot r"></div><div class="arow-t">Retirer produits DLC dépassés</div><span class="arow-b r">'+dBad+'</span></div>';
-  if(bBad>0) ac+='<div class="arow"><div class="dot r"></div><div class="arow-t">Détruire produits boulangerie</div><span class="arow-b r">'+bBad+'</span></div>';
-  if(dWarn>0) ac+='<div class="arow"><div class="dot o"></div><div class="arow-t">DLC à surveiller demain</div><span class="arow-b o">'+dWarn+'</span></div>';
-  if(tWarn>0) ac+='<div class="arow"><div class="dot o"></div><div class="arow-t">Tabac sous capacité</div><span class="arow-b o">'+tWarn+'</span></div>';
-  if(cmdPend>0) ac+='<div class="arow"><div class="dot o"></div><div class="arow-t">Commandes en attente</div><span class="arow-b o">'+cmdPend+'</span></div>';
-  todoData.filter(function(x){ return !x.done; }).slice(0,3).forEach(function(x){
-    ac+='<div class="arow"><div class="dot g"></div><div class="arow-t">'+x.t+'</div></div>';
+  let act='';
+  if(tBad>0) act+='<div class="list-item"><div class="list-check" style="border-color:'+varRed()+';color:'+varRed()+'">!</div><div class="list-txt">Tiroirs vides à remplir</div><span class="badge red">'+tBad+'</span></div>';
+  if(tWarn>0) act+='<div class="list-item"><div class="list-check" style="border-color:'+varOrange()+';color:'+varOrange()+'">!</div><div class="list-txt">Tabac sous capacité</div><span class="badge orange">'+tWarn+'</span></div>';
+  if(tOver>0) act+='<div class="list-item"><div class="list-check" style="border-color:'+varBlue()+';color:'+varBlue()+'">!</div><div class="list-txt">Tabac au-dessus de la capacité</div><span class="badge blue">'+tOver+'</span></div>';
+  if(dBad>0) act+='<div class="list-item"><div class="list-check" style="border-color:'+varRed()+';color:'+varRed()+'">!</div><div class="list-txt">Retirer produits DLC dépassés</div><span class="badge red">'+dBad+'</span></div>';
+  if(dWarn>0) act+='<div class="list-item"><div class="list-check" style="border-color:'+varOrange()+';color:'+varOrange()+'">!</div><div class="list-txt">DLC à surveiller demain</div><span class="badge orange">'+dWarn+'</span></div>';
+  if(bBad>0) act+='<div class="list-item"><div class="list-check" style="border-color:'+varRed()+';color:'+varRed()+'">!</div><div class="list-txt">Boulangerie à détruire</div><span class="badge red">'+bBad+'</span></div>';
+  if(cPend>0) act+='<div class="list-item"><div class="list-check" style="border-color:'+varOrange()+';color:'+varOrange()+'">!</div><div class="list-txt">Commandes en attente</div><span class="badge orange">'+cPend+'</span></div>';
+  TODO.filter(x=>!x.done).slice(0,3).forEach(x=>{
+    act+='<div class="list-item"><div class="list-check" style="border-color:'+varGreen()+';color:'+varGreen()+'">✓</div><div class="list-txt">'+x.t+'</div></div>';
   });
-  if(!ac) ac='<div class="empty-b">✅ Tout est bon — bonne journée !</div>';
-  G('home-actions').innerHTML=ac;
-
-  // équipe aujourd'hui
-  var key=DK[new Date().getDay()];
-  var dp=PLAN[key]||{};
-  var team='';
-  EMP.forEach(function(emp){
-    var sh=dp[emp.id];
-    if(sh){
-      team+='<div class="arow">';
-      team+='<div style="width:32px;height:32px;border-radius:9px;background:'+ECOL[emp.id]+';display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:white;flex-shrink:0;">'+emp.nom[0]+'</div>';
-      team+='<div style="flex:1;margin-left:2px;"><div style="font-size:13px;font-weight:700;color:#111;">'+emp.nom+(emp.toi?'<span class="toi-tag">TOI</span>':'')+'</div>';
-      team+='<div style="font-size:11px;color:#888;">'+toHH(sh[0])+' → '+toHH(sh[1])+'</div></div>';
-      team+='<div style="font-size:13px;font-weight:700;color:var(--green);">'+toHH(sh[0])+'</div></div>';
-    }
-  });
-  if(!team) team='<div class="empty-b">Personne aujourd\'hui</div>';
-  G('home-team').innerHTML=team;
+  if(!act) act='<div class="pad muted">Tout est bon.</div>';
+  $('dash-actions').innerHTML=act;
+  $('dash-todo-badge').textContent=todoRem;
 }
 
-renderHome();
+/* ========= helpers colors ========= */
+function varRed(){ return getComputedStyle(document.documentElement).getPropertyValue('--red').trim(); }
+function varOrange(){ return getComputedStyle(document.documentElement).getPropertyValue('--orange').trim(); }
+function varGreen(){ return getComputedStyle(document.documentElement).getPropertyValue('--green').trim(); }
+function varBlue(){ return getComputedStyle(document.documentElement).getPropertyValue('--blue').trim(); }
+
+/* ========= init ========= */
+function renderAll(){
+  renderTabac();
+  renderCmd();
+  renderBoul();
+  renderDLC();
+  renderTodo();
+  renderHome();
+  renderPlan();
+}
+renderAll();
 </script>
 </body>
 </html>
