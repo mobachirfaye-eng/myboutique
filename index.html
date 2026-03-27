@@ -119,23 +119,30 @@ tr.sp td{background:#f5f5f5;color:#777;font-size:10px;font-weight:700;text-trans
 .dp .dd{font-size:17px;font-weight:700;color:#444}
 .dp.on{border-color:#E8192C;border-width:2px}.dp.on .dd{color:#E8192C}
 .dp.tj{background:#fff5f5}
-.tlb{background:#fff;border-radius:12px;padding:12px;border:1px solid #e5e5e5;overflow-x:auto;margin-bottom:12px}
-.tlin{min-width:280px}
-.tlh{display:flex;padding-left:72px;margin-bottom:8px}
-.tlt{flex:1;font-size:9px;color:#ccc;min-width:26px}
-.tlr{display:flex;align-items:center;margin-bottom:7px;gap:6px}
-.tln{width:66px;font-size:11px;font-weight:600;color:#333;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.tltr{flex:1;height:30px;background:#f0f0f0;border-radius:6px;position:relative;overflow:hidden}
-.tlbar{position:absolute;height:100%;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;white-space:nowrap;padding:0 5px;overflow:hidden}
-.tmbx{background:#fff;border-radius:12px;overflow:hidden;border:1px solid #e5e5e5;margin-bottom:12px}
-.tmr{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid #f5f5f5}
-.tmr:last-child{border-bottom:none}
-.tav{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
-.tmi{flex:1}
-.tmn{font-size:13px;font-weight:700;color:#111}
-.ttag{background:#E8192C;color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:5px}
-.tmh{font-size:11px;color:#888;margin-top:1px}
-.tms{font-size:14px;font-weight:700;color:#16A34A}
+
+.day-view{display:flex;flex-direction:column;gap:10px}
+.day-head{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin-bottom:4px}
+.day-title{font-size:16px;font-weight:700;color:#111}
+.day-sub{font-size:11px;color:#888}
+.emp-card{background:#fff;border-radius:12px;border:1px solid #e5e5e5;padding:10px 12px}
+.emp-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.emp-left{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.emp-mini{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
+.emp-name{font-size:13px;font-weight:700;color:#111}
+.emp-total{font-size:13px;font-weight:700;color:#E8192C}
+.slot-list{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.slot-chip{background:#f5f5f5;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:600;color:#333}
+.ov-box{background:#fff;border-radius:12px;padding:12px;border:1px solid #e5e5e5;margin-top:4px}
+.ov-row{display:grid;grid-template-columns:86px 1fr auto;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid #f5f5f5}
+.ov-row:last-child{border-bottom:none}
+.ov-time{font-size:11px;font-weight:700;color:#E8192C}
+.ov-bar{height:8px;border-radius:999px;background:#f0f0f0;overflow:hidden}
+.ov-bar span{display:block;height:100%;border-radius:999px}
+.ov-names{font-size:11px;color:#333;font-weight:600;text-align:right}
+.mini .day-title{font-size:15px}
+.mini .emp-card{padding:9px 10px}
+.mini .slot-chip{font-size:10px}
+.mini .ov-row{grid-template-columns:74px 1fr auto}
 .hbx{background:#fff;border-radius:12px;padding:12px 14px;border:1px solid #e5e5e5;margin-top:4px}
 .hbt{font-size:11px;font-weight:700;color:#999;text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px}
 .hbr{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #f5f5f5;font-size:12px}
@@ -180,10 +187,16 @@ tr.sp td{background:#f5f5f5;color:#777;font-size:10px;font-weight:700;text-trans
 .tdc{width:22px;height:22px;border-radius:6px;border:2px solid #ddd;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
 .tdi.done .tdc{background:#16A34A;border-color:#16A34A;color:#fff}
 .tdt{flex:1;font-weight:500;color:#111;font-size:13px}
+.tddel{background:none;border:none;color:#E8192C;font-size:14px;cursor:pointer;padding:0 4px;font-weight:700}
 .af{display:flex;gap:8px;padding:10px 14px;border-top:1px solid #f0f0f0;background:#fafafa}
 .af input{flex:1;border:1.5px solid #ddd;border-radius:8px;padding:9px 12px;font-size:13px;font-family:inherit;outline:none}
 .af input:focus{border-color:#E8192C}
 .afb{background:#E8192C;color:#fff;border:none;border-radius:8px;padding:9px 16px;font-size:20px;font-weight:700;cursor:pointer}
+
+/* NOTES */
+.note-box{padding:12px 14px}
+.note-box textarea{width:100%;min-height:90px;border:1.5px solid #ddd;border-radius:12px;padding:12px;font:inherit;resize:vertical;outline:none;background:#fff}
+.note-box textarea:focus{border-color:#E8192C}
 
 /* SHEET RECAP */
 .ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;align-items:flex-end;justify-content:center}
@@ -219,8 +232,32 @@ tr.sp td{background:#f5f5f5;color:#777;font-size:10px;font-weight:700;text-trans
   <div style="font-size:17px;font-weight:700;color:#111;margin-bottom:2px">Bonjour Bachir 👋</div>
   <div style="font-size:12px;color:#888;margin-bottom:14px" id="hm-date"></div>
   <div class="g2" id="hm-cards"></div>
-  <div class="bloc"><div class="bloc-t">⚡ Actions urgentes</div><div id="hm-act"></div></div>
-  <div class="bloc"><div class="bloc-t">👥 Équipe aujourd'hui</div><div id="hm-team"></div></div>
+
+  <div class="bloc">
+    <div class="bloc-t">⚡ Actions urgentes</div>
+    <div id="hm-act"></div>
+  </div>
+
+  <div class="bloc">
+    <div class="bloc-t">📅 Planning du jour</div>
+    <div style="padding:12px 12px 8px" id="hm-plan"></div>
+  </div>
+
+  <div class="bloc">
+    <div class="bloc-t">📝 Notes du jour</div>
+    <div class="note-box">
+      <textarea id="note-txt" placeholder="Écris une note ici..."></textarea>
+    </div>
+  </div>
+
+  <div class="bloc">
+    <div class="bloc-t">✅ À faire <span class="sh-badge" id="td-bdg">0</span></div>
+    <div id="td-list"></div>
+    <div class="af">
+      <input type="text" id="td-inp" placeholder="Ajouter une tâche...">
+      <button class="afb" id="td-btn">+</button>
+    </div>
+  </div>
 </div>
 
 <!-- ===== TABAC ===== -->
@@ -230,31 +267,37 @@ tr.sp td{background:#f5f5f5;color:#777;font-size:10px;font-weight:700;text-trans
     <button class="btn-rc" onclick="openRecap()">📋 Récap</button>
   </div>
   <div id="sr-res"></div>
+
   <div class="sec">
     <div class="sh">Tiroir 1 — Classiques <button class="rs" onclick="resetT(0)">↺ Vider</button></div>
     <div class="sb"><table id="tb0"></table></div>
     <div class="al" id="al0"></div>
   </div>
+
   <div class="sec">
     <div class="sh">Tiroir 2 — Variétés <button class="rs" onclick="resetT(1)">↺ Vider</button></div>
     <div class="sb"><table id="tb1"></table></div>
     <div class="al" id="al1"></div>
   </div>
+
   <div class="sec">
     <div class="sh">Tiroir 3 — Slims / Vogue <button class="rs" onclick="resetT(2)">↺ Vider</button></div>
     <div class="sb"><table id="tb2"></table></div>
     <div class="al" id="al2"></div>
   </div>
+
   <div class="sec">
     <div class="sh">Hors Tiroir — XL / XXL <button class="rs" onclick="resetT(3)">↺ Vider</button></div>
     <div class="sb"><table id="tb3"></table></div>
     <div class="al" id="al3"></div>
   </div>
+
   <div class="sec">
     <div class="sh">Hors Tiroir — Cigares &amp; Autres <button class="rs" onclick="resetT(4)">↺ Vider</button></div>
     <div class="sb"><table id="tb4"></table></div>
     <div class="al" id="al4"></div>
   </div>
+
   <div class="sec">
     <div class="sh">📦 Réserve — Stock arrière</div>
     <div class="sb"><table id="tb-rv"></table></div>
@@ -269,6 +312,7 @@ tr.sp td{background:#f5f5f5;color:#777;font-size:10px;font-weight:700;text-trans
     <button class="ctab" onclick="setCat('alim',this)">🥐 Alimentaire</button>
     <button class="ctab" onclick="setCat('autre',this)">📦 Autre</button>
   </div>
+
   <div class="sec">
     <div class="sh" style="gap:8px">🛒 À commander <span class="sh-badge" id="cmd-bdg">0</span></div>
     <div class="sb">
@@ -342,7 +386,7 @@ tr.sp td{background:#f5f5f5;color:#777;font-size:10px;font-weight:700;text-trans
   </div>
 </div>
 
-<!-- ===== BOULANGERIE + TODO ===== -->
+<!-- ===== BOULANGERIE ===== -->
 <div class="pg" id="pg-boul">
   <div class="sec">
     <div class="sh">🥐 Stock plateau bas <button class="rs" onclick="boulNDay()">↺ Nouveau jour</button></div>
@@ -356,17 +400,6 @@ tr.sp td{background:#f5f5f5;color:#777;font-size:10px;font-weight:700;text-trans
       <div id="dest-tot" style="display:none" class="dtot"></div>
     </div>
     <button class="bvb" id="dest-vb" onclick="valDest()" style="display:none">✅ Déclaré — Réinitialiser</button>
-  </div>
-
-  <div class="sec">
-    <div class="sh" style="gap:8px">✅ À faire <span class="sh-badge" id="td-bdg">0</span></div>
-    <div class="sb">
-      <div id="td-list"></div>
-      <div class="af">
-        <input type="text" id="td-inp" placeholder="Ajouter une tâche...">
-        <button class="afb" id="td-btn">+</button>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -398,13 +431,30 @@ function ld(k,d){try{var x=localStorage.getItem(k);return x?JSON.parse(x):d}catc
 var MO=['jan','fév','mar','avr','mai','jun','jul','aoû','sep','oct','nov','déc']
 var DS=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi']
 var DS2=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam']
+var WDS2=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim']
 var DK=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi']
+var WEEK_DK=['lundi','mardi','mercredi','jeudi','vendredi','samedi','dimanche']
 
 function n0(){var d=new Date();d.setHours(0,0,0,0);return d}
-function hh(h){var H=Math.floor(h),M=Math.round((h-H)*60);return H+'h'+(M?('0'+M).slice(-2):'00')}
 function fmtFull(d){return DS[d.getDay()]+' '+d.getDate()+' '+MO[d.getMonth()]+' '+d.getFullYear()}
 function fmtDt(s){return s.slice(8,10)+'/'+s.slice(5,7)}
 function sameD(a,b){return a.getTime()===b.getTime()}
+function minutesToHM(m){
+  var h=Math.floor(m/60), r=m%60
+  return h+'h'+(r?('0'+r).slice(-2):'')
+}
+function formatRange(slot){return minutesToHM(slot[0])+' – '+minutesToHM(slot[1])}
+function formatDuration(min){
+  var h=Math.floor(min/60), r=min%60
+  return h+'h'+(r?('0'+r).slice(-2):'')
+}
+function sumSlots(slots){
+  var t=0
+  for(var i=0;i<slots.length;i++) t+=slots[i][1]-slots[i][0]
+  return t
+}
+function dayKeyFromDate(d){return DK[d.getDay()]}
+function weekIndexFromDate(d){var g=d.getDay(); return g===0?6:g-1}
 
 function goPg(name,btn){
   document.querySelectorAll('.pg').forEach(function(p){p.classList.remove('on')})
@@ -416,7 +466,7 @@ function goPg(name,btn){
   if(name==='cmd')renderCmd()
   if(name==='plan')renderPlan()
   if(name==='dlc')renderDLC()
-  if(name==='boul'){renderBoul();renderTodo()}
+  if(name==='boul')renderBoul()
 }
 
 function updHdr(){
@@ -427,7 +477,7 @@ function updHdr(){
 updHdr()
 setInterval(updHdr,60000)
 
-// ========================= TABAC =========================
+/* ========================= TABAC ========================= */
 var TIROIRS=[
   {label:"Tiroir 1 — Classiques",sections:[{label:null,items:[
     {m:"Camel Filters",cap:4},{m:"Winston Classic",cap:5},
@@ -517,10 +567,10 @@ function sl(c,cap){
 
 function renderTabac(){
   TIROIRS.forEach(function(t,ti){
-    var tbl=G('tb'+ti);if(!tbl)return
+    var tbl=G('tb'+ti); if(!tbl) return
     var h='<thead><tr><th style="min-width:110px">Marque</th><th style="width:120px;text-align:center">Stock</th><th style="width:70px;text-align:center">Statut</th></tr></thead><tbody>'
     t.sections.forEach(function(s){
-      if(s.label)h+='<tr class="sp"><td colspan="3">'+s.label+'</td></tr>'
+      if(s.label) h+='<tr class="sp"><td colspan="3">'+s.label+'</td></tr>'
       s.items.forEach(function(item){
         var c=getS(item.m),cls=sc(c,item.cap),me=encodeURIComponent(item.m)
         h+='<tr><td class="nm">'+item.m+'</td>'
@@ -529,7 +579,7 @@ function renderTabac(){
         h+='<span class="cn '+cls+'">'+c+'</span>'
         h+='<button class="cb" onclick="tChg(\''+me+'\','+item.cap+',1)">+</button>'
         h+='</div>'
-        if(c<item.cap)h+='<button class="bcmd" onclick="cmdFT(\''+me+'\','+item.cap+','+c+')">🛒</button>'
+        if(c<item.cap)h+=' <button class="bcmd" onclick="cmdFT(\''+me+'\','+item.cap+','+c+')">🛒</button>'
         h+='</td>'
         h+='<td class="st '+cls+'">'+sl(c,item.cap)+'</td></tr>'
       })
@@ -541,15 +591,14 @@ function renderTabac(){
     t.sections.forEach(function(s){
       s.items.forEach(function(item){
         var c=getS(item.m)
-        if(c<item.cap)al.push(item.m+' ('+c+'/'+item.cap+')')
-        else if(c>item.cap)ov.push(item.m)
+        if(c<item.cap) al.push(item.m+' ('+c+'/'+item.cap+')')
+        else if(c>item.cap) ov.push(item.m)
       })
     })
     var el=G('al'+ti),msgs=[]
-    if(al.length)msgs.push('📦 Manque : '+al.join(' · '))
-    if(ov.length)msgs.push('⬆️ Trop : '+ov.join(', '))
-    if(msgs.length){el.style.display='block';el.innerHTML=msgs.join('<br>')}
-    else el.style.display='none'
+    if(al.length) msgs.push('📦 Manque : '+al.join(' · '))
+    if(ov.length) msgs.push('⬆️ Trop : '+ov.join(', '))
+    if(msgs.length){el.style.display='block';el.innerHTML=msgs.join('<br>')} else el.style.display='none'
   })
 }
 
@@ -558,16 +607,17 @@ function tChg(enc,cap,d){
   setS(m,getS(m)+d)
   renderTabac()
   renderHome()
-  if(G('srch').value.trim())doSearch()
+  if(G('srch').value.trim()) doSearch()
 }
 
 function resetT(ti){
-  if(!confirm('Vider ce tiroir (tout à 0) ?'))return
+  if(!confirm('Vider ce tiroir (tout à 0) ?')) return
   TIROIRS[ti].sections.forEach(function(s){
     s.items.forEach(function(item){STK[item.m]=0})
   })
   sv('mb_stk4',STK)
-  renderTabac();renderHome()
+  renderTabac()
+  renderHome()
 }
 
 function doSearch(){
@@ -577,13 +627,13 @@ function doSearch(){
   TIROIRS.forEach(function(t){
     t.sections.forEach(function(s){
       s.items.forEach(function(item){
-        if(item.m.toLowerCase().indexOf(q)>=0)res.push({item:item,loc:t.label})
+        if(item.m.toLowerCase().indexOf(q)>=0) res.push({item:item,loc:t.label})
       })
     })
   })
   RV_DEF.forEach(function(cat){
     cat.items.forEach(function(item){
-      if(item.m.toLowerCase().indexOf(q)>=0)res.push({item:{m:item.m,cap:-1},loc:'📦 Réserve — '+cat.label,rv:true})
+      if(item.m.toLowerCase().indexOf(q)>=0) res.push({item:{m:item.m,cap:-1},loc:'📦 Réserve — '+cat.label,rv:true})
     })
   })
   if(!res.length){box.style.display='block';box.innerHTML='<div class="empty">Aucun résultat</div>';return}
@@ -608,7 +658,7 @@ function doSearch(){
       h+='<span class="cn '+cls+'">'+c+'</span>'
       h+='<button class="cb" onclick="tChg(\''+me+'\','+item.cap+',1)">+</button>'
       h+='</div>'
-      if(c<item.cap)h+='<button class="bcmd" onclick="cmdFT(\''+me+'\','+item.cap+','+c+')">🛒</button>'
+      if(c<item.cap) h+='<button class="bcmd" onclick="cmdFT(\''+me+'\','+item.cap+','+c+')">🛒</button>'
       h+='</td>'
       h+='<td class="st '+cls+'">'+sl(c,item.cap)+'</td></tr>'
     }
@@ -623,12 +673,12 @@ function openRecap(){
     t.sections.forEach(function(s){
       s.items.forEach(function(item){
         var c=getS(item.m)
-        if(c<item.cap)al.push({m:item.m,c:c,cap:item.cap,manque:item.cap-c})
+        if(c<item.cap) al.push({m:item.m,c:c,cap:item.cap,manque:item.cap-c})
       })
     })
   })
   var h=''
-  if(!al.length)h='<div style="text-align:center;color:#16A34A;font-weight:700;padding:24px;font-size:15px">✅ Tout est OK !</div>'
+  if(!al.length) h='<div style="text-align:center;color:#16A34A;font-weight:700;padding:24px;font-size:15px">✅ Tout est OK !</div>'
   else al.forEach(function(a){h+='<div class="rr"><span class="rn">'+a.m+'</span><span class="rq">'+a.c+'/'+a.cap+' — +'+a.manque+'</span></div>'})
   G('rc-list').innerHTML=h
   G('rc-ov').classList.add('on')
@@ -636,7 +686,7 @@ function openRecap(){
 
 renderTabac()
 
-// ========================= RÉSERVE TABAC =========================
+/* ========================= RÉSERVE TABAC ========================= */
 var RV_DEF=[
   {label:"Cigarettes alternatives",items:[
     {m:"Camel Shift Fresh"},{m:"Winston Xsphere Fresh"},{m:"Marlboro Crafted Red"},
@@ -657,22 +707,20 @@ var RV_DEF=[
 var RV_STK=ld('mb_rv4',{})
 RV_DEF.forEach(function(cat){
   cat.items.forEach(function(item){
-    if(RV_STK[item.m]===undefined)RV_STK[item.m]=0
+    if(RV_STK[item.m]===undefined) RV_STK[item.m]=0
   })
 })
 function rvSv(){sv('mb_rv4',RV_STK)}
 function rvGet(m){return RV_STK[m]!==undefined?RV_STK[m]:0}
-
 function rvChg(enc,d){
   var m=decodeURIComponent(enc)
   RV_STK[m]=Math.max(0,rvGet(m)+d)
   rvSv()
   renderRV()
-  if(G('srch').value.trim())doSearch()
+  if(G('srch').value.trim()) doSearch()
 }
-
 function renderRV(){
-  var tbl=G('tb-rv');if(!tbl)return
+  var tbl=G('tb-rv'); if(!tbl) return
   var h='<thead><tr><th style="min-width:110px">Produit</th><th style="width:120px;text-align:center">Stock réserve</th><th style="width:70px;text-align:center">Dispo</th></tr></thead><tbody>'
   RV_DEF.forEach(function(cat){
     h+='<tr class="sp"><td colspan="3">'+cat.label+'</td></tr>'
@@ -690,16 +738,15 @@ function renderRV(){
   h+='</tbody>'
   tbl.innerHTML=h
 }
-
 renderRV()
 
-// ========================= COMMANDE =========================
+/* ========================= COMMANDE ========================= */
 var CMD=ld('mb_cmd4',[])
 var curCat='all'
 
 function cmdFT(enc,cap,c){
   var m=decodeURIComponent(enc),manque=cap-c
-  if(manque<=0)return
+  if(manque<=0) return
   CMD.push({nom:m,qty:manque,cat:'tabac',st:0})
   sv('mb_cmd4',CMD)
   renderHome()
@@ -710,9 +757,11 @@ function cmdAdd(){
   var nom=G('c-nom').value.trim(),qty=parseInt(G('c-qty').value)||1,cat=G('c-cat').value
   if(!nom){alert('Entrez un nom');return}
   CMD.push({nom:nom,qty:qty,cat:cat,st:0})
-  G('c-nom').value='';G('c-qty').value=''
+  G('c-nom').value=''
+  G('c-qty').value=''
   sv('mb_cmd4',CMD)
-  renderCmd();renderHome()
+  renderCmd()
+  renderHome()
 }
 
 function cmdNext(i){CMD[i].st=Math.min(2,CMD[i].st+1);sv('mb_cmd4',CMD);renderCmd();renderHome()}
@@ -742,26 +791,65 @@ function renderCmd(){
   G('cmd-list').innerHTML=h
 }
 
-// ========================= PLANNING =========================
+/* ========================= PLANNING ========================= */
 var PLAN={
-  lundi:    {bf:[11,16.5],   bd:[6,13],    d:[16,20.5],   k:[16.5,20.5]},
-  mardi:    {bf:[15.5,20.5], bd:[6,13],    d:[11.5,15.5], k:[9,14]},
-  mercredi: {bf:[10,15.5],   bd:[6,13],    d:[15.5,20.5], k:[12,20.5]},
-  jeudi:    {bf:[14,20.5],   bd:[6,13],    d:[14.5,20.5], k:[10,14]},
-  vendredi: {bf:[11.5,20],   bd:[6,13],    d:[15.5,20.5], k:[12,14]},
-  samedi:   {bf:[7.5,12.5],  bd:[12.5,20], ba:[13,20],    d:[11,20]},
-  dimanche: {}
+  lundi:{
+    bf:[[660,960],[1020,1200]],
+    bd:[[360,780]],
+    d:[[960,1200]],
+    k:[[990,1200]],
+    ba:[]
+  },
+  mardi:{
+    bf:[[930,1230]],
+    bd:[[360,780]],
+    d:[[690,930]],
+    k:[[540,840]],
+    ba:[]
+  },
+  mercredi:{
+    bf:[[600,930]],
+    bd:[[360,780]],
+    d:[[930,1230]],
+    k:[[720,1230]],
+    ba:[]
+  },
+  jeudi:{
+    bf:[[840,1230]],
+    bd:[[360,780]],
+    d:[[870,1230]],
+    k:[[600,840]],
+    ba:[]
+  },
+  vendredi:{
+    bf:[[690,1200]],
+    bd:[[360,780]],
+    d:[[930,1230]],
+    k:[[720,840]],
+    ba:[]
+  },
+  samedi:{
+    bf:[[450,750]],
+    bd:[[750,1200]],
+    d:[[660,1200]],
+    k:[],
+    ba:[[780,1200]]
+  },
+  dimanche:{
+    bf:[],bd:[],d:[],k:[],ba:[]
+  }
 }
 
 var EMP=[
-  {id:'bf',nom:'Bachir Faye',cls:'cbf',toi:true},
-  {id:'bd',nom:'Badroudine', cls:'cbd'},
-  {id:'d', nom:'Dame',       cls:'cd2'},
-  {id:'k', nom:'Karim',      cls:'ck'},
-  {id:'ba',nom:'Baba',       cls:'cba'}
+  {id:'bf',nom:'Bachir',cls:'cbf',toi:true},
+  {id:'bd',nom:'Badrou',cls:'cbd'},
+  {id:'d',nom:'Dame',cls:'cd2'},
+  {id:'k',nom:'Karim',cls:'ck'},
+  {id:'ba',nom:'Baba',cls:'cba'}
 ]
 var ECOL={bf:'#E8192C',bd:'#3b82f6',d:'#8b5cf6',k:'#22c55e',ba:'#f97316'}
-var wkOff=0,selDay=new Date().getDay()
+var wkOff=0
+var selDay=weekIndexFromDate(new Date())
 
 function getWk(off){
   var n=new Date(),dow=n.getDay()
@@ -775,91 +863,116 @@ function getWk(off){
 
 function wkChg(dir){wkOff+=dir;renderPlan()}
 
+function buildSegments(dp){
+  var pts=[]
+  EMP.forEach(function(emp){
+    (dp[emp.id]||[]).forEach(function(s){pts.push(s[0]);pts.push(s[1])})
+  })
+  pts=Array.from(new Set(pts)).sort(function(a,b){return a-b})
+  var segs=[]
+  for(var i=0;i<pts.length-1;i++){
+    var a=pts[i],b=pts[i+1]
+    var active=EMP.filter(function(emp){
+      return (dp[emp.id]||[]).some(function(s){return s[0]<b && s[1]>a})
+    })
+    if(active.length) segs.push({start:a,end:b,active:active})
+  }
+  return segs
+}
+
+function buildDayView(date,compact,showWeeklyTotals){
+  var dayKey=dayKeyFromDate(date)
+  var dp=PLAN[dayKey]||{}
+  var label=DS[date.getDay()]+' '+date.getDate()+' '+MO[date.getMonth()]
+  var present=EMP.filter(function(e){return (dp[e.id]||[]).length})
+  var cls=compact?'day-view mini':'day-view'
+  var h=`<div class="${cls}">`
+  h+=`<div class="day-head"><div><div class="day-title">${label}</div><div class="day-sub">${present.length} personne(s)</div></div></div>`
+
+  if(!present.length){
+    h+='<div class="empty">Personne ce jour</div>'
+  } else {
+    present.forEach(function(emp){
+      var slots=dp[emp.id]||[]
+      var total=sumSlots(slots)
+      h+=`<div class="emp-card"><div class="emp-top"><div class="emp-left"><div class="emp-mini ${emp.cls}">${emp.nom[0]}</div><div class="emp-name">${emp.nom}${emp.toi?'<span class="ttag">TOI</span>':''}</div></div><div class="emp-total">${formatDuration(total)}</div></div>`
+      h+='<div class="slot-list">'
+      slots.forEach(function(slot){h+='<span class="slot-chip">'+formatRange(slot)+'</span>'})
+      h+='</div></div>'
+    })
+
+    var segs=buildSegments(dp)
+    h+='<div class="ov-box"><div class="hbt">Jauge / créneaux communs</div>'
+    if(!segs.length){
+      h+='<div class="empty">Aucun chevauchement</div>'
+    } else {
+      segs.forEach(function(seg){
+        var count=seg.active.length
+        var col=count>=3?'#E8192C':(count===2?'#f97316':'#16A34A')
+        var width=((seg.end-seg.start)/(14*60))*100
+        if(width<5) width=5
+        if(width>100) width=100
+        h+=`<div class="ov-row"><div class="ov-time">${formatRange([seg.start,seg.end])}</div><div class="ov-bar"><span style="width:${width}%;background:${col}"></span></div><div class="ov-names">${seg.active.map(function(e){return e.nom}).join(' · ')}</div></div>`
+      })
+    }
+    h+='</div>'
+  }
+
+  if(showWeeklyTotals){
+    h+='<div class="hbx"><div class="hbt">Total heures semaine</div>'
+    EMP.forEach(function(emp){
+      var tot=0
+      Object.keys(PLAN).forEach(function(k){tot+=sumSlots(PLAN[k][emp.id]||[])})
+      if(tot>0) h+='<div class="hbr"><span class="hbn">'+emp.nom+'</span><span class="hbv">'+formatDuration(tot)+'</span></div>'
+    })
+    h+='</div>'
+  }
+
+  h+='</div>'
+  return h
+}
+
 function renderPlan(){
-  var dates=getWk(wkOff),n=n0()
+  var dates=getWk(wkOff),now=n0()
   G('wk-lbl').textContent=dates[0].getDate()+' '+MO[dates[0].getMonth()]+' – '+dates[6].getDate()+' '+MO[dates[6].getMonth()]+' '+dates[6].getFullYear()
+
   var h=''
   dates.forEach(function(d,i){
-    var isN=sameD(d,n),isSel=i===selDay
-    h+='<div class="dp'+(isSel?' on':'')+(isN?' tj':'')+'" onclick="selD('+i+')">'
-    h+='<div class="dn">'+DS2[i]+'</div><div class="dd">'+d.getDate()+'</div></div>'
+    var isToday=(wkOff===0 && sameD(d,now))
+    var isSel=i===selDay
+    h+='<div class="dp'+(isSel?' on':'')+(isToday?' tj':'')+'" onclick="selD('+i+')">'
+    h+='<div class="dn">'+WDS2[i]+'</div><div class="dd">'+d.getDate()+'</div></div>'
   })
   G('drow').innerHTML=h
-  renderDay(dates[selDay])
+  G('plan-out').innerHTML=buildDayView(dates[selDay],false,true)
 }
 
 function selD(idx){
   selDay=idx
-  document.querySelectorAll('.dp').forEach(function(p,i){p.classList.toggle('on',i===idx)})
-  renderDay(getWk(wkOff)[idx])
+  renderPlan()
 }
 
-function renderDay(date){
-  var key=DK[date.getDay()],dp=PLAN[key]||{}
-  var S=6,E=21,T=E-S
-  var ticks=[];for(var h=S;h<=E;h+=2)ticks.push(h+'h')
+;(function(){selDay=weekIndexFromDate(new Date());renderPlan()})()
 
-  var out='<div class="tlb"><div class="tlin">'
-  out+='<div class="tlh">'+ticks.map(function(t){return'<div class="tlt">'+t+'</div>'}).join('')+'</div>'
-  EMP.forEach(function(emp){
-    var sh=dp[emp.id]
-    out+='<div class="tlr"><div class="tln">'+emp.nom.split(' ')[0]+'</div><div class="tltr">'
-    if(sh){
-      var l=((sh[0]-S)/T)*100,w=((sh[1]-sh[0])/T)*100
-      out+='<div class="tlbar" style="left:'+l+'%;width:'+w+'%;background:'+ECOL[emp.id]+'">'+hh(sh[0])+'–'+hh(sh[1])+'</div>'
-    }
-    out+='</div></div>'
-  })
-  out+='</div></div>'
-
-  var pres=EMP.filter(function(e){return !!dp[e.id]})
-  if(pres.length){
-    out+='<div class="tmbx">'
-    pres.forEach(function(emp){
-      var sh=dp[emp.id]
-      out+='<div class="tmr"><div class="tav '+emp.cls+'">'+emp.nom[0]+'</div>'
-      out+='<div class="tmi"><div class="tmn">'+emp.nom+(emp.toi?'<span class="ttag">TOI</span>':'')+'</div>'
-      out+='<div class="tmh">'+hh(sh[0])+' → '+hh(sh[1])+'</div></div>'
-      out+='<div class="tms">'+hh(sh[0])+'</div></div>'
-    })
-    out+='</div>'
-  } else {
-    out+='<div class="empty">Personne ce jour</div>'
-  }
-
-  out+='<div class="hbx"><div class="hbt">Total heures semaine</div>'
-  EMP.forEach(function(emp){
-    var tot=0
-    Object.keys(PLAN).forEach(function(k){var s=PLAN[k][emp.id];if(s)tot+=s[1]-s[0]})
-    if(tot>0)out+='<div class="hbr"><span class="hbn">'+emp.nom+'</span><span class="hbv">'+tot.toFixed(1)+'h</span></div>'
-  })
-  out+='</div>'
-  G('plan-out').innerHTML=out
-}
-;(function(){selDay=new Date().getDay();renderPlan()})()
-
-// ========================= BOULANGERIE =========================
+/* ========================= BOULANGERIE ========================= */
 var BDEF=[
-  {nom:"Croissant",       emoji:"🥐",std:6},
-  {nom:"Pain choco",      emoji:"🍫",std:8},
-  {nom:"Pain raisins",    emoji:"🍇",std:4},
-  {nom:"Cookie blanc",    emoji:"🍪",std:2},
-  {nom:"Cookie noir",     emoji:"🍪",std:2},
-  {nom:"Donut sucre",     emoji:"🍩",std:2},
-  {nom:"Donut choco",     emoji:"🍩",std:2},
-  {nom:"Muffin choco",    emoji:"🧁",std:2},
+  {nom:"Croissant",emoji:"🥐",std:6},
+  {nom:"Pain choco",emoji:"🍫",std:8},
+  {nom:"Pain raisins",emoji:"🍇",std:4},
+  {nom:"Cookie blanc",emoji:"🍪",std:2},
+  {nom:"Cookie noir",emoji:"🍪",std:2},
+  {nom:"Donut sucre",emoji:"🍩",std:2},
+  {nom:"Donut choco",emoji:"🍩",std:2},
+  {nom:"Muffin choco",emoji:"🧁",std:2},
   {nom:"Muffin myrtilles",emoji:"🧁",std:2},
-  {nom:"Mascotte sucre",  emoji:"⭐", std:4},
-  {nom:"Mascotte choco",  emoji:"⭐", std:4}
+  {nom:"Mascotte sucre",emoji:"⭐",std:4},
+  {nom:"Mascotte choco",emoji:"⭐",std:4}
 ]
 
 var BD=ld('mb_boul4',null)
 if(!BD){
-  BD=BDEF.map(function(b){
-    return {nom:b.nom,emoji:b.emoji,std:b.std,qte:b.std,date:new Date().toISOString(),dest:false}
-  })
+  BD=BDEF.map(function(b){return {nom:b.nom,emoji:b.emoji,std:b.std,qte:b.std,destroyed:false}})
 }
-
 var DEST=ld('mb_dest4',[])
 
 function bSv(){sv('mb_boul4',BD)}
@@ -867,27 +980,28 @@ function dSv(){sv('mb_dest4',DEST)}
 
 function boulNDay(){
   if(!confirm('Nouveau plateau ? Remet tout au standard.'))return
-  BD.forEach(function(b){b.qte=b.std;b.date=new Date().toISOString();b.dest=false})
-  DEST=[];bSv();dSv();renderBoul();renderHome()
+  BD.forEach(function(b){b.qte=b.std;b.destroyed=false})
+  DEST=[]
+  bSv();dSv();renderBoul();renderHome()
 }
 
 function bChg(i,d){
   BD[i].qte=Math.max(0,BD[i].qte+d)
-  if(!BD[i].date)BD[i].date=new Date().toISOString()
   bSv();renderBoul();renderHome()
 }
 
 function bDest(i){
   var item=BD[i]
-  if(item.dest){
-    item.dest=false;item.qte=item.std;item.date=null
-    var idx=DEST.findIndex(function(d){return d.nom===item.nom})
-    if(idx>=0)DEST.splice(idx,1)
+  if(item.destroyed){
+    item.destroyed=false
+    item.qte=item.std
+    var idx=DEST.findIndex(function(x){return x.nom===item.nom})
+    if(idx>=0) DEST.splice(idx,1)
   } else {
     var qty=item.qte
-    item.dest=true
-    var ex=DEST.find(function(d){return d.nom===item.nom})
-    if(ex)ex.qty+=qty
+    item.destroyed=true
+    var ex=DEST.find(function(x){return x.nom===item.nom})
+    if(ex) ex.qty+=qty
     else DEST.push({nom:item.nom,emoji:item.emoji,qty:qty})
     item.qte=0
   }
@@ -897,16 +1011,16 @@ function bDest(i){
 function valDest(){
   if(!confirm('Déclarer et réinitialiser ?'))return
   DEST=[]
-  BD.forEach(function(b){b.dest=false})
-  dSv();bSv();renderBoul();renderHome()
+  BD.forEach(function(b){b.destroyed=false})
+  bSv();dSv();renderBoul();renderHome()
 }
 
 function renderBoul(){
   var h=''
   BD.forEach(function(item,i){
-    h+='<div class="bc'+(item.dest?' dest':'')+'"><div class="be">'+item.emoji+'</div>'
+    h+='<div class="bc'+(item.destroyed?' dest':'')+'"><div class="be">'+item.emoji+'</div>'
     h+='<div class="bna">'+item.nom+'</div>'
-    if(!item.dest){
+    if(!item.destroyed){
       h+='<div class="bct"><button class="bb" onclick="bChg('+i+',-1)">−</button>'
       h+='<span class="bnu">'+item.qte+'</span>'
       h+='<button class="bb" onclick="bChg('+i+',1)">+</button></div>'
@@ -934,7 +1048,9 @@ function renderBoul(){
   }
 }
 
-// ========================= DLC =========================
+renderBoul()
+
+/* ========================= DLC ========================= */
 var DLC=ld('mb_dlc4',[])
 function dlcSv(){sv('mb_dlc4',DLC)}
 
@@ -957,7 +1073,7 @@ function dlcDel(i){DLC.splice(i,1);dlcSv();renderDLC();renderHome()}
 
 function renderDLC(){
   var now=n0(),rouge=[],orange=[],badge=0
-  var sorted=DLC.map(function(d,i){return{i:i,nom:d.nom,cat:d.cat||'Snack',date:d.date,ret:d.ret}})
+  var sorted=DLC.map(function(d,i){return {i:i,nom:d.nom,cat:d.cat||'Snack',date:d.date,ret:d.ret}})
     .sort(function(a,b){return new Date(a.date)-new Date(b.date)})
 
   var groups={Snack:[],Frais:[],Sec:[]}
@@ -965,29 +1081,23 @@ function renderDLC(){
     var exp=new Date(item.date);exp.setHours(0,0,0,0)
     var diff=Math.round((exp-now)/(1000*60*60*24))
     var tag=''
-
     if(item.ret){
       tag='<span class="tgg">✓</span>'
     } else if(diff<0){
-      tag='<span class="tgr">🔴</span>'
-      rouge.push(item.nom);badge++
+      tag='<span class="tgr">🔴</span>'; rouge.push(item.nom); badge++
     } else if(diff===0){
-      tag='<span class="tgr">🔴</span>'
-      rouge.push(item.nom);badge++
+      tag='<span class="tgr">🔴</span>'; rouge.push(item.nom); badge++
     } else if(diff===1){
-      tag='<span class="tgo">🟡</span>'
-      orange.push(item.nom);badge++
+      tag='<span class="tgo">🟡</span>'; orange.push(item.nom); badge++
     } else {
       tag='<span class="tgg">✅</span>'
     }
-
     if(!groups[item.cat]) item.cat='Snack'
     groups[item.cat].push({i:item.i,nom:item.nom,cat:item.cat,date:item.date,ret:item.ret,tag:tag})
   })
 
-  var h=''
   function section(title,list){
-    if(!list.length)return ''
+    if(!list.length) return ''
     var x='<tr class="sp"><td colspan="5">'+title+'</td></tr>'
     list.forEach(function(item){
       x+='<tr style="'+(item.ret?'opacity:.4':'')+'">'
@@ -995,8 +1105,7 @@ function renderDLC(){
       x+='<td style="text-align:center;font-size:11px">'+item.cat+'</td>'
       x+='<td style="text-align:center;font-size:11px">'+fmtDt(item.date)+'</td>'
       x+='<td style="text-align:center">'+item.tag+'</td>'
-      x+='<td style="text-align:center">'
-      x+='<div style="display:flex;justify-content:center;gap:8px">'
+      x+='<td style="text-align:center"><div style="display:flex;justify-content:center;gap:8px">'
       x+='<span onclick="dlcRet('+item.i+')" style="font-size:10px;color:#888;cursor:pointer;text-decoration:underline">'+(item.ret?'Annuler':'✓')+'</span>'
       x+='<span onclick="dlcDel('+item.i+')" style="font-size:10px;color:#E8192C;cursor:pointer">✕</span>'
       x+='</div></td></tr>'
@@ -1004,51 +1113,49 @@ function renderDLC(){
     return x
   }
 
+  var h=''
   h+=section('🥐 Snack',groups.Snack)
   h+=section('🧊 Frais',groups.Frais)
   h+=section('📦 Sec',groups.Sec)
-
-  if(!h){
-    h='<tr><td colspan="5" class="empty">Aucun produit</td></tr>'
-  }
+  if(!h) h='<tr><td colspan="5" class="empty">Aucun produit</td></tr>'
 
   G('dlc-tb').innerHTML=h
   G('dlc-bdg').textContent=badge
 
   var ar=G('dlc-r'),ao=G('dlc-o')
-  if(rouge.length){ar.style.display='block';ar.innerHTML='🔴 À retirer MAINTENANT : '+rouge.join(', ')}else ar.style.display='none'
-  if(orange.length){ao.style.display='block';ao.innerHTML='🟡 À retirer DEMAIN : '+orange.join(', ')}else ao.style.display='none'
+  if(rouge.length){ar.style.display='block';ar.innerHTML='🔴 À retirer MAINTENANT : '+rouge.join(', ')} else ar.style.display='none'
+  if(orange.length){ao.style.display='block';ao.innerHTML='🟡 À retirer DEMAIN : '+orange.join(', ')} else ao.style.display='none'
 }
 G('dlc-d').addEventListener('click',function(){try{this.showPicker()}catch(e){}})
 renderDLC()
 
-// ========================= À FAIRE =========================
-var TD=ld('mb_td4',[])
-if(!TD.length){
-  TD=[
-    {t:"Vérifier DLC plateau boulangerie",done:false},
-    {t:"Tour des tiroirs tabac",done:false},
-    {t:"Bordereau invendus MMLP",done:false},
-    {t:"Transfert Too Good To Go → Jean-Philippe",done:false},
-    {t:"Réappro frigo boissons",done:false}
-  ]
-}
-function tdSv(){sv('mb_td4',TD)}
+/* ========================= À FAIRE ========================= */
+var TD=ld('mb_td5',[])
+function tdSv(){sv('mb_td5',TD)}
+
 function tdAdd(){
   var inp=G('td-inp'),val=inp.value.trim()
-  if(!val)return
-  TD.unshift({t:val,done:false});inp.value='';tdSv();renderTodo()
+  if(!val) return
+  TD.unshift({t:val,done:false})
+  inp.value=''
+  tdSv()
+  renderTodo()
 }
+
 function tdTgl(i){TD[i].done=!TD[i].done;tdSv();renderTodo()}
+function tdDel(i){TD.splice(i,1);tdSv();renderTodo();event&&event.stopPropagation&&event.stopPropagation()}
+
 function renderTodo(){
   var rem=TD.filter(function(x){return !x.done}).length
   G('td-bdg').textContent=rem
-  var sorted=TD.map(function(x,i){return{t:x.t,done:x.done,i:i}}).sort(function(a,b){return a.done-b.done})
+
+  var sorted=TD.map(function(x,i){return {t:x.t,done:x.done,i:i}}).sort(function(a,b){return a.done-b.done})
   var h=''
   sorted.forEach(function(x){
     h+='<div class="tdi'+(x.done?' done':'')+'" onclick="tdTgl('+x.i+')">'
     h+='<div class="tdc">'+(x.done?'✓':'')+'</div>'
-    h+='<div class="tdt">'+x.t+'</div></div>'
+    h+='<div class="tdt">'+x.t+'</div>'
+    h+='<button class="tddel" onclick="tdDel('+x.i+');return false;">✕</button></div>'
   })
   G('td-list').innerHTML=h||'<div class="empty">Rien pour l\'instant</div>'
 }
@@ -1056,33 +1163,43 @@ G('td-btn').addEventListener('click',tdAdd)
 G('td-inp').addEventListener('keydown',function(e){if(e.key==='Enter')tdAdd()})
 renderTodo()
 
-// ========================= DASHBOARD =========================
+/* ========================= NOTES ========================= */
+var NOTE=ld('mb_note5','')
+function saveNote(){NOTE=G('note-txt').value;sv('mb_note5',NOTE)}
+function syncNote(){
+  var el=G('note-txt')
+  if(!el) return
+  if(document.activeElement!==el && el.value!==NOTE) el.value=NOTE
+}
+G('note-txt').addEventListener('input',saveNote)
+
+/* ========================= DASHBOARD ========================= */
 function renderHome(){
   var now=n0()
+
   var tB=0,tW=0
   TIROIRS.forEach(function(t){
     t.sections.forEach(function(s){
       s.items.forEach(function(item){
         var c=getS(item.m)
-        if(c===0)tB++
-        else if(c<item.cap)tW++
+        if(c===0) tB++
+        else if(c<item.cap) tW++
       })
     })
   })
 
   var dB=0,dW=0
   DLC.forEach(function(d){
-    if(d.ret)return
+    if(d.ret) return
     var exp=new Date(d.date);exp.setHours(0,0,0,0)
     var diff=Math.round((exp-now)/(1000*60*60*24))
-    if(diff<=0)dB++;else if(diff===1)dW++
+    if(diff<=0) dB++
+    else if(diff===1) dW++
   })
 
   var bB=0
   BD.forEach(function(b){
-    if(!b.date||b.dest)return
-    var mise=new Date(b.date);mise.setHours(0,0,0,0)
-    if(Math.round((now-mise)/(1000*60*60*24))>=3)bB++
+    if(b.destroyed) bB++
   })
 
   var cmdP=CMD.filter(function(c){return c.st<2}).length
@@ -1091,11 +1208,11 @@ function renderHome(){
 
   var cards=''
   cards+='<div class="kd '+kls(tB,tW)+'"><div class="kd-ic">🚬</div><div class="kd-lb">Tabac</div>'
-  cards+='<div class="kd-v">'+(tB>0?tB:tW>0?tW+'⚡':'✅')+'</div>'
+  cards+='<div class="kd-v">'+(tB>0?tB:(tW>0?tW+'⚡':'✅'))+'</div>'
   cards+='<div class="kd-s">'+(tB>0?'vides':tW>0?'manquent':'Tout OK')+'</div></div>'
 
   cards+='<div class="kd '+kls(dB,dW)+'"><div class="kd-ic">⏱️</div><div class="kd-lb">DLC</div>'
-  cards+='<div class="kd-v">'+(dB>0?dB:dW>0?dW:'✅')+'</div>'
+  cards+='<div class="kd-v">'+(dB>0?dB:(dW>0?dW:'✅'))+'</div>'
   cards+='<div class="kd-s">'+(dB>0?'à retirer':dW>0?'demain':'Tout OK')+'</div></div>'
 
   cards+='<div class="kd '+(bB>0?'red':'grn')+'"><div class="kd-ic">🥐</div><div class="kd-lb">Boulangerie</div>'
@@ -1109,31 +1226,21 @@ function renderHome(){
   G('hm-cards').innerHTML=cards
 
   var ac=''
-  if(tB>0)ac+='<div class="arow"><div class="dot r"></div><div class="ar-t">Tiroirs vides à remplir</div><span class="ar-b r">'+tB+'</span></div>'
-  if(dB>0)ac+='<div class="arow"><div class="dot r"></div><div class="ar-t">Retirer produits DLC dépassés</div><span class="ar-b r">'+dB+'</span></div>'
-  if(bB>0)ac+='<div class="arow"><div class="dot r"></div><div class="ar-t">Détruire produits boulangerie</div><span class="ar-b r">'+bB+'</span></div>'
-  if(dW>0)ac+='<div class="arow"><div class="dot o"></div><div class="ar-t">DLC à surveiller demain</div><span class="ar-b o">'+dW+'</span></div>'
-  if(tW>0)ac+='<div class="arow"><div class="dot o"></div><div class="ar-t">Tabac sous capacité</div><span class="ar-b o">'+tW+'</span></div>'
-  if(cmdP>0)ac+='<div class="arow"><div class="dot o"></div><div class="ar-t">Commandes en attente</div><span class="ar-b o">'+cmdP+'</span></div>'
+  if(tB>0) ac+='<div class="arow"><div class="dot r"></div><div class="ar-t">Tiroirs vides à remplir</div><span class="ar-b r">'+tB+'</span></div>'
+  if(dB>0) ac+='<div class="arow"><div class="dot r"></div><div class="ar-t">Retirer produits DLC dépassés</div><span class="ar-b r">'+dB+'</span></div>'
+  if(bB>0) ac+='<div class="arow"><div class="dot r"></div><div class="ar-t">Détruire produits boulangerie</div><span class="ar-b r">'+bB+'</span></div>'
+  if(dW>0) ac+='<div class="arow"><div class="dot o"></div><div class="ar-t">DLC à surveiller demain</div><span class="ar-b o">'+dW+'</span></div>'
+  if(tW>0) ac+='<div class="arow"><div class="dot o"></div><div class="ar-t">Tabac sous capacité</div><span class="ar-b o">'+tW+'</span></div>'
+  if(cmdP>0) ac+='<div class="arow"><div class="dot o"></div><div class="ar-t">Commandes en attente</div><span class="ar-b o">'+cmdP+'</span></div>'
   TD.filter(function(x){return !x.done}).slice(0,3).forEach(function(x){
     ac+='<div class="arow"><div class="dot g"></div><div class="ar-t">'+x.t+'</div></div>'
   })
-  if(!ac)ac='<div class="empty">✅ Tout est bon — bonne journée !</div>'
+  if(!ac) ac='<div class="empty">✅ Tout est bon — bonne journée !</div>'
   G('hm-act').innerHTML=ac
 
-  var key=DK[new Date().getDay()],dp=PLAN[key]||{},team=''
-  EMP.forEach(function(emp){
-    var sh=dp[emp.id]
-    if(sh){
-      team+='<div class="arow">'
-      team+='<div style="width:32px;height:32px;border-radius:9px;background:'+ECOL[emp.id]+';display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0">'+emp.nom[0]+'</div>'
-      team+='<div style="flex:1;margin-left:2px"><div style="font-size:13px;font-weight:700;color:#111">'+emp.nom+(emp.toi?'<span class="ttag">TOI</span>':'')+'</div>'
-      team+='<div style="font-size:11px;color:#888">'+hh(sh[0])+' → '+hh(sh[1])+'</div></div>'
-      team+='<div style="font-size:13px;font-weight:700;color:#16A34A">'+hh(sh[0])+'</div></div>'
-    }
-  })
-  if(!team)team='<div class="empty">Personne aujourd\'hui</div>'
-  G('hm-team').innerHTML=team
+  G('hm-plan').innerHTML=buildDayView(new Date(),true,false)
+  syncNote()
+  renderTodo()
 }
 
 renderHome()
