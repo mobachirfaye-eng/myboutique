@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="MyBoutique">
+<meta name="theme-color" content="#E8192C">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon.svg">
 <title>MyBoutique</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -215,16 +222,61 @@ tr.sp td{background:#f5f5f5;color:#777;font-size:10px;font-weight:700;text-trans
 
 /* COULEURS EQUIPE */
 .cbf{background:#E8192C}.cbd{background:#3b82f6}.cd2{background:#8b5cf6}.ck{background:#22c55e}.cba{background:#f97316}
+
+/* TAG PLANNING (était manquant) */
+.ttag{background:rgba(255,255,255,.3);border-radius:4px;padding:1px 5px;font-size:9px;font-weight:700;color:#fff;margin-left:4px;vertical-align:middle}
+
+/* HEADER BTN */
+.hdr-btn{background:rgba(255,255,255,.2);border:none;border-radius:8px;color:#fff;padding:6px 9px;font-size:16px;cursor:pointer;margin-left:6px;font-family:inherit}
+
+/* INSTALL BANNER iOS */
+.install-banner{background:#1c1c1e;color:#fff;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px}
+.install-banner.hidden{display:none}
+.install-close{background:none;border:none;color:#888;font-size:20px;cursor:pointer;padding:0 4px;line-height:1}
+
+/* CARTES ACCUEIL — cliquables */
+.kd{cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,.04)}
+.kd:active{transform:scale(.97);transition:transform .1s}
+.kd-lb{display:flex;justify-content:space-between;align-items:center}
+.ar-nav{font-size:11px;color:#ccc;font-weight:400}
+
+/* ACTIONS — cliquables */
+.arow{cursor:pointer}
+.arow:active{background:#f5f5f5}
+
+/* MODAL PARAMÈTRES */
+.modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:999;align-items:flex-end;justify-content:center}
+.modal-backdrop.on{display:flex}
+.modal-box{background:#fff;border-radius:20px 20px 0 0;padding:20px 18px 40px;width:100%;max-width:440px;max-height:80vh;overflow-y:auto}
+.modal-box h3{font-size:17px;font-weight:700;margin-bottom:14px}
+.modal-row{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid #f5f5f5}
+.modal-row:last-of-type{border-bottom:none}
+.modal-row-t{font-weight:600;font-size:14px;color:#111}
+.modal-row-s{font-size:12px;color:#888;margin-top:2px}
+.modal-btn{background:#f2f2f7;border:none;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:700;cursor:pointer;color:#E8192C;font-family:inherit;white-space:nowrap}
+.modal-btn.green{color:#16A34A}
 </style>
 </head>
 <body>
+
+<!-- BANNIÈRE INSTALLATION iOS -->
+<div class="install-banner hidden" id="install-banner">
+  <div style="flex:1">
+    <strong style="display:block;font-size:13px;margin-bottom:2px">Installer l'app</strong>
+    Appuie sur <b>⎋ Partager</b> puis <b>"Sur l'écran d'accueil"</b>
+  </div>
+  <button class="install-close" onclick="dismissInstall()">✕</button>
+</div>
 
 <div class="hdr">
   <div>
     <div class="hdr-l">MyBoutique <span>Relay</span></div>
     <div class="hdr-sub">Gare Montparnasse · Bachir Faye</div>
   </div>
-  <div class="hdr-r" id="hdr-d"></div>
+  <div style="display:flex;align-items:center;gap:4px">
+    <div class="hdr-r" id="hdr-d"></div>
+    <button class="hdr-btn" onclick="showSettings()">⚙️</button>
+  </div>
 </div>
 
 <!-- ===== ACCUEIL ===== -->
@@ -238,8 +290,11 @@ tr.sp td{background:#f5f5f5;color:#777;font-size:10px;font-weight:700;text-trans
     <div id="hm-act"></div>
   </div>
 
-  <div class="bloc">
-    <div class="bloc-t">📅 Planning du jour</div>
+  <div class="bloc" style="cursor:pointer" onclick="goPg('plan')">
+    <div class="bloc-t" style="display:flex;justify-content:space-between;align-items:center">
+      <span>📅 Planning du jour</span>
+      <span style="font-size:11px;color:#ccc;font-weight:400">Voir tout ›</span>
+    </div>
     <div style="padding:12px 12px 8px" id="hm-plan"></div>
   </div>
 
@@ -414,12 +469,12 @@ tr.sp td{background:#f5f5f5;color:#777;font-size:10px;font-weight:700;text-trans
 
 <!-- NAV -->
 <div class="nav">
-  <button class="nb on" onclick="goPg('home',this)"><div class="ic">🏠</div>Accueil</button>
-  <button class="nb" onclick="goPg('tabac',this)"><div class="ic">🚬</div>Tabac</button>
-  <button class="nb" onclick="goPg('cmd',this)"><div class="ic">🛒</div>Commande</button>
-  <button class="nb" onclick="goPg('plan',this)"><div class="ic">📅</div>Planning</button>
-  <button class="nb" onclick="goPg('dlc',this)"><div class="ic">⏱️</div>DLC</button>
-  <button class="nb" onclick="goPg('boul',this)"><div class="ic">🥐</div>Boulang.</button>
+  <button class="nb on" data-page="home" onclick="goPg('home')"><div class="ic">🏠</div>Accueil</button>
+  <button class="nb" data-page="tabac" onclick="goPg('tabac')"><div class="ic">🚬</div>Tabac</button>
+  <button class="nb" data-page="cmd" onclick="goPg('cmd')"><div class="ic">🛒</div>Commande</button>
+  <button class="nb" data-page="plan" onclick="goPg('plan')"><div class="ic">📅</div>Planning</button>
+  <button class="nb" data-page="dlc" onclick="goPg('dlc')"><div class="ic">⏱️</div>DLC</button>
+  <button class="nb" data-page="boul" onclick="goPg('boul')"><div class="ic">🥐</div>Boulang.</button>
 </div>
 
 <!-- RECAP SHEET -->
@@ -428,14 +483,86 @@ tr.sp td{background:#f5f5f5;color:#777;font-size:10px;font-weight:700;text-trans
     <h3>📋 À commander / ramener</h3>
     <p>Références sous la capacité du tiroir</p>
     <div id="rc-list"></div>
-    <button class="bfull" onclick="G('rc-ov').classList.remove('on')">Fermer</button>
+    <button class="bfull" onclick="document.getElementById('rc-ov').classList.remove('on')">Fermer</button>
+  </div>
+</div>
+
+<!-- MODAL PARAMÈTRES -->
+<div class="modal-backdrop" id="settings-modal">
+  <div class="modal-box">
+    <h3>⚙️ Paramètres &amp; Données</h3>
+    <div class="modal-row">
+      <div>
+        <div class="modal-row-t">Exporter les données</div>
+        <div class="modal-row-s">Sauvegarde JSON complète</div>
+      </div>
+      <button class="modal-btn green" onclick="exportData()">⬇ Export</button>
+    </div>
+    <div class="modal-row">
+      <div>
+        <div class="modal-row-t">Importer des données</div>
+        <div class="modal-row-s">Restaurer depuis un fichier</div>
+      </div>
+      <button class="modal-btn" onclick="document.getElementById('import-file').click()">⬆ Import</button>
+    </div>
+    <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(this)">
+    <div class="modal-row">
+      <div>
+        <div class="modal-row-t">Réinitialiser tout</div>
+        <div class="modal-row-s">Efface toutes les données locales</div>
+      </div>
+      <button class="modal-btn" onclick="clearAllData()">🗑 Vider</button>
+    </div>
+    <button class="bfull" onclick="hideSettings()" style="margin-top:14px">Fermer</button>
   </div>
 </div>
 
 <script>
 function G(id){return document.getElementById(id)}
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
 function sv(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
 function ld(k,d){try{var x=localStorage.getItem(k);return x?JSON.parse(x):d}catch(e){return d}}
+
+/* ========================= PARAMÈTRES / BACKUP ========================= */
+function showSettings(){G('settings-modal').classList.add('on')}
+function hideSettings(){G('settings-modal').classList.remove('on')}
+function exportData(){
+  var data={stk:ld('mb_stk4',{}),rv:ld('mb_rv4',{}),cmd:ld('mb_cmd4',[]),boul:ld('mb_boul4',null),dest:ld('mb_dest4',[]),dlc:ld('mb_dlc4',[]),td:ld('mb_td5',[]),note:ld('mb_note5',''),recap:ld('mb_recap_tabac',{})};
+  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var a=document.createElement('a'),d=new Date();
+  a.href=URL.createObjectURL(blob);
+  a.download='myboutique-'+d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()+'.json';
+  a.click();
+}
+function importData(input){
+  var file=input.files[0];if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      var d=JSON.parse(e.target.result);
+      var map={'stk':'mb_stk4','rv':'mb_rv4','cmd':'mb_cmd4','boul':'mb_boul4','dest':'mb_dest4','dlc':'mb_dlc4','td':'mb_td5','note':'mb_note5','recap':'mb_recap_tabac'};
+      Object.keys(map).forEach(function(k){if(d[k]!==undefined) localStorage.setItem(map[k],JSON.stringify(d[k]))});
+      alert('Import réussi — rechargement...');location.reload();
+    }catch(err){alert('Fichier invalide');}
+  };
+  reader.readAsText(file);input.value='';
+}
+function clearAllData(){
+  if(!confirm('Supprimer TOUTES les données ? Irréversible.'))return;
+  ['mb_stk4','mb_rv4','mb_cmd4','mb_boul4','mb_dest4','mb_dlc4','mb_td5','mb_note5','mb_recap_tabac'].forEach(function(k){localStorage.removeItem(k)});
+  location.reload();
+}
+
+/* ========================= INSTALL BANNER ========================= */
+function dismissInstall(){G('install-banner').classList.add('hidden');localStorage.setItem('install-dismissed','1')}
+(function(){
+  var ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  var standalone=window.navigator.standalone||window.matchMedia('(display-mode:standalone)').matches;
+  if(ios&&!standalone&&!localStorage.getItem('install-dismissed')) G('install-banner').classList.remove('hidden');
+})();
+
+/* ========================= SERVICE WORKER ========================= */
+if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})})}
 
 var MO=['jan','fév','mar','avr','mai','jun','jul','aoû','sep','oct','nov','déc'];
 var DS=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
@@ -462,17 +589,19 @@ function getWeekDates(off){
   return days
 }
 
-function goPg(name,btn){
-  document.querySelectorAll('.pg').forEach(function(p){p.classList.remove('on')})
-  document.querySelectorAll('.nb').forEach(function(b){b.classList.remove('on')})
-  G('pg-'+name).classList.add('on')
-  btn.classList.add('on')
-  if(name==='home') renderHome()
-  if(name==='tabac') renderTabac()
-  if(name==='cmd') renderCmd()
-  if(name==='plan') renderPlan()
-  if(name==='dlc') renderDLC()
-  if(name==='boul') renderBoul()
+function goPg(name){
+  document.querySelectorAll('.pg').forEach(function(p){p.classList.remove('on')});
+  document.querySelectorAll('.nb').forEach(function(b){b.classList.remove('on')});
+  G('pg-'+name).classList.add('on');
+  var btn=document.querySelector('.nb[data-page="'+name+'"]');
+  if(btn) btn.classList.add('on');
+  window.scrollTo(0,0);
+  if(name==='home') renderHome();
+  if(name==='tabac') renderTabac();
+  if(name==='cmd') renderCmd();
+  if(name==='plan') renderPlan();
+  if(name==='dlc') renderDLC();
+  if(name==='boul') renderBoul();
 }
 
 function updHdr(){
@@ -836,7 +965,7 @@ function renderCmd(){
   var h='';
   filtered.forEach(function(item){
     var i=CMD.indexOf(item);
-    h+='<div class="ci"><div style="flex:1"><div class="ci-nm">'+item.nom+'</div>';
+    h+='<div class="ci"><div style="flex:1"><div class="ci-nm">'+escHtml(item.nom)+'</div>';
     h+='<div class="ci-q">×'+item.qty+' · '+(item.cat==='tabac'?'🚬':item.cat==='alim'?'🥐':'📦')+'</div></div>';
     h+='<button class="cs '+SCLS[item.st]+'" onclick="cmdNext('+i+')">'+SLBL[item.st]+'</button>';
     h+='<button class="cd" onclick="cmdDel('+i+')">✕</button></div>';
@@ -1182,8 +1311,8 @@ function renderDLC(){
     var x='<tr class="sp"><td colspan="5">'+title+'</td></tr>';
     list.forEach(function(item){
       x+='<tr style="'+(item.ret?'opacity:.4':'')+'">';
-      x+='<td class="nm" style="'+(item.ret?'text-decoration:line-through':'')+'">'+item.nom+'</td>';
-      x+='<td style="text-align:center;font-size:11px">'+item.cat+'</td>';
+      x+='<td class="nm" style="'+(item.ret?'text-decoration:line-through':'')+'">'+escHtml(item.nom)+'</td>';
+      x+='<td style="text-align:center;font-size:11px">'+escHtml(item.cat)+'</td>';
       x+='<td style="text-align:center;font-size:11px">'+fmtDt(item.date)+'</td>';
       x+='<td style="text-align:center">'+item.tag+'</td>';
       x+='<td style="text-align:center"><div style="display:flex;justify-content:center;gap:8px">';
@@ -1238,7 +1367,7 @@ function renderTodo(){
   sorted.forEach(function(x){
     h+='<div class="tdi'+(x.done?' done':'')+'" onclick="tdTgl('+x.i+')">';
     h+='<div class="tdc">'+(x.done?'✓':'')+'</div>';
-    h+='<div class="tdt">'+x.t+'</div>';
+    h+='<div class="tdt">'+escHtml(x.t)+'</div>';
     h+='<button class="tddel" onclick="tdDel('+x.i+',event);return false;">✕</button></div>';
   });
   G('td-list').innerHTML=h||'<div class="empty">Rien pour l\'instant</div>';
@@ -1290,33 +1419,37 @@ function renderHome(){
   function kls(b,w){return b>0?'red':w>0?'ora':'grn'}
 
   var cards='';
-  cards+='<div class="kd '+kls(tB,tW)+'"><div class="kd-ic">🚬</div><div class="kd-lb">Tabac</div>';
+  cards+='<div class="kd '+kls(tB,tW)+'" onclick="goPg(\'tabac\')">';
+  cards+='<div class="kd-lb"><span>🚬 Tabac</span><span class="ar-nav">›</span></div>';
   cards+='<div class="kd-v">'+(tB>0?tB:(tW>0?tW+'⚡':'✅'))+'</div>';
-  cards+='<div class="kd-s">'+(tB>0?'vides':tW>0?'manquent':'Tout OK')+'</div></div>';
+  cards+='<div class="kd-s">'+(tB>0?'tiroirs vides':tW>0?'sous capacité':'Tout OK')+'</div></div>';
 
-  cards+='<div class="kd '+kls(dB,dW)+'"><div class="kd-ic">⏱️</div><div class="kd-lb">DLC</div>';
+  cards+='<div class="kd '+kls(dB,dW)+'" onclick="goPg(\'dlc\')">';
+  cards+='<div class="kd-lb"><span>⏱️ DLC</span><span class="ar-nav">›</span></div>';
   cards+='<div class="kd-v">'+(dB>0?dB:(dW>0?dW:'✅'))+'</div>';
-  cards+='<div class="kd-s">'+(dB>0?'à retirer':dW>0?'demain':'Tout OK')+'</div></div>';
+  cards+='<div class="kd-s">'+(dB>0?'à retirer':dW>0?'expire demain':'Tout OK')+'</div></div>';
 
-  cards+='<div class="kd '+(bB>0?'red':'grn')+'"><div class="kd-ic">🥐</div><div class="kd-lb">Boulangerie</div>';
+  cards+='<div class="kd '+(bB>0?'red':'grn')+'" onclick="goPg(\'boul\')">';
+  cards+='<div class="kd-lb"><span>🥐 Boulangerie</span><span class="ar-nav">›</span></div>';
   cards+='<div class="kd-v">'+(bB>0?bB:'✅')+'</div>';
   cards+='<div class="kd-s">'+(bB>0?'à détruire':'OK')+'</div></div>';
 
-  cards+='<div class="kd '+(cmdP>0?'ora':'grn')+'"><div class="kd-ic">🛒</div><div class="kd-lb">Commandes</div>';
+  cards+='<div class="kd '+(cmdP>0?'ora':'grn')+'" onclick="goPg(\'cmd\')">';
+  cards+='<div class="kd-lb"><span>🛒 Commandes</span><span class="ar-nav">›</span></div>';
   cards+='<div class="kd-v">'+cmdP+'</div>';
   cards+='<div class="kd-s">'+(cmdP>0?'en attente':'Tout reçu')+'</div></div>';
 
   G('hm-cards').innerHTML=cards;
 
   var ac='';
-  if(tB>0) ac+='<div class="arow"><div class="dot r"></div><div class="ar-t">Tiroirs vides à remplir</div><span class="ar-b r">'+tB+'</span></div>';
-  if(dB>0) ac+='<div class="arow"><div class="dot r"></div><div class="ar-t">Retirer produits DLC dépassés</div><span class="ar-b r">'+dB+'</span></div>';
-  if(bB>0) ac+='<div class="arow"><div class="dot r"></div><div class="ar-t">Détruire produits boulangerie</div><span class="ar-b r">'+bB+'</span></div>';
-  if(dW>0) ac+='<div class="arow"><div class="dot o"></div><div class="ar-t">DLC à surveiller demain</div><span class="ar-b o">'+dW+'</span></div>';
-  if(tW>0) ac+='<div class="arow"><div class="dot o"></div><div class="ar-t">Tabac sous capacité</div><span class="ar-b o">'+tW+'</span></div>';
-  if(cmdP>0) ac+='<div class="arow"><div class="dot o"></div><div class="ar-t">Commandes en attente</div><span class="ar-b o">'+cmdP+'</span></div>';
+  if(tB>0) ac+='<div class="arow" onclick="goPg(\'tabac\')"><div class="dot r"></div><div class="ar-t">Tiroirs vides à remplir</div><span class="ar-b r">'+tB+'</span><span class="ar-nav">›</span></div>';
+  if(dB>0) ac+='<div class="arow" onclick="goPg(\'dlc\')"><div class="dot r"></div><div class="ar-t">Retirer produits DLC dépassés</div><span class="ar-b r">'+dB+'</span><span class="ar-nav">›</span></div>';
+  if(bB>0) ac+='<div class="arow" onclick="goPg(\'boul\')"><div class="dot r"></div><div class="ar-t">Détruire produits boulangerie</div><span class="ar-b r">'+bB+'</span><span class="ar-nav">›</span></div>';
+  if(dW>0) ac+='<div class="arow" onclick="goPg(\'dlc\')"><div class="dot o"></div><div class="ar-t">DLC à surveiller demain</div><span class="ar-b o">'+dW+'</span><span class="ar-nav">›</span></div>';
+  if(tW>0) ac+='<div class="arow" onclick="goPg(\'tabac\')"><div class="dot o"></div><div class="ar-t">Tabac sous capacité</div><span class="ar-b o">'+tW+'</span><span class="ar-nav">›</span></div>';
+  if(cmdP>0) ac+='<div class="arow" onclick="goPg(\'cmd\')"><div class="dot o"></div><div class="ar-t">Commandes en attente</div><span class="ar-b o">'+cmdP+'</span><span class="ar-nav">›</span></div>';
   TD.filter(function(x){return !x.done}).slice(0,3).forEach(function(x){
-    ac+='<div class="arow"><div class="dot g"></div><div class="ar-t">'+x.t+'</div></div>';
+    ac+='<div class="arow"><div class="dot g"></div><div class="ar-t">'+escHtml(x.t)+'</div></div>';
   });
   if(!ac) ac='<div class="empty">✅ Tout est bon — bonne journée !</div>';
   G('hm-act').innerHTML=ac;
@@ -1325,39 +1458,6 @@ function renderHome(){
 
   syncNote();
   renderTodo();
-}
-
-function renderPlan(){
-  var week='';
-  EMP.forEach(function(emp){
-    week+='<div class="hbr"><span class="hbn">'+emp.nom+'</span><span class="hbv">'+durTxt(weekTotalMinutes(emp.id))+'</span></div>';
-  });
-  G('week-total-list').innerHTML=week;
-
-  var out='';
-  Object.keys(PLANNING).forEach(function(k){
-    out+=buildDayCard(k);
-  });
-  G('plan-out').innerHTML=out;
-}
-
-function buildDaySummary(key){
-  var dp=PLANNING[key];
-  var h='<div class="pday">';
-  h+='<div class="pday-h"><div class="pday-t">'+WEEK_CAPS[key]+'</div><div class="pday-total">'+durTxt(dayTotalMinutes(key))+'</div></div>';
-  var has=false;
-  EMP.forEach(function(emp){
-    var arr=dp[emp.id]||[];
-    if(arr.length){
-      has=true;
-      h+='<div class="pday-r"><div style="flex:1"><div class="pday-n">'+emp.nom+(emp.toi?' <span class="ttag">TOI</span>':'')+'</div><div class="slot-list">';
-      arr.forEach(function(s){ h+='<span class="slot-chip">'+rangeTxt(s[0],s[1])+'</span>'; });
-      h+='</div></div><div class="pday-v">'+durTxt(sumSlots(arr))+'</div></div>';
-    }
-  });
-  if(!has) h+='<div class="empty">Personne ce jour</div>';
-  h+='</div>';
-  return h;
 }
 
 renderTabac();
