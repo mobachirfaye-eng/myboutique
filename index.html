@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -1469,5 +1469,29 @@ renderTodo();
 renderHome();
 renderPlan();
 </script>
+
+<!-- Firebase -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAUVRQxhT4iMbKrwWykiVrDFxJB4tXgEK8",
+    authDomain: "my-boutique-relay.firebaseapp.com",
+    projectId: "my-boutique-relay",
+    storageBucket: "my-boutique-relay.appspot.com",
+    messagingSenderId: "451579948796",
+    appId: "1:451579948796:web:c6c0d991fee5d532efb179"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  window.db = db;
+  window.collection = collection;
+  window.addDoc = addDoc;
+  window.onSnapshot = onSnapshot;
+</script>
+
 </body>
 </html>
